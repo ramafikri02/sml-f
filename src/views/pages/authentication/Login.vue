@@ -6,7 +6,7 @@
       <b-link class="brand-logo">
         <vuexy-logo />
         <h2 class="brand-text text-primary ml-1">
-          Vuexy
+          Systics
         </h2>
       </b-link>
       <!-- /Brand logo-->
@@ -41,24 +41,16 @@
             class="mb-1 font-weight-bold"
             title-tag="h2"
           >
-            Welcome to Vuexy! 👋
+            Hai Saraners! 👋
           </b-card-title>
           <b-card-text class="mb-2">
-            Please sign-in to your account and start the adventure
+            Silakan masuk ke akun Anda dan mulai bekerja
           </b-card-text>
 
           <b-alert
             variant="primary"
             show
           >
-            <div class="alert-body font-small-2">
-              <p>
-                <small class="mr-50"><span class="font-weight-bold">Admin:</span> admin@demo.com | admin</small>
-              </p>
-              <p>
-                <small class="mr-50"><span class="font-weight-bold">Client:</span> client@demo.com | client</small>
-              </p>
-            </div>
             <feather-icon
               v-b-tooltip.hover.left="'This is just for ACL demo purpose'"
               icon="HelpCircleIcon"
@@ -161,47 +153,6 @@
             </b-form>
           </validation-observer>
 
-          <b-card-text class="text-center mt-2">
-            <span>New on our platform? </span>
-            <b-link :to="{name:'auth-register'}">
-              <span>&nbsp;Create an account</span>
-            </b-link>
-          </b-card-text>
-
-          <!-- divider -->
-          <div class="divider my-2">
-            <div class="divider-text">
-              or
-            </div>
-          </div>
-
-          <!-- social buttons -->
-          <div class="auth-footer-btn d-flex justify-content-center">
-            <b-button
-              variant="facebook"
-              href="javascript:void(0)"
-            >
-              <feather-icon icon="FacebookIcon" />
-            </b-button>
-            <b-button
-              variant="twitter"
-              href="javascript:void(0)"
-            >
-              <feather-icon icon="TwitterIcon" />
-            </b-button>
-            <b-button
-              variant="google"
-              href="javascript:void(0)"
-            >
-              <feather-icon icon="MailIcon" />
-            </b-button>
-            <b-button
-              variant="github"
-              href="javascript:void(0)"
-            >
-              <feather-icon icon="GithubIcon" />
-            </b-button>
-          </div>
         </b-col>
       </b-col>
     <!-- /Login-->
@@ -298,15 +249,25 @@ export default {
               component: ToastificationContent,
               position: 'top-right',
               props: {
-                title: `Welcome ${data.fullName || data.username}`,
+                title: `Selamat Datang ${data.fullName || data.username}`,
                 icon: 'CoffeeIcon',
                 variant: 'success',
-                text: `You have successfully logged in as ${data.role}. Now you can start to explore!`,
+                text: `Anda telah berhasil masuk sebagai ${data.role}. Sekarang Anda dapat mulai menjelajah!`,
               },
             })
           })
       })
         .catch(error => {
+          this.$toast({
+            component: ToastificationContent,
+            position: 'top-right',
+            props: {
+              title: 'Gagal Masuk',
+              icon: 'AlertCircleIcon',
+              variant: 'danger',
+              text: 'Maaf ID atau Password yang anda masukkan salah. Silahkan coba lagi!',
+            },
+          })
           this.$refs.loginForm.setErrors(error)
         })
     },

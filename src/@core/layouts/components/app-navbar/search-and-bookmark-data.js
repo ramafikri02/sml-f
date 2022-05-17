@@ -4,6 +4,27 @@ export default {
   pages: {
     key: 'title',
     data: [
+      { title: 'EIS', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'EISC', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'ESIS', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'EIM', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      
+      { title: 'Pengguna', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Grup Menu', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Cabang', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kantor Cabang', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Karyawan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Coverage Area', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kurir / Driver', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Helper', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Armada', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Faktur', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Data Vendor', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Data Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kontrak Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Target Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Target Sales', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+
       { title: 'Access Control', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
       { title: 'Account Settings', route: { name: 'pages-account-setting' }, icon: 'SettingsIcon', isBookmarked: false },
       { title: 'Advance Card', route: { name: 'card-advance' }, icon: 'CreditCardIcon', isBookmarked: false },

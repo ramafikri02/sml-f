@@ -1,17 +1,25 @@
 export default [
   {
     title: 'Dashboards',
-    icon: 'HomeIcon',
+    icon: 'FolderIcon',
     tag: '2',
     tagVariant: 'light-warning',
     children: [
       {
-        title: 'eCommerce',
-        route: 'dashboard-ecommerce',
+        title: 'EIS',
+        route: 'dashboard-statistics',
       },
       {
-        title: 'Analytics',
-        route: 'dashboard-analytics',
+        title: 'EISC',
+        route: 'dashboard-show-pdf',
+      },
+      {
+        title: 'ESIS',
+        route: 'dashboard-management-sales',
+      },
+      {
+        title: 'EIM',
+        route: 'dashboard-dashboard-marketing',
       },
     ],
   },
