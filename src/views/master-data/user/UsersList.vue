@@ -249,6 +249,11 @@ export default {
       return this.dir
     },
   },
+  methods: {
+    redirectToUsersAdd() {
+      this.$router.push({ path: '/masterdata/users/add' })
+    },
+  },
   // computed: {
   //   user() {
   //     return store.state.user.user
