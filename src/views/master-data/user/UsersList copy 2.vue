@@ -55,9 +55,14 @@
 
         <!-- Column: Name -->
         <span
-          v-if="props.column.field === 'kode_pengguna'"
+          v-if="props.column.field === 'fullName'"
+          class="text-nowrap"
         >
-          <span class="font-weight-bold">{{ props.row.kode_pengguna }}</span>
+          <b-avatar
+            :src="props.row.avatar"
+            class="mx-1"
+          />
+          <span class="text-nowrap">{{ props.row.fullName }}</span>
         </span>
 
         <!-- Column: Status -->
@@ -259,18 +264,6 @@ export default {
   // },
 }
 </script>
-
-<style lang="scss" scoped>
-.vgt-table span{
-  font-size: 1rem !important;
-}
-
-.vgt-table th span {
-  text-transform: uppercase !important;
-  font-size: .857rem !important;
-  letter-spacing: .5px !important;
-}
-</style>
 
 <style lang="scss" >
 @import '@core/scss/vue/libs/vue-good-table.scss';
