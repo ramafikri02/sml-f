@@ -1,5 +1,5 @@
 <template>
-  <b-card title="Basic Table">
+  <b-card title="Daftar Role">
 
     <!-- search input -->
     <b-row>
@@ -26,9 +26,9 @@
         <div class="d-flex justify-content-end">
           <b-button
             variant="primary"
-            @click="redirectToUsersAdd()"
+            @click="toRoleAdd()"
           >
-            <span class="text-nowrap text-white">Tambah Pengguna</span>
+            <span class="text-nowrap text-white">Tambah Role</span>
           </b-button>
         </div>
       </b-col>
@@ -37,7 +37,7 @@
     <!-- table -->
     <vue-good-table
       :columns="columns"
-      :rows="users"
+      :rows="roles"
       :rtl="direction"
       :search-options="{
         enabled: true,
@@ -46,6 +46,7 @@
         enabled: true,
         perPage:pageLength
       }"
+      :line-numbers="true"
       styleClass="vgt-table condensed">
     >
       <template
@@ -55,9 +56,9 @@
 
         <!-- Column: Name -->
         <span
-          v-if="props.column.field === 'kode_pengguna'"
+          v-if="props.column.field === 'role_code'"
         >
-          <span class="font-weight-bold">{{ props.row.kode_pengguna }}</span>
+          <span class="font-weight-bold">{{ props.row.role_code }}</span>
         </span>
 
         <!-- Column: Status -->
@@ -82,19 +83,26 @@
                   class="text-body align-middle mr-25"
                 />
               </template>
-              <b-dropdown-item>
+              <b-dropdown-item @click="toRoleEditDetail(props.row.role_code)">
+                <feather-icon
+                  icon="KeyIcon"
+                  class="mr-50"
+                />
+                <span>Ubah Detail</span>
+              </b-dropdown-item>
+              <b-dropdown-item @click="toRoleEdit(props.row.role_code)">
                 <feather-icon
                   icon="Edit2Icon"
                   class="mr-50"
                 />
-                <span>Edit</span>
+                <span>Ubah</span>
               </b-dropdown-item>
-              <b-dropdown-item>
+              <b-dropdown-item @click="toRoleDelete(props.row.role_code)">
                 <feather-icon
                   icon="TrashIcon"
                   class="mr-50"
                 />
-                <span>Delete</span>
+                <span>Hapus</span>
               </b-dropdown-item>
             </b-dropdown>
           </span>
@@ -118,7 +126,7 @@
             </span>
             <b-form-select
               v-model="pageLength"
-              :options="['3','5','10']"
+              :options="['10','20','30']"
               class="mx-1"
               @input="(value)=>props.perPageChanged({currentPerPage:value})"
             />
@@ -162,6 +170,7 @@ import {
   BAvatar, BRow, BCol, BButton, BCard, BBadge, BPagination, BFormGroup, BFormInput, BFormSelect, BDropdown, BDropdownItem,
 } from 'bootstrap-vue'
 import { VueGoodTable } from 'vue-good-table'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import store from '@/store/index'
 
 export default {
@@ -182,28 +191,20 @@ export default {
   },
   data() {
     return {
-      pageLength: 3,
+      pageLength: 10,
       dir: false,
       columns: [
         {
-          label: 'Kode Pengguna',
-          field: 'kode_pengguna',
+          label: 'Kode Role',
+          field: 'role_code',
         },
         {
-          label: 'Nama Pengguna',
-          field: 'nama_pengguna',
+          label: 'Nama Role',
+          field: 'name',
         },
         {
-          label: 'Kode Cabang',
-          field: 'kode_cabang',
-        },
-        {
-          label: 'Kode Kantor',
-          field: 'kode_kantor',
-        },
-        {
-          label: 'Grup Pengguna',
-          field: 'grup_pengguna',
+          label: 'Deskripsi',
+          field: 'description',
         },
         {
           label: 'Status',
@@ -219,13 +220,13 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('user/GET_USER', this.params);
+    this.$store.dispatch('role/GET_ROLE', this.params);
   },
   computed: {
-    users() {
-      return this.$store.getters['user/getsUser'] === null
+    roles() {
+      return this.$store.getters['role/getsRole'] === null
         ? []
-        : this.$store.getters['user/getsUser'];
+        : this.$store.getters['role/getsRole'];
     },
 
     statusVariant() {
@@ -250,30 +251,43 @@ export default {
     },
   },
   methods: {
-    redirectToUsersAdd() {
-      this.$router.push({ path: '/masterdata/users/add' })
+    toRoleAdd() {
+      this.$router.push({ path: '/masterdata/roles-mapping/add' })
     },
+    toRoleEdit(id) {
+      this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
+        this.$router.push({ path: '/masterdata/roles-mapping/edit' });
+      });
+    },
+    toRoleEditDetail(id) {
+      // this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
+        this.$router.push({ path: '/masterdata/roles-mapping/edit-detail' });
+      // });
+    },
+    toRoleDelete(id) {
+      this.$store.dispatch('role/DELETE_ROLE', id).then(() => {
+        this.$store.dispatch('role/GET_ROLE', this.params)
+          this.$toast({
+            component: ToastificationContent,
+            position: 'top-right',
+            props: {
+              title: `Berhasil hapus pengguna`,
+              icon: 'ThumbsUpIcon',
+              variant: 'success',
+              text: `Anda telah berhasil menghapus pengguna ${id}!`,
+            },
+          })
+          console.log(this.roles)
+      });
+    },
+
   },
-  // computed: {
-  //   user() {
-  //     return store.state.user.user
-  //   },
-  // },
-  // created() {
-  //   this.rows = this.user
-  // },
 }
 </script>
 
 <style lang="scss" scoped>
 .vgt-table span{
   font-size: 1rem !important;
-}
-
-.vgt-table th span {
-  text-transform: uppercase !important;
-  font-size: .857rem !important;
-  letter-spacing: .5px !important;
 }
 </style>
 

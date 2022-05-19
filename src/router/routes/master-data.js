@@ -1,24 +1,59 @@
 export default [
   // *===============================================---*
-  // *--------- Pengguna ---------------------------------------*
+  // *--------- User ---------------------------------------*
   // *===============================================---*
   {
-    path: '/masterdata/users/list',
+    path: '/masterdata/users',
     name: 'masterdata-users-list',
-    component: () => import('@/views/master-data/user/UsersList.vue'),
+    component: () => import('@/views/master-data/user/UserList.vue'),
   },
   {
     path: '/masterdata/users/add',
     name: 'masterdata-users-add',
-    component: () => import('@/views/master-data/user/UsersAdd.vue'),
+    component: () => import('@/views/master-data/user/UserAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-users-list',
+    },
+  },
+  {
+    path: '/masterdata/users/edit',
+    name: 'masterdata-users-edit',
+    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-users-list',
+    },
   },
   // *===============================================---*
   // *--------- SYSTEM ---------------------------------------*
   // *===============================================---*
   {
-    path: '/masterdata/group-menu/list',
-    name: 'masterdata-group-menu-list',
-    component: () => import('@/views/dashboard/show-pdf/Ecommerce.vue'),
+    path: '/masterdata/roles-mapping',
+    name: 'masterdata-roles-mapping-list',
+    component: () => import('@/views/master-data/system/RoleList.vue'),
+  },
+  {
+    path: '/masterdata/roles-mapping/add',
+    name: 'masterdata-roles-mapping-add',
+    component: () => import('@/views/master-data/system/RoleAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-roles-mapping-list',
+    },
+  },
+  {
+    path: '/masterdata/roles-mapping/edit',
+    name: 'masterdata-roles-mapping-edit',
+    component: () => import('@/views/master-data/system/RoleEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-roles-mapping-list',
+    },
+  },
+  {
+    path: '/masterdata/roles-mapping/edit-detail',
+    name: 'masterdata-roles-mapping-edit-detail',
+    component: () => import('@/views/master-data/system/RoleEditDetail.vue'),
+    meta: {
+      navActiveLink: 'masterdata-roles-mapping-list',
+    },
   },
   // *===============================================---*
   // *--------- ORGANISASI ---------------------------------------*

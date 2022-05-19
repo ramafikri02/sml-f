@@ -7,6 +7,7 @@ import app from './app'
 import appConfig from './app-config'
 import verticalMenu from './vertical-menu'
 import user from './module/master-data/user/user'
+import role from './module/master-data/roles-mapping/roles-mapping'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     appConfig,
     verticalMenu,
     user,
+    role,
     'app-ecommerce': ecommerceStoreModule,
   },
   strict: process.env.DEV,

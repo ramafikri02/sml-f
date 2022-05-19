@@ -16,8 +16,8 @@ export default [
         title: 'System',
         children: [
           {
-            title: 'Grup Menu',
-            route: 'masterdata-group-menu-list',
+            title: 'Role Manajemen',
+            route: 'masterdata-roles-mapping-list',
           },
         ],
       },

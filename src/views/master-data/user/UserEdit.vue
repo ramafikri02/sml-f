@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Tambah Pengguna"
+    title="Edit Pengguna"
   >
     <b-col lg="6">
       <validation-observer
@@ -25,7 +25,7 @@
                 >
                   <b-form-input
                     id="h-user-code"
-                    v-model="userData.user_code"
+                    v-model="user_code"
                     autofocus
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Pengguna"
@@ -49,7 +49,7 @@
                 >
                   <b-form-input
                     id="h-full-name"
-                    v-model="userData.full_name"
+                    v-model="full_name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama Pengguna"
                   />
@@ -63,7 +63,7 @@
               <validation-provider
                 #default="validationContext"
                 name="Kata Sandi"
-                rules="required"
+                rules="password:@confirm"
               >
                 <b-form-group
                   label="Kata Sandi"
@@ -72,7 +72,7 @@
                 >
                   <b-form-input
                     id="h-password"
-                    v-model="userData.password"
+                    v-model="password"
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
@@ -83,11 +83,10 @@
                 </b-form-group>
               </validation-provider>
             </b-col>
-            <!-- <b-col cols="12">
+            <b-col cols="12">
               <validation-provider
                 #default="validationContext"
-                name="Konfirmasi Kata Sandi"
-                rules="required"
+                name="confirm"
               >
                 <b-form-group
                   label="Konfirmasi Kata Sandi"
@@ -96,7 +95,7 @@
                 >
                   <b-form-input
                     id="h-password2"
-                    v-model="userData.password2"
+                    v-model="password_confirm"
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
@@ -106,7 +105,7 @@
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
-            </b-col> -->
+            </b-col>
             <b-col cols="12">
               <validation-provider
                 #default="validationContext"
@@ -115,13 +114,13 @@
               >
                 <b-form-group
                   label="Cabang Pengguna"
-                  label-for="h-branch"
+                  label-for="h-branch_code"
                   label-cols-md="4"
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
-                    id="h-branch"
-                    v-model="userData.branch"
+                    id="h-branch_code"
+                    v-model="branch_code"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="branch"
                     label="title"
@@ -136,20 +135,20 @@
             <b-col cols="12">
               <validation-provider
                 #default="validationContext"
-                name="Kantor Cabang"
+                name="Kantor Pengguna"
                 rules="required"
               >
                 <b-form-group
-                  label="Kantor Cabang"
-                  label-for="h-branch-office"
+                  label="Kantor Pengguna"
+                  label-for="h-office-code"
                   label-cols-md="4"
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
-                    id="h-branch-office"
-                    v-model="userData.branch_office"
+                    id="h-office-code"
+                    v-model="office_code"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                    :options="branchOffice"
+                    :options="office"
                     label="title"
                     placeholder="Pilih..."
                   />
@@ -162,7 +161,7 @@
             <b-col cols="12">
               <validation-provider
                 #default="validationContext"
-                name="Kantor Cabang"
+                name="ID Akun"
                 rules="required"
               >
                 <b-form-group
@@ -173,7 +172,7 @@
                 >
                   <v-select
                     id="h-id-account"
-                    v-model="userData.id_account"
+                    v-model="id_account"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="idAccount"
                     label="title"
@@ -199,7 +198,7 @@
                 >
                   <v-select
                     id="h-id-employee"
-                    v-model="userData.id_employee"
+                    v-model="id_employee"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="idEmployee"
                     label="title"
@@ -225,7 +224,7 @@
                 >
                   <v-select
                     id="h-user-group"
-                    v-model="userData.user_group"
+                    v-model="user_group"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="userGroup"
                     label="title"
@@ -251,7 +250,7 @@
                 >
                   <v-select
                     id="h-multiple-login"
-                    v-model="userData.multiple_login"
+                    v-model="multiple_login"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="yesNo"
                     label="title"
@@ -277,7 +276,7 @@
                 >
                   <v-select
                     id="h-company-id"
-                    v-model="userData.company_id"
+                    v-model="company_id"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="companyId"
                     label="title"
@@ -332,18 +331,26 @@ import {
 } from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
 import vSelect from 'vue-select'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import formValidation from '@core/comp-functions/forms/form-validation'
-import { ref } from '@vue/composition-api'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required, alphaNum } from '@validations'
-import store from '@/store'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import branch from '@/@fake-db/data/other/branch'
-import branchOffice from '@/@fake-db/data/other/branchOffice'
+import office from '@/@fake-db/data/other/office'
 import companyId from '@/@fake-db/data/other/companyId'
 import idAccount from '@/@fake-db/data/other/idAccount'
 import idEmployee from '@/@fake-db/data/other/idEmployee'
 import userGroup from '@/@fake-db/data/other/userGroup'
 import yesNo from '@/@fake-db/data/other/yesNo'
+
+extend('password', {
+  params: ['target'],
+  validate(value, { target }) {
+    // console.log('Value : ', value)
+    // console.log('Target : ', target)
+    return value === target;
+  },
+  message: 'Konfirmasi kata sandi tidak cocok'
+});
 
 export default {
   components: {
@@ -369,7 +376,7 @@ export default {
       required,
       alphaNum,
       branch,
-      branchOffice,
+      office,
       companyId,
       idAccount,
       idEmployee,
@@ -379,53 +386,107 @@ export default {
       // Form Validation
       ValidationProvider,
       ValidationObserver,
-    }
-  },
-  setup(props, { emit }) {
-    const blankUserData = {
+      password_confirm: '',
+
       user_code: '',
       full_name: '',
       password: '',
-      branch: null,
-      branch_office: null,
+      branch_code: null,
+      office_code: null,
+      user_group: null,
       id_account: null,
       id_employee: null,
-      user_group: null,
       multiple_login: null,
       company_id: null,
-    }
+      status: 'Aktif',
 
-    const userData = ref(JSON.parse(JSON.stringify(blankUserData)))
-    const resetuserData = () => {
-      userData.value = JSON.parse(JSON.stringify(blankUserData))
-    }
-
-    const onSubmit = () => {
-      console.log('Payload ', userData.value)
-      store.dispatch('addUser', userData.value)
-        .then(() => {
-          emit('refetch-data')
-        })
-    }
-
-    const {
-      refFormObserver,
-      getValidationState,
-      resetForm,
-    } = formValidation(resetuserData)
-
-    return {
-      userData,
-      onSubmit,
-
-      refFormObserver,
-      getValidationState,
-      resetForm,
+      // userData: {
+      //   user_code: '',
+      //   full_name: '',
+      //   password: '',
+      //   branch_code: null,
+      //   office_code: null,
+      //   user_group: null,
+      //   id_account: null,
+      //   id_employee: null,
+      //   multiple_login: null,
+      //   company_id: null,
+      //   status: 'Aktif',
+      // }
     }
   },
+  mounted() {
+    this.user_code = this.user[0].user_code,
+    this.full_name = this.user[0].full_name,
+    this.branch_code = this.user[0].branch_code,
+    this.office_code = this.user[0].office_code,
+    this.user_group = this.user[0].user_group,
+    this.id_account = this.user[0].id_account,
+    this.id_employee = this.user[0].id_employee,
+    this.multiple_login = this.user[0].multiple_login,
+    this.company_id = this.user[0].company_id,
+    this.status = this.user[0].status
+  },
+  computed: {
+    user() {
+      return this.$store.getters['user/getsUserById'];
+    },
+  },
   methods: {
+    getValidationState({ dirty, validated, valid = null }) {
+      return dirty || validated ? valid : null;
+    },
+    resetForm() {
+      this.password_confirm = '',
+      this.formData = {
+        user_code: '',
+        full_name: '',
+        password: '',
+        branch_code: null,
+        office_code: null,
+        user_group: null,
+        id_account: null,
+        id_employee: null,
+        multiple_login: null,
+        company_id: null,
+        status: 'Aktif',
+      };
+    },
+    onSubmit() {
+      const data = {
+        user_code: this.user_code,
+        full_name: this.full_name,
+        password: this.password,
+        branch_code: this.branch_code,
+        office_code: this.office_code,
+        user_group: this.user_group,
+        id_account: this.id_account,
+        id_employee: this.id_employee,
+        multiple_login: this.multiple_login,
+        company_id: this.company_id,
+        status: this.status,
+      };
+
+      console.log(data)
+
+      this.$store.dispatch('user/UPDATE_USER', data).then(() => {
+        this.$router.push('/masterdata/users')
+        .then(() => {
+          this.$toast({
+            component: ToastificationContent,
+            position: 'top-right',
+            props: {
+              title: `Berhasil edit pengguna`,
+              icon: 'ThumbsUpIcon',
+              variant: 'success',
+              text: `Anda telah berhasil mengubah data ${data.full_name}!`,
+            },
+          })
+        })
+      });
+    },
     redirectToUsersList() {
-      this.$router.push({ path: '/masterdata/users/list' })
+      this.$router.push({ path: '/masterdata/users' })
     },
   },
 }
