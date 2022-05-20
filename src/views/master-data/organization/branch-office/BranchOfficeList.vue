@@ -1,5 +1,5 @@
 <template>
-  <b-card title="Daftar Role">
+  <b-card title="Daftar Kantor Cabang">
 
     <!-- search input -->
     <b-row>
@@ -26,9 +26,9 @@
         <div class="d-flex justify-content-end">
           <b-button
             variant="primary"
-            @click="toRoleAdd()"
+            @click="toBranchAdd()"
           >
-            <span class="text-nowrap text-white">Tambah Role</span>
+            <span class="text-nowrap text-white">Tambah Kantor Cabang</span>
           </b-button>
         </div>
       </b-col>
@@ -37,7 +37,7 @@
     <!-- table -->
     <vue-good-table
       :columns="columns"
-      :rows="roles"
+      :rows="branchs"
       :rtl="direction"
       :search-options="{
         enabled: true,
@@ -56,9 +56,9 @@
 
         <!-- Column: Name -->
         <span
-          v-if="props.column.field === 'role_code'"
+          v-if="props.column.field === 'user_code'"
         >
-          <span class="font-weight-bold">{{ props.row.role_code }}</span>
+          <span class="font-weight-bold">{{ props.row.user_code }}</span>
         </span>
 
         <!-- Column: Status -->
@@ -83,21 +83,14 @@
                   class="text-body align-middle mr-25"
                 />
               </template>
-              <b-dropdown-item @click="toRoleEditDetail(props.row.role_code)">
-                <feather-icon
-                  icon="KeyIcon"
-                  class="mr-50"
-                />
-                <span>Ubah Detail</span>
-              </b-dropdown-item>
-              <b-dropdown-item @click="toRoleEdit(props.row.role_code)">
+              <b-dropdown-item @click="toBranchEdit(props.row.branch_code)">
                 <feather-icon
                   icon="Edit2Icon"
                   class="mr-50"
                 />
                 <span>Ubah</span>
               </b-dropdown-item>
-              <b-dropdown-item @click="toRoleDelete(props.row.role_code)">
+              <b-dropdown-item @click="toBranchDelete(props.row.branch_code)">
                 <feather-icon
                   icon="TrashIcon"
                   class="mr-50"
@@ -195,26 +188,38 @@ export default {
       dir: false,
       columns: [
         {
-          label: 'Kode Role',
-          field: 'role_code',
+          label: 'Kode Cabang',
+          field: 'branch_code',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Nama Role',
+          label: 'Nama Cabang',
           field: 'name',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Deskripsi',
-          field: 'description',
+          label: 'Kode Regional',
+          field: 'region_code',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Status',
-          field: 'status',
+          label: 'Kode Provinsi',
+          field: 'province_code',
+          thClass: 'text-center',
+          tdClass: 'text-center',
+        },
+        {
+          label: 'Kode IATA',
+          field: 'iata_code',
+          thClass: 'text-center',
+          tdClass: 'text-center',
+        },
+        {
+          label: 'Jenis Cabang',
+          field: 'branch_type',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
@@ -230,13 +235,13 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('role/GET_ROLE', this.params);
+    this.$store.dispatch('branch/GET_BRANCH', this.params);
   },
   computed: {
-    roles() {
-      return this.$store.getters['role/getsRole'] === null
+    branchs() {
+      return this.$store.getters['branch/getsBranch'] === null
         ? []
-        : this.$store.getters['role/getsRole'];
+        : this.$store.getters['branch/getsBranch'];
     },
 
     statusVariant() {
@@ -261,34 +266,42 @@ export default {
     },
   },
   methods: {
-    toRoleAdd() {
-      this.$router.push({ path: '/masterdata/roles-mapping/add' })
+    toBranchAdd() {
+      this.$router.push({ path: '/masterdata/branch/add' })
     },
-    toRoleEdit(id) {
-      this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/roles-mapping/edit' });
+    toBranchEdit(id) {
+      this.$store.dispatch('branch/GET_BRANCH_BY_ID', id).then(() => {
+        this.$router.push({ path: '/masterdata/branch/edit' });
       });
     },
-    toRoleEditDetail(id) {
-      // this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/roles-mapping/edit-detail' });
-      // });
-    },
-    toRoleDelete(id) {
-      this.$store.dispatch('role/DELETE_ROLE', id).then(() => {
-        this.$store.dispatch('role/GET_ROLE', this.params)
-          this.$toast({
-            component: ToastificationContent,
-            position: 'top-right',
-            props: {
-              title: `Berhasil hapus pengguna`,
-              icon: 'ThumbsUpIcon',
-              variant: 'success',
-              text: `Anda telah berhasil menghapus pengguna ${id}!`,
+    toBranchDelete(id) {
+      this.$swal({
+        title: 'Apakah kamu yakin?',
+        text: "Anda tidak akan dapat mengembalikan ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus!',
+        customClass: {
+          confirmButton: 'btn btn-primary',
+          cancelButton: 'btn btn-outline-danger ml-1',
+        },
+        buttonsStyling: false,
+      }).then(result => {
+        if (result.value) {
+          this.$store.dispatch('branch/DELETE_BRANCH', id).then(() => {
+            this.$store.dispatch('branch/GET_BRANCH', this.params)
+              console.log(this.branchs)
+          });
+          this.$swal({
+            icon: 'success',
+            title: 'Dihapus!',
+            text: 'Data telah dihapus.',
+            customClass: {
+              confirmButton: 'btn btn-success',
             },
           })
-          console.log(this.roles)
-      });
+        }
+      })
     },
 
   },
@@ -297,5 +310,6 @@ export default {
 
 <style lang="scss" >
 @import '@core/scss/vue/libs/vue-good-table.scss';
+@import '@core/scss/vue/libs/vue-sweetalert.scss';
 @import '@assets/scss/custom/vgt-custom.scss';
 </style>

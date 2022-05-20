@@ -34,7 +34,7 @@ export default [
           },
           {
             title: 'Karyawan',
-            route: 'masterdata-employees-list',
+            route: 'masterdata-employee-list',
           },
           {
             title: 'Coverage Area',

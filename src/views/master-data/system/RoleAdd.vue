@@ -26,7 +26,6 @@
                   <b-form-input
                     id="h-role-code"
                     v-model="formData.role_code"
-                    autofocus
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Role"
                   />

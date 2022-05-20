@@ -1,5 +1,5 @@
 <template>
-  <b-card title="Daftar Role">
+  <b-card title="Daftar Kurir">
 
     <!-- search input -->
     <b-row>
@@ -26,9 +26,9 @@
         <div class="d-flex justify-content-end">
           <b-button
             variant="primary"
-            @click="toRoleAdd()"
+            @click="toCourierAdd()"
           >
-            <span class="text-nowrap text-white">Tambah Role</span>
+            <span class="text-nowrap text-white">Tambah Kurir</span>
           </b-button>
         </div>
       </b-col>
@@ -37,7 +37,7 @@
     <!-- table -->
     <vue-good-table
       :columns="columns"
-      :rows="roles"
+      :rows="employees"
       :rtl="direction"
       :search-options="{
         enabled: true,
@@ -54,11 +54,16 @@
         slot-scope="props"
       >
 
-        <!-- Column: Name -->
+        <!-- Column: Code -->
         <span
-          v-if="props.column.field === 'role_code'"
+          v-if="props.column.field === 'courier_code'"
         >
-          <span class="font-weight-bold">{{ props.row.role_code }}</span>
+          <span class="font-weight-bold">{{ props.row.courier_code }}</span>
+        </span>
+
+        <!-- Column: Name -->
+        <span v-else-if="props.column.field === 'name'">
+          {{ props.row.first_name }} {{ props.row.middle_name }} {{ props.row.last_name }}
         </span>
 
         <!-- Column: Status -->
@@ -83,21 +88,14 @@
                   class="text-body align-middle mr-25"
                 />
               </template>
-              <b-dropdown-item @click="toRoleEditDetail(props.row.role_code)">
-                <feather-icon
-                  icon="KeyIcon"
-                  class="mr-50"
-                />
-                <span>Ubah Detail</span>
-              </b-dropdown-item>
-              <b-dropdown-item @click="toRoleEdit(props.row.role_code)">
+              <b-dropdown-item @click="toCourierEdit(props.row.courier_code)">
                 <feather-icon
                   icon="Edit2Icon"
                   class="mr-50"
                 />
                 <span>Ubah</span>
               </b-dropdown-item>
-              <b-dropdown-item @click="toRoleDelete(props.row.role_code)">
+              <b-dropdown-item @click="toCourierDelete(props.row.courier_code)">
                 <feather-icon
                   icon="TrashIcon"
                   class="mr-50"
@@ -195,26 +193,38 @@ export default {
       dir: false,
       columns: [
         {
-          label: 'Kode Role',
-          field: 'role_code',
+          label: 'Kode Kurir',
+          field: 'courier_code',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Nama Role',
+          label: 'Nama Kurir',
           field: 'name',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Deskripsi',
-          field: 'description',
+          label: 'No Telepon',
+          field: 'phone_number',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
         {
-          label: 'Status',
-          field: 'status',
+          label: 'Tugas',
+          field: 'duty',
+          thClass: 'text-center',
+          tdClass: 'text-center',
+        },
+        {
+          label: 'Area',
+          field: 'area',
+          thClass: 'text-center',
+          tdClass: 'text-center',
+        },
+        {
+          label: 'Kendaraan',
+          field: 'vehicle',
           thClass: 'text-center',
           tdClass: 'text-center',
         },
@@ -230,13 +240,13 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('role/GET_ROLE', this.params);
+    this.$store.dispatch('courier/GET_COURIER', this.params);
   },
   computed: {
-    roles() {
-      return this.$store.getters['role/getsRole'] === null
+    employees() {
+      return this.$store.getters['courier/getsCourier'] === null
         ? []
-        : this.$store.getters['role/getsRole'];
+        : this.$store.getters['courier/getsCourier'];
     },
 
     statusVariant() {
@@ -261,34 +271,42 @@ export default {
     },
   },
   methods: {
-    toRoleAdd() {
-      this.$router.push({ path: '/masterdata/roles-mapping/add' })
+    toCourierAdd() {
+      this.$router.push({ path: '/masterdata/courier/add' })
     },
-    toRoleEdit(id) {
-      this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/roles-mapping/edit' });
+    toCourierEdit(id) {
+      this.$store.dispatch('courier/GET_COURIER_BY_ID', id).then(() => {
+        this.$router.push({ path: '/masterdata/courier/edit' });
       });
     },
-    toRoleEditDetail(id) {
-      // this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/roles-mapping/edit-detail' });
-      // });
-    },
-    toRoleDelete(id) {
-      this.$store.dispatch('role/DELETE_ROLE', id).then(() => {
-        this.$store.dispatch('role/GET_ROLE', this.params)
-          this.$toast({
-            component: ToastificationContent,
-            position: 'top-right',
-            props: {
-              title: `Berhasil hapus pengguna`,
-              icon: 'ThumbsUpIcon',
-              variant: 'success',
-              text: `Anda telah berhasil menghapus pengguna ${id}!`,
+    toCourierDelete(id) {
+      this.$swal({
+        title: 'Apakah kamu yakin?',
+        text: "Anda tidak akan dapat mengembalikan ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus!',
+        customClass: {
+          confirmButton: 'btn btn-primary',
+          cancelButton: 'btn btn-outline-danger ml-1',
+        },
+        buttonsStyling: false,
+      }).then(result => {
+        if (result.value) {
+          this.$store.dispatch('courier/DELETE_COURIER', id).then(() => {
+            this.$store.dispatch('courier/GET_COURIER', this.params)
+              console.log(this.employees)
+          });
+          this.$swal({
+            icon: 'success',
+            title: 'Dihapus!',
+            text: 'Data telah dihapus.',
+            customClass: {
+              confirmButton: 'btn btn-success',
             },
           })
-          console.log(this.roles)
-      });
+        }
+      })
     },
 
   },
@@ -297,5 +315,6 @@ export default {
 
 <style lang="scss" >
 @import '@core/scss/vue/libs/vue-good-table.scss';
+@import '@core/scss/vue/libs/vue-sweetalert.scss';
 @import '@assets/scss/custom/vgt-custom.scss';
 </style>

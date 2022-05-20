@@ -26,7 +26,6 @@
                   <b-form-input
                     id="h-user-code"
                     v-model="formData.user_code"
-                    autofocus
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Pengguna"
                   />

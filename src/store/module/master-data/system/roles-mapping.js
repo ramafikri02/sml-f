@@ -6,7 +6,7 @@ import {
   ADD_ROLE,
   UPDATE_ROLE,
   DELETE_ROLE,
-} from '../../../../api/master-data/roles-mapping'
+} from '../../../../api/master-data/system/roles-mapping'
 
 export default {
   namespaced: true,

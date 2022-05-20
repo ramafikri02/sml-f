@@ -3,7 +3,7 @@ import queryString from 'query-string'
 import {
   GET_USER,
   GET_USER_BY_ID,
-} from '../../../../api/master-data/user'
+} from '../../../../api/master-data/user/user'
 
 const state = {
   user: null,

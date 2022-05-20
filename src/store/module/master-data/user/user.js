@@ -6,7 +6,7 @@ import {
   ADD_USER,
   UPDATE_USER,
   DELETE_USER,
-} from '../../../../api/master-data/user'
+} from '../../../../api/master-data/user/user'
 
 export default {
   namespaced: true,

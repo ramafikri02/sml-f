@@ -191,30 +191,44 @@ export default {
         {
           label: 'Kode Pengguna',
           field: 'user_code',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Nama Pengguna',
           field: 'full_name',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Kode Cabang',
           field: 'branch_code',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Kode Kantor',
           field: 'office_code',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Grup Pengguna',
           field: 'user_group',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Status',
           field: 'status',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
         {
           label: 'Action',
           field: 'action',
+          thClass: 'text-center',
+          tdClass: 'text-center',
         },
       ],
       rows: [],
@@ -282,12 +296,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.vgt-table span{
-  font-size: 1rem !important;
-}
-</style>
-
 <style lang="scss" >
 @import '@core/scss/vue/libs/vue-good-table.scss';
+@import '@assets/scss/custom/vgt-custom.scss';
 </style>
