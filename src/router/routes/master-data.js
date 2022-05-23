@@ -160,44 +160,142 @@ export default [
 
   // *--------- HELPER ---------------------------------------*
   {
-    path: '/masterdata/helper/list',
+    path: '/masterdata/helper',
     name: 'masterdata-helper-list',
-    component: () => import('@/views/dashboard/management-sales/ManagementSales.vue'),
+    component: () => import('@/views/master-data/organization/helper/HelperList.vue'),
+  },
+  {
+    path: '/masterdata/helper/add',
+    name: 'masterdata-helper-add',
+    component: () => import('@/views/master-data/organization/helper/HelperAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-helper-list',
+    },
+  },
+  {
+    path: '/masterdata/helper/edit',
+    name: 'masterdata-helper-edit',
+    component: () => import('@/views/master-data/organization/helper/HelperEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-helper-list',
+    },
   },
 
   // *--------- VEHICLE ---------------------------------------*
   {
     path: '/masterdata/vehicle/list',
     name: 'masterdata-vehicle-list',
-    component: () => import('@/views/dashboard/management-sales/ManagementSales.vue'),
+    component: () => import('@/views/master-data/organization/vehicle/VehicleList.vue'),
+  },
+  {
+    path: '/masterdata/vehicle/add',
+    name: 'masterdata-vehicle-add',
+    component: () => import('@/views/master-data/organization/vehicle/VehicleAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-vehicle-list',
+    },
+  },
+  {
+    path: '/masterdata/vehicle/edit',
+    name: 'masterdata-vehicle-edit',
+    component: () => import('@/views/master-data/organization/vehicle/VehicleEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-vehicle-list',
+    },
   },
 
   // *--------- PIC-INVOICE ---------------------------------------*
   {
-    path: '/masterdata/pic-invoice/list',
+    path: '/masterdata/pic-invoice',
     name: 'masterdata-pic-invoice-list',
-    component: () => import('@/views/dashboard/management-sales/ManagementSales.vue'),
+    component: () => import('@/views/master-data/organization/pic-faktur/FakturList.vue'),
+  },
+  {
+    path: '/masterdata/pic-invoice/add',
+    name: 'masterdata-pic-invoice-add',
+    component: () => import('@/views/master-data/organization/pic-faktur/FakturAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-pic-invoice-list',
+    },
+  },
+  {
+    path: '/masterdata/pic-invoice/edit',
+    name: 'masterdata-pic-invoice-edit',
+    component: () => import('@/views/master-data/organization/pic-faktur/FakturEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-pic-invoice-list',
+    },
   },
   // *===============================================---*
   // *--------- VENDOR ---------------------------------------*
   // *===============================================---*
   {
-    path: '/masterdata/vendor/list',
+    path: '/masterdata/vendor',
     name: 'masterdata-vendor-list',
-    component: () => import('@/views/dashboard/dashboard-marketing/DashboardMarketing.vue'),
+    component: () => import('@/views/master-data/vendor/VendorList.vue'),
+  },
+  {
+    path: '/masterdata/vendor/add',
+    name: 'masterdata-vendor-add',
+    component: () => import('@/views/master-data/vendor/VendorAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-vendor-list',
+    },
+  },
+  {
+    path: '/masterdata/vendor/edit',
+    name: 'masterdata-vendor-edit',
+    component: () => import('@/views/master-data/vendor/VendorEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-vendor-list',
+    },
   },
   // *===============================================---*
-  // *--------- PELANGGAN ---------------------------------------*
+  // *--------- CUSTOMER ---------------------------------------*
   // *===============================================---*
   {
-    path: '/masterdata/customer/list',
+    path: '/masterdata/customer',
     name: 'masterdata-customer-list',
-    component: () => import('@/views/dashboard/dashboard-marketing/DashboardMarketing.vue'),
+    component: () => import('@/views/master-data/customer/customer-data/CustomerList.vue'),
   },
   {
-    path: '/masterdata/customer-contract/list',
+    path: '/masterdata/customer/add',
+    name: 'masterdata-customer-add',
+    component: () => import('@/views/master-data/customer/customer-data/CustomerAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-customer-list',
+    },
+  },
+  {
+    path: '/masterdata/customer/edit',
+    name: 'masterdata-customer-edit',
+    component: () => import('@/views/master-data/customer/customer-data/CustomerEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-customer-list',
+    },
+  },
+
+  // *--------- CUSTOMER CONTRACT ---------------------------------------*
+  {
+    path: '/masterdata/customer-contract',
     name: 'masterdata-customer-contract-list',
-    component: () => import('@/views/dashboard/dashboard-marketing/DashboardMarketing.vue'),
+    component: () => import('@/views/master-data/customer/customer-contract/CustomerContractList.vue'),
+  },
+  {
+    path: '/masterdata/customer-contract/add',
+    name: 'masterdata-customer-contract-add',
+    component: () => import('@/views/master-data/customer/customer-contract/CustomerContractAdd.vue'),
+    meta: {
+      navActiveLink: 'masterdata-customer-contract-list',
+    },
+  },
+  {
+    path: '/masterdata/customer-contract/edit',
+    name: 'masterdata-customer-contract-edit',
+    component: () => import('@/views/master-data/customer/customer-contract/CustomerContractEdit.vue'),
+    meta: {
+      navActiveLink: 'masterdata-customer-contract-list',
+    },
   },
   // *===============================================---*
   // *--------- PERFORMA MARKETING ---------------------------------------*

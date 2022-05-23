@@ -7,6 +7,8 @@ import { isUserLoggedIn, getUserData, getHomeRouteForLoggedInUser } from '@/auth
 import apps from './routes/apps'
 import dashboard from './routes/dashboard'
 import masterData from './routes/master-data'
+import pos from './routes/pos'
+import outgoing from './routes/outgoing'
 import uiElements from './routes/ui-elements/index'
 import pages from './routes/pages'
 import chartsMaps from './routes/charts-maps'
@@ -26,6 +28,8 @@ const router = new VueRouter({
     ...apps,
     ...dashboard,
     ...masterData,
+    ...pos,
+    ...outgoing,
     ...pages,
     ...chartsMaps,
     ...formsTable,

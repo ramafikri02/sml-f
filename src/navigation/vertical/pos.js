@@ -8,27 +8,27 @@ export default [
         children: [
           {
             title: 'Resi Cash Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-cash',
           },
           {
             title: 'Resi Credit Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-credit',
           },
           {
             title: 'Resi COD Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-cod',
           },
           {
             title: 'Cetak Ulang Resi Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-reprint',
           },
           {
             title: 'Batalkan Resi Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-void',
           },
           {
             title: 'Booking Resi Domestic',
-            route: null,
+            route: 'pos-domestic-receipt-booking',
           },
         ],
       },
@@ -37,27 +37,27 @@ export default [
         children: [
           {
             title: 'Resi Cash Project',
-            route: null,
+            route: 'pos-project-receipt-cash',
           },
           {
             title: 'Resi Credit Project',
-            route: null,
+            route: 'pos-project-receipt-credit',
           },
           {
             title: 'Resi COD Project',
-            route: null,
+            route: 'pos-project-receipt-cod',
           },
           {
             title: 'Cetak Ulang Resi Project',
-            route: null,
+            route: 'pos-project-receipt-reprint',
           },
           {
             title: 'Batalkan Resi Project',
-            route: null,
+            route: 'pos-project-receipt-void',
           },
           {
             title: 'Booking Resi Project',
-            route: null,
+            route: 'pos-project-receipt-booking',
           },
         ],
       },
@@ -66,19 +66,19 @@ export default [
         children: [
           {
             title: 'Resi House Mail',
-            route: null,
+            route: 'pos-house-mail-receipt',
           },
           {
             title: 'Cetak Ulang Resi House Mail',
-            route: null,
+            route: 'pos-house-mail-receipt-reprint',
           },
           {
             title: 'Batalkan Resi House Mail',
-            route: null,
+            route: 'pos-house-mail-receipt-void',
           },
           {
             title: 'Booking Resi House Mail',
-            route: null,
+            route: 'pos-house-mail-receipt-booking',
           },
         ],
       },
@@ -87,7 +87,7 @@ export default [
         children: [
           {
             title: 'Booking Rest API Shipment',
-            route: null,
+            route: 'pos-api-receipt-booking',
           },
         ],
       },
