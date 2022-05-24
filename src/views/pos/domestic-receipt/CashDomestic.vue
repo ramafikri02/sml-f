@@ -154,7 +154,7 @@
                       id="h-branch"
                       v-model="formData.branch"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                      :options="branchOp"
+                      :options="productTypeOp"
                       label="title"
                       placeholder="Pilih..."
                     />
@@ -217,16 +217,156 @@
               <b-col cols="12">
                 <b-modal
                   id="modal-info"
+                  scrollable
                   ok-only
                   ok-variant="info"
-                  ok-title="Accept"
+                  ok-title="Tutup"
                   modal-class="modal-info"
                   title="Detail Koli"
+                  size="xl"
                 >
                   <b-card-text>
-                    Biscuit chocolate cake gummies. Lollipop I love macaroon bear claw caramels. I love marshmallow tiramisu I love
-                    fruitcake I love gummi bears. Carrot cake topping liquorice. Pudding caramels liquorice sweet I love. Donut powder
-                    cupcake ice cream tootsie roll jelly.
+                    <!-- table -->
+                      <vue-good-table
+                        :columns="columns"
+                        :rows="rows"
+                      >
+                        <template
+                          slot="table-row"
+                          slot-scope="props"
+                        >
+
+                          <span
+                            v-if="props.column.field === 'no'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-no"
+                              v-model="detailKoli.no"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'koli'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-koli"
+                              v-model="detailKoli.koli"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'koli_weight'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-koli_weight"
+                              v-model="detailKoli.koli_weight"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'actual_weight'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-actual_weight"
+                              v-model="detailKoli.actual_weight"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'length'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-length"
+                              v-model="detailKoli.length"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'width'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-width"
+                              v-model="detailKoli.width"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'height'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-height"
+                              v-model="detailKoli.height"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'volume'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-volume"
+                              v-model="detailKoli.volume"
+                            />
+                          </span>
+
+                          <span
+                            v-if="props.column.field === 'description'"
+                          >
+                            <b-form-input
+                              id="h-detailkoli-description"
+                              v-model="detailKoli.description"
+                            />
+                          </span>
+
+                        </template>
+                      </vue-good-table>
+
+                      <b-button
+                        v-ripple.400="'rgba(0, 207, 232, 0.15)'"
+                        variant="secondary"
+                        class="mt-2"
+                        @click="addKoli()"
+                      >
+                        Tambah
+                      </b-button>
+
+                      <vue-good-table
+                        :columns="columns2"
+                        :rows="rows2"
+                        class="mt-2"
+                      >
+                        <template
+                          slot="table-row"
+                          slot-scope="props"
+                        >
+                          <span v-if="props.column.field === 'no'">
+                            {{ props.index+1 }}
+                          </span>
+                          <span v-else-if="props.column.field === 'hapus'">
+                            <b-button
+                              v-ripple.400="'rgba(0, 207, 232, 0.15)'"
+                              variant="danger"
+                              @click="removeKoli(props.index)"
+                            >
+                              Hapus
+                            </b-button>
+                          </span>
+                        </template>
+                      </vue-good-table>
+
+                      <vue-good-table
+                        :columns="columns3"
+                        :rows="rows3"
+                        class="mt-2"
+                      >
+                        <template
+                          slot="table-row"
+                          slot-scope="props"
+                        >
+                          <span v-if="props.column.field === 'no'">
+                            {{ props.index+1 }}
+                          </span>
+                        </template>
+                      </vue-good-table>
                   </b-card-text>
                 </b-modal>
               </b-col>
@@ -314,6 +454,21 @@
                     id="h-name"
                     v-model="formData.ddk_destination"
                     placeholder="DDK Tujuan"
+                  />
+                </b-form-group>
+              </b-col>
+              <b-col cols="12">
+                <b-form-group
+                  label="Leadtime"
+                  label-for="h-leadtime"
+                >
+                  <cleave
+                    id="h-leadtime"
+                    v-model="formData.leadtime"
+                    class="form-control"
+                    :raw="false"
+                    :options="options.numberOnly"
+                    placeholder="Leadtime"
                   />
                 </b-form-group>
               </b-col>
@@ -686,7 +841,40 @@
 
                 <b-col cols="6">
                   <app-collapse-item :isVisible="true" title="Referensi">
-                    Cheesecake cotton candy bonbon muffin cupcake tiramisu croissant. Tootsie roll sweet candy bear claw chupa chups lollipop toffee. Macaroon donut liquorice powder candy carrot cake macaroon fruitcake. Cookie toffee lollipop cotton candy ice cream dragée soufflé. Cake tiramisu lollipop wafer pie soufflé dessert tart. Biscuit ice cream pie apple pie topping oat cake dessert. Soufflé icing caramels. Chocolate cake icing ice cream macaroon pie cheesecake liquorice apple pie.
+                    <vue-good-table
+                      :columns="colsReference"
+                      :rows="rowsReference"
+                    >
+                      <template
+                        slot="table-row"
+                        slot-scope="props"
+                      >
+
+                        <span
+                          v-if="props.column.field === 'reference_choice'"
+                        >
+                          <v-select
+                            id="h-formReference-reference-choice"
+                            v-model="formData.reference_choice"
+                            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                            :options="yesNo"
+                            append-to-body
+                            label="title"
+                            placeholder="Pilih..."
+                          />
+                        </span>
+
+                        <span
+                          v-if="props.column.field === 'reference'"
+                        >
+                          <b-form-input
+                            id="h-formReference-reference"
+                            v-model="formData.reference"
+                          />
+                        </span>
+
+                      </template>
+                    </vue-good-table>
                   </app-collapse-item>
                 </b-col>
 
@@ -775,7 +963,7 @@
                             id="h-vendor"
                             v-model="formData.vendor"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                            :options="yesNo"
+                            :options="itemContentsOp"
                             label="title"
                             placeholder="Pilih..."
                           />
@@ -809,7 +997,7 @@
                             id="h-item-type"
                             v-model="formData.item_type"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                            :options="yesNo"
+                            :options="itemTypeOp"
                             label="title"
                             placeholder="Pilih..."
                           />
@@ -863,13 +1051,92 @@
 
                 <b-col cols="6">
                   <app-collapse-item :isVisible="true" title="Biaya Tambahan">
-                    Cheesecake cotton candy bonbon muffin cupcake tiramisu croissant. Tootsie roll sweet candy bear claw chupa chups lollipop toffee. Macaroon donut liquorice powder candy carrot cake macaroon fruitcake. Cookie toffee lollipop cotton candy ice cream dragée soufflé. Cake tiramisu lollipop wafer pie soufflé dessert tart. Biscuit ice cream pie apple pie topping oat cake dessert. Soufflé icing caramels. Chocolate cake icing ice cream macaroon pie cheesecake liquorice apple pie.
+                    <vue-good-table
+                      :columns="colsAditionalCost"
+                      :rows="rowsAditionalCost"
+                    >
+                      <template
+                        slot="table-row"
+                        slot-scope="props"
+                      >
+
+                        <span
+                          v-if="props.column.field === 'aditional_cost'"
+                        >
+                          <v-select
+                            id="h-formAditonCost-aditional-cost"
+                            v-model="formData.aditional_cost"
+                            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                            :options="aditionalCostOp"
+                            append-to-body
+                            label="title"
+                            placeholder="Pilih..."
+                          />
+                        </span>
+
+                        <span
+                          v-if="props.column.field === 'value'"
+                        >
+                          <b-form-input
+                            id="h-formAditonCost-value"
+                            v-model="formData.value"
+                          />
+                        </span>
+
+                      </template>
+                    </vue-good-table>
                   </app-collapse-item>
                 </b-col>
 
                 <b-col cols="6">
                   <app-collapse-item :isVisible="true" title="Pengurangan Biaya">
-                    Cheesecake cotton candy bonbon muffin cupcake tiramisu croissant. Tootsie roll sweet candy bear claw chupa chups lollipop toffee. Macaroon donut liquorice powder candy carrot cake macaroon fruitcake. Cookie toffee lollipop cotton candy ice cream dragée soufflé. Cake tiramisu lollipop wafer pie soufflé dessert tart. Biscuit ice cream pie apple pie topping oat cake dessert. Soufflé icing caramels. Chocolate cake icing ice cream macaroon pie cheesecake liquorice apple pie.
+                    <b-col cols="12">
+                      <b-row>
+                        <b-col cols="7">
+                          <b-form-group
+                            label="Diskon"
+                            label-for="h-pengirim"
+                          >
+                            <v-select
+                              id="h-pengirim"
+                              v-model="formData.pengirim"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="branchOp"
+                              label="title"
+                              placeholder="Pilih..."
+                            />
+                          </b-form-group>
+                        </b-col>
+                        <b-col cols="5">
+                          <b-form-group
+                            class="mt-2"
+                          >
+                            <v-select
+                              id="h-pengirim"
+                              v-model="formData.pengirim"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="branchOp"
+                              label="title"
+                              placeholder="Pilih..."
+                            />
+                          </b-form-group>
+                        </b-col>
+                      </b-row>
+                    </b-col>
+                    <b-col cols="12">
+                      <b-form-group
+                        label="Rp"
+                        label-for="h-shipping-cost"
+                      >
+                        <cleave
+                          id="h-shipping-cost"
+                          v-model="formData.shipping_cost"
+                          class="form-control"
+                          :raw="false"
+                          :options="options.numberThousand"
+                        />
+                      </b-form-group>
+                    </b-col>
                   </app-collapse-item>
                 </b-col>
 
@@ -930,21 +1197,6 @@
                       </b-col>
                       <b-col cols="12">
                         <b-form-group
-                          label="Pickup Description"
-                          label-for="h-surcharge"
-                        >
-                          <v-select
-                            id="h-surcharge"
-                            v-model="formData.surcharge"
-                            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                            :options="yesNo"
-                            label="title"
-                            placeholder="Pilih..."
-                          />
-                        </b-form-group>
-                      </b-col>
-                      <b-col cols="12">
-                        <b-form-group
                           label="Tanggal Pick Up"
                           label-for="h-date"
                         >
@@ -978,7 +1230,7 @@
                                 variant="outline-danger"
                                 @click="clearTime()"
                               >
-                                Reset Jam
+                                Reset
                               </b-button>
                               <b-button
                                 size="sm"
@@ -1007,7 +1259,7 @@
                           id="h-payment-method"
                           v-model="formData.payment_method"
                           :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                          :options="yesNo"
+                          :options="paymentMethodOp"
                           label="title"
                           placeholder="Pilih..."
                         />
@@ -1033,7 +1285,6 @@
 
                 <b-col cols="6">
                   <app-collapse-item :isVisible="true" title="Alasan">
-                    Cheesecake cotton candy bonbon muffin cupcake tiramisu croissant. Tootsie roll sweet candy bear claw chupa chups lollipop toffee. Macaroon donut liquorice powder candy carrot cake macaroon fruitcake. Cookie toffee lollipop cotton candy ice cream dragée soufflé. Cake tiramisu lollipop wafer pie soufflé dessert tart. Biscuit ice cream pie apple pie topping oat cake dessert. Soufflé icing caramels. Chocolate cake icing ice cream macaroon pie cheesecake liquorice apple pie.
                   </app-collapse-item>
                 </b-col>
 
@@ -1058,6 +1309,7 @@ import { required, alphaNum } from '@validations'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Cleave from 'vue-cleave-component'
 import 'cleave.js/dist/addons/cleave-phone.id'
+import { VueGoodTable } from 'vue-good-table'
 import branchOp from '@/@fake-db/data/other/branch'
 import officeOp from '@/@fake-db/data/other/office'
 import companyId from '@/@fake-db/data/other/companyId'
@@ -1066,6 +1318,11 @@ import idEmployee from '@/@fake-db/data/other/idEmployee'
 import userGroup from '@/@fake-db/data/other/userGroup'
 import yesNo from '@/@fake-db/data/other/yesNo'
 import jobOp from '@/@fake-db/data/other/jobOp'
+import aditionalCostOp from '@/@fake-db/data/other/aditionalCost'
+import itemContentsOp from '@/@fake-db/data/other/itemContents'
+import itemTypeOp from '@/@fake-db/data/other/itemType'
+import paymentMethodOp from '@/@fake-db/data/other/paymentMethod'
+import productTypeOp from '@/@fake-db/data/other/productType'
 
 export default {
   components: {
@@ -1074,6 +1331,7 @@ export default {
     BRow,
     BCol,
     BModal,
+    VueGoodTable,
     BFormGroup,
     BFormInput,
     BFormTextarea,
@@ -1110,6 +1368,12 @@ export default {
       yesNo,
       jobOp,
 
+      aditionalCostOp,
+      itemContentsOp,
+      itemTypeOp,
+      paymentMethodOp,
+      productTypeOp,
+
       // Form Validation
       ValidationProvider,
       ValidationObserver,
@@ -1128,6 +1392,223 @@ export default {
         },
       },
 
+      columns: [
+        {
+          label: 'No.',
+          field: 'no',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Koli',
+          field: 'koli',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Berat per Koli',
+          field: 'koli_weight',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Berat Aktual',
+          field: 'actual_weight',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Panjang (cm)',
+          field: 'length',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Lebar',
+          field: 'width',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Tinggi',
+          field: 'height',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Volume',
+          field: 'volume',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Ket',
+          field: 'description',
+          thClass: 'text-center',
+          width: '50px'
+        },
+      ],
+
+      rows: [
+        {
+          no: '',
+          koli: '',
+          koli_weight: '',
+          actual_weight: '',
+          length: '',
+          width: '',
+          height: '',
+          volume: '',
+          description: '',
+        }
+      ],
+
+      columns2: [
+        {
+          label: 'No.',
+          field: 'no',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Koli',
+          field: 'koli',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Berat Aktual',
+          field: 'actual_weight',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Panjang (cm)',
+          field: 'length',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Lebar',
+          field: 'width',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Tinggi',
+          field: 'height',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Volume',
+          field: 'volume',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Ket',
+          field: 'description',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Hapus',
+          field: 'hapus',
+          thClass: 'text-center',
+          width: '50px'
+        },
+      ],
+
+      rows2: [],
+
+      columns3: [
+        {
+          label: 'Total Koli',
+          field: 'koli_total',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Total Berat Aktual',
+          field: 'actual_weight_total',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Total Volume',
+          field: 'volume_total',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Total Berat Aktual Dibebankan',
+          field: 'actual_weight_charge',
+          thClass: 'text-center',
+          width: '50px'
+        },
+        {
+          label: 'Total Berat Dibulatkan',
+          field: 'actual_weight_rouded',
+          thClass: 'text-center',
+          width: '50px'
+        },
+      ],
+
+      rows3: [],
+
+      colsReference: [
+        {
+          label: 'Pilihan Referensi',
+          field: 'reference_choice',
+          thClass: 'text-center',
+        },
+        {
+          label: 'Referensi',
+          field: 'reference',
+          thClass: 'text-center',
+        }
+      ],
+
+      rowsReference: [
+        {
+          reference_choice: '',
+          reference: '',
+        }
+      ],
+
+      colsAditionalCost: [
+        {
+          label: 'Biaya Tambahan',
+          field: 'aditional_cost',
+          thClass: 'text-center',
+        },
+        {
+          label: 'Nilai',
+          field: 'value',
+          thClass: 'text-center',
+        }
+      ],
+
+      rowsAditionalCost: [
+        {
+          aditional_cost: '',
+          value: '',
+        }
+      ],
+
+      detailKoli: {
+        no: '',
+        koli: '',
+        koli_weight: '',
+        actual_weight: '',
+        length: '',
+        width: '',
+        height: '',
+        volume: '',
+        description: '',
+      },
+
       formData: {
         date: '',
         receipt_number: null,
@@ -1142,14 +1623,51 @@ export default {
         vendor: null,
         sales: null,
         ddk_destination: '',
+        leadtime: null,
         
         pengirim: null,
 
         pickUp_time: null,
+
+        reference_choice: null,
+        reference: '',
+
+        aditional_cost: null,
+        value: '',
       }
     }
   },
   methods: {
+    addKoli() {
+      if( this.rows2.some(code => code.no === this.detailKoli.no)){
+        this.$toast({
+          component: ToastificationContent,
+          position: 'top-right',
+          props: {
+            title: `Gagal tambah`,
+            icon: 'ThumbsUpIcon',
+            variant: 'danger',
+            text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
+          },
+        })
+        console.log('Length : ', this.rows2.length)
+      }
+      else {
+        this.rows2.push({
+          no: this.detailKoli.no,
+          koli: this.detailKoli.koli,
+          actual_weight: this.detailKoli.actual_weight,
+          length: this.detailKoli.length,
+          width: this.detailKoli.width,
+          height: this.detailKoli.height,
+          volume: this.detailKoli.volume,
+          description: this.detailKoli.description,
+        })
+      }
+    },
+    removeKoli(idx) {
+      this.rows2.splice(idx, 1);
+    },
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
     },
@@ -1209,6 +1727,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@core/scss/vue/libs/vue-good-table.scss';
+@import '@assets/scss/custom/vgt-custom.scss';
 @import '@core/scss/vue/libs/vue-select.scss';
 @import '@assets/scss/custom/accordion-custom.scss';
 </style>

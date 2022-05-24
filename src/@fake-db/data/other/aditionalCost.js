@@ -1,0 +1,8 @@
+export default [
+  'BIAYA PACKING',
+  'PACKING KAYU',
+  'BIAYA AMBIL',
+  'BIAYA ANTAR',
+  'BIAYA EKSPEDISI',
+  'BIAYA KULI',
+]

@@ -9,22 +9,58 @@ export default {
       { title: 'ESIS', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
       { title: 'EIM', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
       
-      { title: 'Pengguna', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Grup Menu', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Cabang', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Kantor Cabang', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Karyawan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Coverage Area', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Kurir / Driver', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Helper', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Armada', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Faktur', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Data Vendor', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Data Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Kontrak Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Target Pelanggan', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
-      { title: 'Target Sales', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
+      // *===============================================---*
+      // *--------- MASTER DATA ---------------------------------------*
+      // *===============================================---*
+      { title: 'Pengguna', route: { name: 'masterdata-users-list' }, icon: 'ShieldIcon', isBookmarked: false },
 
+      { title: 'Grup Menu', route: { name: 'masterdata-roles-mapping-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Cabang', route: { name: 'masterdata-branch-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kantor Cabang', route: { name: 'masterdata-branch-office-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Karyawan', route: { name: 'masterdata-employee-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Coverage Area', route: { name: 'masterdata-coverage-area-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kurir / Driver', route: { name: 'masterdata-courier-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Helper', route: { name: 'masterdata-helper-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Armada', route: { name: 'masterdata-vehicle-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Faktur', route: { name: 'masterdata-pic-invoice-list' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Data Vendor', route: { name: 'masterdata-vendor-list' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Data Pelanggan', route: { name: 'masterdata-customer-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Kontrak Pelanggan', route: { name: 'masterdata-customer-contract-list' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Target Pelanggan', route: { name: 'masterdata-customer-target-list' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Target Sales', route: { name: 'masterdata-sales-target-list' }, icon: 'ShieldIcon', isBookmarked: false },
+
+
+      // *===============================================---*
+      // *--------- POS ---------------------------------------*
+      // *===============================================---*
+      { title: 'Resi Cash Domestic', route: { name: 'pos-domestic-receipt-cash' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Resi Credit Domestic', route: { name: 'pos-domestic-receipt-credit' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Resi COD Domestic', route: { name: 'pos-domestic-receipt-cod' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Cetak Ulang Resi Domestic', route: { name: 'pos-domestic-receipt-reprint' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Batalkan Resi Domestic', route: { name: 'pos-domestic-receipt-void' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Booking Resi Domestic', route: { name: 'pos-domestic-receipt-booking' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Resi Cash Project', route: { name: 'pos-project-receipt-cash' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Resi Credit Project', route: { name: 'pos-project-receipt-credit' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Resi COD Project', route: { name: 'pos-project-receipt-cod' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Cetak Ulang Resi Project', route: { name: 'pos-project-receipt-reprint' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Batalkan Resi Project', route: { name: 'pos-project-receipt-void' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Booking Resi Project', route: { name: 'pos-project-receipt-booking' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Resi Cash House Mail', route: { name: 'pos-house-mail-receipt-cash' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Cetak Ulang Resi House Mail', route: { name: 'pos-house-mail-receipt-reprint' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Batalkan Resi House Mail', route: { name: 'pos-house-mail-receipt-void' }, icon: 'ShieldIcon', isBookmarked: false },
+      { title: 'Booking Resi House Mail', route: { name: 'pos-house-mail-receipt-booking' }, icon: 'ShieldIcon', isBookmarked: false },
+
+      { title: 'Booking Resi API Shippment', route: { name: 'pos-api-receipt-booking' }, icon: 'ShieldIcon', isBookmarked: false },
+
+
+      // *===============================================---*
+      // *--------- OUTGOING ---------------------------------------*
+      // *===============================================---*
       { title: 'Access Control', route: { name: 'access-control' }, icon: 'ShieldIcon', isBookmarked: false },
       { title: 'Account Settings', route: { name: 'pages-account-setting' }, icon: 'SettingsIcon', isBookmarked: false },
       { title: 'Advance Card', route: { name: 'card-advance' }, icon: 'CreditCardIcon', isBookmarked: false },
