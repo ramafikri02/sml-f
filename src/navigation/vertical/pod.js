@@ -4,18 +4,56 @@ export default [
     icon: 'FolderIcon',
     children: [
       {
-        title: 'Menu Level 2.1',
-        route: null,
-      },
-      {
-        title: 'Menu Level 2.2',
+        title: 'Entri Delivery Status',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Delivery Status',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Entri Delivery Take Away',
+            route: null,
+          },
+          {
+            title: 'Entri Delivery Status by Resi',
+            route: null,
+          },
+          {
+            title: 'Batal POD Status by Resi',
+            route: null,
+          },
+        ],
+      },
+      {
+        title: 'Laporan POD',
+        children: [
+          {
+            title: 'Laporan POD',
+            route: null,
+          },
+        ],
+      },
+      {
+        title: 'POD balik',
+        children: [
+          {
+            title: 'Entri POD Balik',
+            route: null,
+          },
+          {
+            title: 'Daftar POD Balik',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang POD Balik',
+            route: null,
+          },
+          {
+            title: 'Batal POD Balik',
+            route: null,
+          },
+          {
+            title: 'Penerimaan POD Balik',
             route: null,
           },
         ],

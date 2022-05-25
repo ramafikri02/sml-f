@@ -47,7 +47,7 @@ import pod from './pod'
 import ap from './ap'
 import suratMuatan from './surat-muatan'
 import ar from './ar'
-import penyetoranPod from './penyetoran-pod'
+import penyetoranCod from './penyetoran-cod'
 import appsAndPages from './apps-and-pages'
 import others from './others'
 import chartsAndMaps from './charts-and-maps'
@@ -55,4 +55,4 @@ import uiElements from './ui-elements'
 import formAndTable from './forms-and-table'
 
 // Array of sections
-export default [...dashboard, ...masterData, ...tarif, ...tracing, ...pickup, ...pickupRunsheet, ...entriDataResi, ...cashRegister, ...laporanTransaksi, ...outgoing, ...transit, ...incoming, ...delivery, ...pod, ...ap, ...suratMuatan, ...ar, ...penyetoranPod, ...appsAndPages, ...uiElements, ...formAndTable, ...chartsAndMaps, ...others]
+export default [...dashboard, ...masterData, ...tarif, ...tracing, ...pickup, ...pickupRunsheet, ...entriDataResi, ...cashRegister, ...laporanTransaksi, ...outgoing, ...transit, ...incoming, ...delivery, ...pod, ...ap, ...suratMuatan, ...ar, ...penyetoranCod, ...appsAndPages, ...uiElements, ...formAndTable, ...chartsAndMaps, ...others]

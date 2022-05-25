@@ -7,11 +7,23 @@ export default [
         title: 'Pick Up Request Runsheet',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Pick up Runsheet',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Booking Pick up Runsheet',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Pick up Runsheet',
+            route: null,
+          },
+          {
+            title: 'Batalkan Pick up Runsheet',
+            route: null,
+          },
+          {
+            title: 'Penugasan Pick up Runsheet',
             route: null,
           },
         ],

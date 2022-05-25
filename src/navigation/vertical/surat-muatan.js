@@ -4,18 +4,22 @@ export default [
     icon: 'FolderIcon',
     children: [
       {
-        title: 'Menu Level 2.1',
-        route: null,
-      },
-      {
-        title: 'Menu Level 2.2',
+        title: 'Surat Muatan',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Surat Muatan',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Daftar Surat Muatan',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Surat Muatan',
+            route: null,
+          },
+          {
+            title: 'Pembatalan Surat Muatan',
             route: null,
           },
         ],

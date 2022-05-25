@@ -7,11 +7,23 @@ export default [
         title: 'Pick up Order',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Pick up Order',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Booking Pick up Order',
+            route: null,
+          },
+          {
+            title: 'Penugasan Pick up',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Pick up Order',
+            route: null,
+          },
+          {
+            title: 'Entri Pick up Order Pelanggan',
             route: null,
           },
         ],
@@ -20,11 +32,19 @@ export default [
         title: 'Missed Pick up',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Missed Pick up',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Booking Missed Pick up',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Missed Pick up',
+            route: null,
+          },
+          {
+            title: 'Pembatalan Missed Pick up',
             route: null,
           },
         ],
@@ -33,11 +53,15 @@ export default [
         title: 'Pick up Confirmation',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Pick up Confirmation',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Booking Pick up Confirmation',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Pick up Confirmation',
             route: null,
           },
         ],
@@ -46,11 +70,15 @@ export default [
         title: 'Laporan Pick up',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Laporan Pick up Order Harian',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Laporan Pick up Confirmation Harian',
+            route: null,
+          },
+          {
+            title: 'Laporan Missed Pick up',
             route: null,
           },
         ],

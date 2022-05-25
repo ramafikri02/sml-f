@@ -4,18 +4,35 @@ export default [
     icon: 'FolderIcon',
     children: [
       {
-        title: 'Menu Level 2.1',
-        route: null,
-      },
-      {
-        title: 'Menu Level 2.2',
+        title: 'Incoming',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Entri Incoming',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Batal / Tunda Incoming',
+            route: null,
+          },
+          {
+            title: 'Daftar Incoming',
+            route: null,
+          },
+          {
+            title: 'Cetak Ulang Incoming',
+            route: null,
+          },
+        ],
+      },
+      {
+        title: 'Laporan',
+        children: [
+          {
+            title: 'Laporan Harian Incoming',
+            route: null,
+          },
+          {
+            title: 'Laporan Outstanding Incoming',
             route: null,
           },
         ],

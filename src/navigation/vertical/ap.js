@@ -4,21 +4,72 @@ export default [
     icon: 'FolderIcon',
     children: [
       {
-        title: 'Menu Level 2.1',
-        route: null,
-      },
-      {
-        title: 'Menu Level 2.2',
+        title: 'Verifikasi Biaya Angkut dan Pengantaran',
         children: [
           {
-            title: 'Menu Level 3.1',
+            title: 'Verifikasi Biaya Surat Muatan',
             route: null,
           },
           {
-            title: 'Menu Level 3.2',
+            title: 'Verifikasi POD & Biaya Vendor Pengantaran Massal',
+            route: null,
+          },
+          {
+            title: 'Verifikasi POD & Biaya Vendor Pengantaran',
+            route: null,
+          },
+          {
+            title: 'Verifikasi POD & Biaya Cabang Pengantaran',
+            route: null,
+          },
+          {
+            title: 'Verifikasi POD & Biaya Cabang Pengantaran by Connote',
             route: null,
           },
         ],
+      },
+      {
+        title: 'Invoice Register Vendor',
+        children: [
+          {
+            title: 'Invoice Register Vendor Surat Muatan',
+            route: null,
+          },
+          {
+            title: 'Invoice Register Vendor Pengantaran',
+            route: null,
+          },
+          {
+            title: 'Daftar Draft Invoice Register Vendor Pengantaran',
+            route: null,
+          },
+          {
+            title: 'Daftar Invoice Register Vendor Pengantaran',
+            route: null,
+          },
+        ]
+      },
+      {
+        title: 'Pembayaran Invoice Register Vendor',
+        children: [
+          {
+            title: 'Pembayaran Invoice Register',
+            route: null,
+          },
+          {
+            title: 'Daftar Pembayaran Inv. Register',
+            route: null,
+          },
+        ]
+      },
+      {
+        title: 'Laporan Data Vendor Pengantaran',
+        children: [
+          {
+            title: 'Laporan Data Vendor Pengantaran',
+            route: null,
+          },
+        ]
       },
     ],
   },
