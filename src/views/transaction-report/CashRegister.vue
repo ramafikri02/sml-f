@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Laporan Barang Titipan"
+    title="Laporan Penyetoran Outlet"
   >
     <b-col lg="6">
       <validation-observer

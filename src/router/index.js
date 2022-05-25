@@ -9,6 +9,7 @@ import dashboard from './routes/dashboard'
 import masterData from './routes/master-data'
 import pos from './routes/pos'
 import outgoing from './routes/outgoing'
+import cashRegister from './routes/cash-register'
 import uiElements from './routes/ui-elements/index'
 import pages from './routes/pages'
 import chartsMaps from './routes/charts-maps'
@@ -30,6 +31,7 @@ const router = new VueRouter({
     ...masterData,
     ...pos,
     ...outgoing,
+    ...cashRegister,
     ...pages,
     ...chartsMaps,
     ...formsTable,

@@ -20,7 +20,7 @@ export default [
         children: [
           {
             title: 'Laporan Outstanding Cash Register',
-            route: null,
+            route: 'cash-register-report-outstanding',
           },
         ],
       },

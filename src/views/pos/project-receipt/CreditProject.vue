@@ -67,6 +67,31 @@
               <b-col cols="12">
                 <validation-provider
                   #default="validationContext"
+                  name="Akun Bayar"
+                  rules="required"
+                >
+                  <b-form-group
+                    label="Akun Bayar"
+                    label-for="h-branch"
+                    :state="getValidationState(validationContext)"
+                  >
+                    <v-select
+                      id="h-branch"
+                      v-model="formData.branch"
+                      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                      :options="branchOp"
+                      label="title"
+                      placeholder="Pilih..."
+                    />
+                    <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
+              </b-col>
+              <b-col cols="12">
+                <validation-provider
+                  #default="validationContext"
                   name="Jenis Kiriman"
                   rules="required"
                 >

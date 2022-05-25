@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Laporan Barang Titipan"
+    title="Laporan Outstanding Cash Register"
   >
     <b-col lg="6">
       <validation-observer
@@ -13,28 +13,56 @@
           <b-row>
             <b-col cols="12">
               <b-form-group
-                label="No. DP3 Outgoing"
-                label-for="h-no-outgoing"
+                label="Dari Tanggal"
+                label-for="h-user-code"
                 label-cols-md="4"
               >
-                <b-form-input
-                  id="h-no-outgoing"
-                  v-model="formData.no_outgoing"
-                  placeholder="No. DP3 Outgoing"
+                <b-form-datepicker
+                  v-model="formData.fromDate"
+                  :max="max"
+                  locale="id"
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12">
+              <b-form-group
+                label="Sampai Tanggal"
+                label-for="h-user-code"
+                label-cols-md="4"
+              >
+                <b-form-datepicker
+                  v-model="formData.untilDate"
+                  locale="id"
                 />
               </b-form-group>
             </b-col>
             <b-col cols="12">
               <b-form-group
                 label="Cabang"
-                label-for="h-location"
+                label-for="h-branch"
                 label-cols-md="4"
               >
                 <v-select
-                  id="h-location"
-                  v-model="formData.location"
+                  id="h-branch"
+                  v-model="formData.branch"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                   :options="branchOp"
+                  label="title"
+                  placeholder="Pilih..."
+                />
+              </b-form-group>
+            </b-col>
+            <b-col cols="12">
+              <b-form-group
+                label="Kantor"
+                label-for="h-office"
+                label-cols-md="4"
+              >
+                <v-select
+                  id="h-office"
+                  v-model="formData.office"
+                  :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                  :options="officeOp"
                   label="title"
                   placeholder="Pilih..."
                 />
@@ -98,6 +126,16 @@ export default {
     Ripple,
   },
   data() {
+    const now = new Date()
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    // 15th two months prior
+    // const minDate = new Date(today)
+    // minDate.setMonth(minDate.getMonth() - 2)
+    // minDate.setDate(15)
+    // 15th in two months
+    const maxDate = new Date(today)
+    maxDate.setMonth(maxDate.getMonth())
+
     return {
       required,
       alphaNum,
@@ -113,11 +151,20 @@ export default {
       ValidationProvider,
       ValidationObserver,
 
+      max: maxDate,
+
       formData: {
-        no_outgoing: '',
-        location: null,
+        fromDate: '',
+        untilDate: '',
+        branch: null,
+        branch_destination: null,
+        user: '',
       }
     }
+  },
+  mounted() {
+    this.formData.fromDate = new Date()
+    this.formData.untilDate = new Date()
   },
   methods: {
     getValidationState({ dirty, validated, valid = null }) {
@@ -125,8 +172,12 @@ export default {
     },
     onSubmit() {
       const data = {
-        no_outgoing: this.formData.no_outgoing,
-        location: this.formData.location,
+        fromDate: this.formData.fromDate,
+        untilDate: this.formData.untilDate,
+        password: this.formData.password,
+        branch: this.formData.branch,
+        branch_destination: this.formData.branch_destination,
+        user: this.formData.user,
       };
 
       console.log(data)
@@ -141,7 +192,7 @@ export default {
               title: `Berhasil tambah pengguna`,
               icon: 'ThumbsUpIcon',
               variant: 'success',
-              text: `Anda telah berhasil menambahkan ${data.full_name} sebagai ${data.user_group}!`,
+              text: `Anda telah berhasil menambahkan!`,
             },
           })
         })

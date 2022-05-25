@@ -1,4 +1,4 @@
 export default [
-  'Ya',
-  'Tidak',
+  'YA',
+  'TIDAK',
 ]

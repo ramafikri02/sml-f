@@ -1,86 +1,92 @@
 export default [
   // *===============================================---*
-  // *--------- User ---------------------------------------*
+  // *--------- GENERATE SHIPPING BAG ---------------------------------------*
   // *===============================================---*
   {
-    path: '/outgoing/shipping-bag',
-    name: 'outgoing-users-list',
-    component: () => import('@/views/master-data/user/UserList.vue'),
+    path: '/outgoing/generate/shipping-bag',
+    name: 'outgoing-generate-shipping-bag',
+    component: () => import('@/views/outgoing/generate-shipping-bag/GenerateShippingBag.vue'),
   },
   {
-    path: '/outgoing/shipping-bag/list',
-    name: 'outgoing-users-add',
-    component: () => import('@/views/master-data/user/UserAdd.vue'),
+    path: '/outgoing/generate/shipping-bag/list',
+    name: 'outgoing-generate-shipping-bag-list',
+    component: () => import('@/views/outgoing/generate-shipping-bag/ShippingBagList.vue'),
   },
   {
-    path: '/outgoing/shipping-bag/reprint',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    path: '/outgoing/generate/shipping-bag/reprint',
+    name: 'outgoing-generate-shipping-bag-reprint',
+    component: () => import('@/views/outgoing/generate-shipping-bag/ReprintShippingBag.vue'),
   },
 
-
+  // *===============================================---*
+  // *--------- OUTGOING ---------------------------------------*
+  // *===============================================---*
   {
     path: '/outgoing/entri',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    name: 'outgoing-entri',
+    component: () => import('@/views/outgoing/outgoing/EntriOutgoing.vue'),
   },
   {
     path: '/outgoing/reprint',
-    name: 'outgoing-users-list',
-    component: () => import('@/views/master-data/user/UserList.vue'),
+    name: 'outgoing-reprint-list',
+    component: () => import('@/views/outgoing/outgoing/ReprintOutgoing.vue'),
   },
   {
     path: '/outgoing/void',
-    name: 'outgoing-users-add',
-    component: () => import('@/views/master-data/user/UserAdd.vue'),
+    name: 'outgoing-void-list',
+    component: () => import('@/views/outgoing/outgoing/VoidOutgoing.vue'),
   },
   {
     path: '/outgoing/booking',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    name: 'outgoing-booking-list',
+    component: () => import('@/views/outgoing/outgoing/BookingOutgoing.vue'),
   },
 
+  // *===============================================---*
+  // *--------- OUTGOING CONSOL ---------------------------------------*
+  // *===============================================---*
+  {
+    path: '/outgoing/outgoing-consol/entri',
+    name: 'outgoing-consol-entri',
+    component: () => import('@/views/outgoing/outgoing-consol/EntriOutgoingConsol.vue'),
+  },
+  {
+    path: '/outgoing/outgoing-consol/reprint',
+    name: 'outgoing-consol-reprint-list',
+    component: () => import('@/views/outgoing/outgoing-consol/ReprintOutgoingConsol.vue'),
+  },
+  {
+    path: '/outgoing/outgoing-consol/void',
+    name: 'outgoing-consol-void-list',
+    component: () => import('@/views/outgoing/outgoing-consol/VoidOutgoingConsol.vue'),
+  },
+  {
+    path: '/outgoing/outgoing-consol/booking',
+    name: 'outgoing-consol-booking-list',
+    component: () => import('@/views/outgoing/outgoing-consol/BookingOutgoingConsol.vue'),
+  },
 
-  {
-    path: '/outgoing/shipping-bag',
-    name: 'outgoing-users-list',
-    component: () => import('@/views/master-data/user/UserList.vue'),
-  },
-  {
-    path: '/outgoing/consol',
-    name: 'outgoing-users-add',
-    component: () => import('@/views/master-data/user/UserAdd.vue'),
-  },
-  {
-    path: '/outgoing/reprint',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
-  },
-  {
-    path: '/outgoing/shipping',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
-  },
-
-
+  // *===============================================---*
+  // *--------- REPORT OUTGOING ---------------------------------------*
+  // *===============================================---*
   {
     path: '/outgoing/report/outstanding',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    name: 'outgoing-report-outstanding',
+    component: () => import('@/views/outgoing/outgoing-report/OutstandingOutgoingReport.vue'),
+  },
+  {
+    path: '/outgoing/report/outgoing',
+    name: 'outgoing-report-outgoing',
+    component: () => import('@/views/outgoing/outgoing-report/OutgoingReport.vue'),
+  },
+  {
+    path: '/outgoing/report/deposit',
+    name: 'outgoing-report-deposit',
+    component: () => import('@/views/outgoing/outgoing-report/DepositReport.vue'),
   },
   {
     path: '/outgoing/report/disbag-manifest',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
-  },
-  {
-    path: '/outgoing/report/deposit-goods',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
-  },
-  {
-    path: '/outgoing/report/disbag-manifest-v2',
-    name: 'outgoing-users-edit',
-    component: () => import('@/views/master-data/user/UserEdit.vue'),
+    name: 'outgoing-report-disbag-manifest',
+    component: () => import('@/views/outgoing/outgoing-report/DisbagManifestReport.vue'),
   },
 ]
