@@ -21,7 +21,7 @@ export default [
         ],
       },
       {
-        title: 'Entri Penyetoran COD Kurir ke Kasir',
+        title: 'Entri Penyetoran COD Cabang ke Pusat',
         children: [
           {
             title: 'Entri Penyetoran COD Cabang ke Pusat',

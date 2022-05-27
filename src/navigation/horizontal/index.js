@@ -24,6 +24,9 @@ route: [route_obj/route_name] (I have to resolve name somehow from the route obj
 
 */
 import dashboard from './dashboard'
+import masterData from './master-data'
+import entriDataResi from './pos'
+import outgoing from './outgoing'
 import apps from './apps'
 import pages from './pages'
 import chartsAndMaps from './charts-and-maps'
@@ -32,4 +35,4 @@ import formAndTable from './forms-and-table'
 import others from './others'
 
 // Array of sections
-export default [...dashboard, ...apps, ...uiElements, ...formAndTable, ...pages, ...chartsAndMaps, ...others]
+export default [...dashboard, ...masterData, ...entriDataResi, ...outgoing, ...apps, ...uiElements, ...formAndTable, ...pages, ...chartsAndMaps, ...others]

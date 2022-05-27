@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import { ToastPlugin, ModalPlugin } from 'bootstrap-vue'
 import VueCompositionAPI from '@vue/composition-api'
+import { localize } from 'vee-validate';
+import id from 'vee-validate/dist/locale/id.json';
+
+localize('id', id);
 
 // import i18n from '@/libs/i18n'
 import router from './router'

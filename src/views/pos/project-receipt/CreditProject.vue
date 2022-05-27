@@ -1687,6 +1687,7 @@ export default {
           volume: this.detailKoli.volume,
           description: this.detailKoli.description,
         })
+        this.detailKoli.no = ''
       }
     },
     removeKoli(idx) {

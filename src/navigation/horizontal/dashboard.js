@@ -1,17 +1,23 @@
 export default [
   {
     header: 'Dashboards',
-    icon: 'HomeIcon',
+    icon: 'FolderIcon',
     children: [
       {
-        title: 'eCommerce',
-        route: 'dashboard-ecommerce',
-        icon: 'ShoppingCartIcon',
+        title: 'EIS',
+        route: 'dashboard-statistics',
       },
       {
-        title: 'Analytics',
-        route: 'dashboard-analytics',
-        icon: 'ActivityIcon',
+        title: 'EISC',
+        route: 'dashboard-show-pdf',
+      },
+      {
+        title: 'ESIS',
+        route: 'dashboard-management-sales',
+      },
+      {
+        title: 'EIM',
+        route: 'dashboard-dashboard-marketing',
       },
     ],
   },
