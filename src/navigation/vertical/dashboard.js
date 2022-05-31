@@ -1,5 +1,8 @@
 export default [
   {
+    header: 'Dashboard',
+  },
+  {
     title: 'Dashboards',
     icon: 'FolderIcon',
     tag: '2',

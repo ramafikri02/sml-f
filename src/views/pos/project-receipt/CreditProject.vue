@@ -1754,6 +1754,5 @@ export default {
 <style lang="scss">
 @import '@core/scss/vue/libs/vue-good-table.scss';
 @import '@assets/scss/custom/vgt-custom.scss';
-@import '@core/scss/vue/libs/vue-select.scss';
 @import '@assets/scss/custom/accordion-custom.scss';
 </style>

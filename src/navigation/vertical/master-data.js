@@ -1,5 +1,8 @@
 export default [
   {
+    header: 'Others',
+  },
+  {
     title: 'Data Master',
     icon: 'FolderIcon',
     children: [

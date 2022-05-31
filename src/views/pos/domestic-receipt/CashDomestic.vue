@@ -77,8 +77,7 @@
                   >
                     <v-select
                       id="h-branch"
-                      v-model="formData.branch"
-                      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                      v-model="formData.post_type"
                       :options="branchOp"
                       label="title"
                       placeholder="Pilih..."
@@ -102,7 +101,7 @@
                   >
                     <v-select
                       id="h-branch"
-                      v-model="formData.branch"
+                      v-model="formData.service_type"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                       :options="branchOp"
                       label="title"
@@ -127,7 +126,7 @@
                   >
                     <v-select
                       id="h-branch"
-                      v-model="formData.branch"
+                      v-model="formData.destination"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                       :options="branchOp"
                       label="title"
@@ -152,7 +151,7 @@
                   >
                     <v-select
                       id="h-branch"
-                      v-model="formData.branch"
+                      v-model="formData.product_type"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                       :options="productTypeOp"
                       label="title"
@@ -437,7 +436,7 @@
                 >
                   <v-select
                     id="h-branch"
-                    v-model="formData.branch"
+                    v-model="formData.sales"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="branchOp"
                     label="title"
@@ -493,7 +492,7 @@
                     >
                       <v-select
                         id="h-pengirim"
-                        v-model="formData.pengirim"
+                        v-model="formData.sender"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="branchOp"
                         label="title"
@@ -513,7 +512,7 @@
                       >
                         <b-form-input
                           id="h-receiver-name"
-                          v-model="formData.nama_pengirim"
+                          v-model="formData.sender_name"
                           :state="getValidationState(validationContext)"
                           placeholder="Nama"
                         />
@@ -649,7 +648,7 @@
                     >
                       <cleave
                         id="h-postal-code"
-                        v-model="formData.fax"
+                        v-model="formData.postal_code"
                         class="form-control"
                         :raw="false"
                         :options="options.numberOnly"
@@ -671,7 +670,7 @@
                     >
                       <v-select
                         id="h-penerima"
-                        v-model="formData.penerima"
+                        v-model="formData.consignee"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="branchOp"
                         label="title"
@@ -691,7 +690,7 @@
                       >
                         <b-form-input
                           id="h-receiver-name"
-                          v-model="formData.nama_pengirim"
+                          v-model="formData.consignee_name"
                           :state="getValidationState(validationContext)"
                           placeholder="Nama"
                         />
@@ -800,7 +799,7 @@
                     >
                       <cleave
                         id="h-fax-no"
-                        v-model="formData.fax"
+                        v-model="formData.consignee_fax"
                         class="form-control"
                         :raw="false"
                         :options="options.numberOnly"
@@ -827,7 +826,7 @@
                     >
                       <cleave
                         id="h-postal-code"
-                        v-model="formData.fax"
+                        v-model="formData.consignee_postal_code"
                         class="form-control"
                         :raw="false"
                         :options="options.numberOnly"
@@ -1612,7 +1611,7 @@ export default {
       formData: {
         date: '',
         receipt_number: null,
-        jenis_kiriman: null,
+        post_type: null,
         service_type: null,
         destination: '',
         product_type: null,
@@ -1625,7 +1624,15 @@ export default {
         ddk_destination: '',
         leadtime: null,
         
-        pengirim: null,
+        sender: null,
+        sender_name: '',
+        fax: null,
+        postal_code: null,
+
+        consignee: null,
+        consignee_name: '',
+        consignee_fax: null,
+        consignee_postal_code: null,
 
         pickUp_time: null,
 
@@ -1639,31 +1646,45 @@ export default {
   },
   methods: {
     addKoli() {
-      if( this.rows2.some(code => code.no === this.detailKoli.no)){
+      if(this.detailKoli.no_resi == null || this.detailKoli.no_resi == '') {
         this.$toast({
           component: ToastificationContent,
           position: 'top-right',
           props: {
-            title: `Gagal tambah`,
+            title: `Gagal`,
             icon: 'ThumbsUpIcon',
             variant: 'danger',
-            text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
+            text: `Nomor Resi harus di isi!`,
           },
         })
-        console.log('Length : ', this.rows2.length)
       }
       else {
-        this.rows2.push({
-          no: this.detailKoli.no,
-          koli: this.detailKoli.koli,
-          actual_weight: this.detailKoli.actual_weight,
-          length: this.detailKoli.length,
-          width: this.detailKoli.width,
-          height: this.detailKoli.height,
-          volume: this.detailKoli.volume,
-          description: this.detailKoli.description,
-        })
-        this.detailKoli.no = ''
+        if( this.rows2.some(code => code.no === this.detailKoli.no)){
+          this.$toast({
+            component: ToastificationContent,
+            position: 'top-right',
+            props: {
+              title: `Gagal tambah`,
+              icon: 'ThumbsUpIcon',
+              variant: 'danger',
+              text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
+            },
+          })
+          console.log('Length : ', this.rows2.length)
+        }
+        else {
+          this.rows2.push({
+            no: this.detailKoli.no,
+            koli: this.detailKoli.koli,
+            actual_weight: this.detailKoli.actual_weight,
+            length: this.detailKoli.length,
+            width: this.detailKoli.width,
+            height: this.detailKoli.height,
+            volume: this.detailKoli.volume,
+            description: this.detailKoli.description,
+          })
+          this.detailKoli.no = ''
+        }am
       }
     },
     removeKoli(idx) {
@@ -1684,28 +1705,37 @@ export default {
       this.formData = {
         date: '',
         receipt_number: null,
+        post_type: null,
+        service_type: null,
+        destination: '',
+        product_type: null,
         shipping_cost: null,
-        courier_code: '',
-        name: '',
-        branch: '',
-        office: '',
-        area: '',
-        duty: null,
-        vehicle: null,
-        status: null,
+        koli: null,
+        actual_weight: null,
+        weight_rounded_up: null,
+        vendor: null,
+        sales: null,
+        ddk_destination: '',
+        leadtime: null,
       };
     },
     onSubmit() {
       const data = {
-        courier_code: this.formData.courier_code,
-        name: this.formData.name,
-        phone_number: this.formData.phone_number,
-        branch: this.formData.branch,
-        office: this.formData.office,
-        area: this.formData.area,
-        duty: this.formData.duty,
-        vehicle: this.formData.vehicle,
-        status: this.formData.status,
+        date: this.formData.date,
+        receipt_number: this.formData.receipt_number,
+        post_type: this.formData.post_type,
+        service_type: this.formData.service_type,
+        destination: this.formData.destination,
+        product_type: this.formData.product_type,
+        shipping_cost: this.formData.shipping_cost,
+        koli: this.formData.koli,
+        actual_weight: this.formData.actual_weight,
+        vendor: this.formData.vendor,
+        weight_rounded_up: this.formData.weight_rounded_up,
+        vendor: this.formData.vendor,
+        sales: this.formData.sales,
+        ddk_destination: this.formData.ddk_destination,
+        leadtime: this.formData.leadtime,
       };
 
       console.log(data)
@@ -1730,6 +1760,5 @@ export default {
 <style lang="scss">
 @import '@core/scss/vue/libs/vue-good-table.scss';
 @import '@assets/scss/custom/vgt-custom.scss';
-@import '@core/scss/vue/libs/vue-select.scss';
 @import '@assets/scss/custom/accordion-custom.scss';
 </style>

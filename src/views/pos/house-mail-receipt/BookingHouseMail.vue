@@ -175,7 +175,7 @@
 
 <script>
 import {
-  BRow, BCol, BButton, BCard, BFormGroup, BForm, BFormInput,
+  BRow, BCol, BButton, BCard, BPagination, BFormGroup, BForm, BFormInput, BFormSelect,
 } from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
 import vSelect from 'vue-select'
@@ -190,10 +190,12 @@ export default {
     BCol,
     BCard,
     VueGoodTable,
+    BPagination,
     BButton,
     BFormGroup,
     BForm,
     BFormInput,
+    BFormSelect,
     vSelect,
   },
   directives: {
@@ -206,6 +208,8 @@ export default {
       searchOption: '',
       searchReceipt: '',
 
+      pageLength: 10,
+      dir: false,
       columns: [
         {
           label: 'No.',
