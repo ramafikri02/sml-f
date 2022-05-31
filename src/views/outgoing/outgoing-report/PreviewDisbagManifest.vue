@@ -1,25 +1,143 @@
 <template>
-  <div class="container">
-    <b-table
-      responsive="sm"
-      :bordered="true"
-      :outlined="true"
-      :fields="fields"
-      :items="items"
-    >
-      <template #cell(no)="data">
-        {{ data.index + 1 }}
-      </template>
-    </b-table>
+  <div class="report">
+    <div class="container">
+      <p class="small_font_Report"><b>saranamulyalogisticscorp.com</b></p>
+      <h4 class="text-center"><b>Laporan Disbag Manifest&nbsp;</b></h4>
+      <h5 class="text-center">Periode : 11-05-2022 - 17-05-2022</h5>
+      <table class="medium_font_Report">
+        <tr class="font_size">
+            <td width="100px">Cabang</td>
+            <td>:</td>
+            <td>NASIONAL</td>
+        </tr>
+        <tr class="font_size">
+            <td>Kantor</td>
+            <td>:</td>
+            <td></td>
+        </tr>
+        <tr class="font_size">
+            <td>Tujuan</td>
+            <td>:</td>
+            <td></td>
+        </tr>
+        <tr class="font_size">
+            <td>Pengguna</td>
+            <td>:</td>
+            <td></td>
+        </tr>
+        <tr class="font_size">
+            <td>Tipe Manifest</td>
+            <td>:</td>
+            <td></td>
+        </tr>
+      </table>
+      <b-table-simple
+        responsive
+      >
+        <b-thead>
+          <b-tr>
+            <b-th v-for="field in fields" :key="field.key">{{ field.label }}</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <tr v-for="(item,i) in items" :key="i">
+            <td>{{ i+1 }}</td>
+            <td>{{ item.no_disbag_manifest }}</td>
+            <td>{{ item.no_shipping_bag }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.origin }}</td>
+            <td>{{ item.destination }}</td>
+            <td>{{ item.nopol }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.transit }}</td>
+            <td>{{ item.status_incoming }}</td>
+            <td>{{ item.tipe_manifest }}</td>
+            <td>{{ item.jml_kiriman }}</td>
+            <td>{{ item.weight }}</td>
+            <td>{{ item.total_shipping_cost }}</td>
+          </tr>
+        </b-tbody>
+        <b-tfoot>
+          <b-tr>
+            <b-td
+              colspan="11"
+              class="text-right"
+            >
+              <b>Total</b>
+            </b-td>
+            <b-td
+              colspan="1"
+              class="text-center"
+            >
+              {{ countShipment }}
+            </b-td>
+            <b-td
+              colspan="1"
+              class="text-center"
+            >
+              {{ contWeight }}
+            </b-td>
+            <b-td
+              colspan="1"
+              class="text-center"
+            >
+              {{ countShipmentCost }}
+            </b-td>
+          </b-tr>
+        </b-tfoot>
+      </b-table-simple>
+      <table class="small_font_Report">
+        <tr>
+          <td align="left" >Dicetak Oleh</td>
+          <td align="left" >:</td>
+          <td align="left" >FIKRISML&nbsp;SML</td>
+        </tr>
+        <tr>
+          <td align="left" >Tanggal Cetak</td>
+          <td align="left" >:</td>
+          <td align="left" >31-05-2022 10:17</td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <b-button
+          size="sm"
+          class="mr-1"
+          @click="toPrint()"
+        >
+          Cetak
+        </b-button>
+        <b-button
+          size="sm"
+          class="mr-1"
+        >
+          Cetak Excel
+        </b-button>
+        <b-button
+          size="sm"
+          @click="toClose()"
+        >
+          Tutup
+        </b-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { BTable } from 'bootstrap-vue'
+import {
+  BTableSimple, BThead, BTr, BTh, BTd, BTbody, BTfoot, BButton
+} from 'bootstrap-vue'
 
 export default {
   components: {
-    BTable,
+    BTableSimple,
+    BThead,
+    BTr,
+    BTh,
+    BTd,
+    BTbody,
+    BTfoot,
+    BButton
   },
   data() {
     return {
@@ -41,7 +159,6 @@ export default {
       ],
       items: [
         {
-          no: '',
           no_disbag_manifest: 'DMOBDO000000582', 
           no_shipping_bag: 'BDOBAG0003544', 
           date: ' 11-05-2022 14:24',
@@ -54,59 +171,51 @@ export default {
           tipe_manifest: 'MANIFEST DARAT',
           jml_kiriman: '10',
           weight: '180.00',
-          total_shipping_cost: '1,130,000.00',
+          total_shipping_cost: '1,130,000',
         },
         {
-          no: '',
           no_disbag_manifest: 'DMOBDO000000583', 
           no_shipping_bag: 'BDOBAG0003558', 
-          tanggal: '17-05-2022 16:09 ',
-          asal: 'BANDUNG ',
-          tujuan: 'PONTIANAK ',
+          date: '17-05-2022 16:09 ',
+          origin: 'BANDUNG ',
+          destination: 'PONTIANAK ',
           nopol: '',
-          keterangan: ' BARANG DI ANTAR KE JAKARTA',
+          description: ' BARANG DI ANTAR KE JAKARTA',
           transit: 'JAKARTA ',
           status_incoming: '',
           tipe_manifest: 'MANIFEST DARAT',
           jml_kiriman: '116',
-          berat: '2,320.00',
-          total_biaya_kirim: '22,000,000.00',
-        },
-        {
-          no: '',
-          no_disbag_manifest: 'DMOBDO000000594', 
-          no_shipping_bag: 'BDOBAG0003586',
-          tanggal: '19-05-2022 00:00',
-          asal: 'BANDUNG',
-          tujuan: 'JAKARTA',
-          nopol: '',
-          keterangan: 'BARANG DI DOORING OOLEH ANT',
-          transit: '',
-          status_incoming: 'MANIFEST DARAT',
-          tipe_manifest: '',
-          jml_kiriman: '25',
-          berat: '358.31',
-          total_biaya_kirim: '472,500.00',
-        },
-        {
-          no: '',
-          no_disbag_manifest: 'DMOBDO000000595', 
-          no_shipping_bag: 'BDOBAG0003588', 
-          tanggal: '19-05-2022 00:00',
-          asal: 'BANDUNG',
-          tujuan: 'JAKARTA',
-          nopol: '',
-          keterangan: 'BARANG DI DOORING OLEH ANT',
-          transit: 'BOGOR',
-          status_incoming: '',
-          tipe_manifest: 'MANIFEST DARAT',
-          jml_kiriman: '25',
-          berat: '358.31',
-          total_biaya_kirim: '1,260,000.00',
+          weight: '2,320.00',
+          total_shipping_cost: '22,000,000',
         },
       ],
     }
   },
+  computed: {
+    countShipment() {
+      return this.items.reduce(function(total, item){
+        return total + parseInt(item.jml_kiriman);
+      },0);
+    },
+    contWeight() {
+      var sum = this.items.reduce((total, item) => total +  parseInt(item.weight), 0);
+      return new Intl.NumberFormat().format(sum)
+    },
+    countShipmentCost() {
+      var sum = this.items.reduce((total, item) => total +  parseInt(item.total_shipping_cost.replace(/,/g, '')), 0);
+      console.log('Format Num : ', new Intl.NumberFormat().format(sum))
+      console.log('Format Float : ', parseFloat(sum))
+      return new Intl.NumberFormat().format(sum) + '.00'
+    }
+  },
+  methods: {
+    toPrint() {
+      window.print()
+    },
+    toClose() {
+      window.close()
+    }
+  }
 }
 </script>
 
