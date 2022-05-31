@@ -1646,7 +1646,7 @@ export default {
   },
   methods: {
     addKoli() {
-      if(this.detailKoli.no_resi == null || this.detailKoli.no_resi == '') {
+      if(this.detailKoli.no == null || this.detailKoli.no == '') {
         this.$toast({
           component: ToastificationContent,
           position: 'top-right',
@@ -1748,7 +1748,7 @@ export default {
             title: `Berhasil tambah cabang`,
             icon: 'ThumbsUpIcon',
             variant: 'success',
-            text: `Anda telah berhasil menambahkan ${data.name} di Provinsi ${data.branch}!`,
+            text: `Anda telah berhasil menambahkan ${data.receipt_number} di Provinsi ${data.service_type}!`,
           },
         })
       });

@@ -89,4 +89,12 @@ export default [
     name: 'outgoing-report-disbag-manifest',
     component: () => import('@/views/outgoing/outgoing-report/DisbagManifestReport.vue'),
   },
+  {
+    path: '/outgoing/report/disbag-manifest/preview',
+    name: 'outgoing-report-disbag-manifest-preview',
+    component: () => import('@/views/outgoing/outgoing-report/PreviewDisbagManifest.vue'),
+    meta: {
+      layout: 'full',
+    },
+  },
 ]

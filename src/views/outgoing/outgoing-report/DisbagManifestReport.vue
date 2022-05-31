@@ -124,6 +124,7 @@
                 type="submit"
                 variant="primary"
                 class="mr-1"
+                @click="toPreview()"
               >
                 Preview
               </b-button>
@@ -217,6 +218,13 @@ export default {
     this.formData.untilDate = new Date()
   },
   methods: {
+    toPreview() {
+      let routeData = this.$router.resolve(
+      {
+        path: '/outgoing/report/disbag-manifest/preview',
+      });
+      window.open(routeData.href, '_blank');
+    },
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
     },
