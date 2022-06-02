@@ -1562,30 +1562,44 @@ export default {
   },
   methods: {
     addKoli() {
-      if( this.rows2.some(code => code.no === this.detailKoli.no)){
+      if(this.detailKoli.no == null || this.detailKoli.no == '') {
         this.$toast({
           component: ToastificationContent,
           position: 'top-right',
           props: {
-            title: `Gagal tambah`,
-            icon: 'ThumbsUpIcon',
+            title: `Gagal`,
+            icon: 'AlertCircleIcon',
             variant: 'danger',
-            text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
+            text: `Nomor Resi harus di isi!`,
           },
         })
       }
       else {
-        this.rows2.push({
-          no: this.detailKoli.no,
-          koli: this.detailKoli.koli,
-          actual_weight: this.detailKoli.actual_weight,
-          length: this.detailKoli.length,
-          width: this.detailKoli.width,
-          height: this.detailKoli.height,
-          volume: this.detailKoli.volume,
-          description: this.detailKoli.description,
-        })
-        this.detailKoli.no = ''
+        if( this.rows2.some(code => code.no === this.detailKoli.no)){
+          this.$toast({
+            component: ToastificationContent,
+            position: 'top-right',
+            props: {
+              title: `Gagal tambah`,
+              icon: 'AlertCircleIcon',
+              variant: 'danger',
+              text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
+            },
+          })
+        }
+        else {
+          this.rows2.push({
+            no: this.detailKoli.no,
+            koli: this.detailKoli.koli,
+            actual_weight: this.detailKoli.actual_weight,
+            length: this.detailKoli.length,
+            width: this.detailKoli.width,
+            height: this.detailKoli.height,
+            volume: this.detailKoli.volume,
+            description: this.detailKoli.description,
+          })
+          this.detailKoli.no = ''
+        }
       }
     },
     removeKoli(idx) {

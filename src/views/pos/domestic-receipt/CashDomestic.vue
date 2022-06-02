@@ -1652,7 +1652,7 @@ export default {
           position: 'top-right',
           props: {
             title: `Gagal`,
-            icon: 'ThumbsUpIcon',
+            icon: 'AlertCircleIcon',
             variant: 'danger',
             text: `Nomor Resi harus di isi!`,
           },
@@ -1665,7 +1665,7 @@ export default {
             position: 'top-right',
             props: {
               title: `Gagal tambah`,
-              icon: 'ThumbsUpIcon',
+              icon: 'AlertCircleIcon',
               variant: 'danger',
               text: `Data yang anda masukkan sudah ada, mohon ubah nomor!`,
             },

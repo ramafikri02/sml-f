@@ -6,29 +6,29 @@
       <h5 class="text-center">Periode : 11-05-2022 - 17-05-2022</h5>
       <table class="medium_font_Report">
         <tr class="font_size">
-            <td width="100px">Cabang</td>
-            <td>:</td>
-            <td>NASIONAL</td>
+          <td width="100px">Cabang</td>
+          <td>:</td>
+          <td>NASIONAL</td>
         </tr>
         <tr class="font_size">
-            <td>Kantor</td>
-            <td>:</td>
-            <td></td>
+          <td>Kantor</td>
+          <td>:</td>
+          <td></td>
         </tr>
         <tr class="font_size">
-            <td>Tujuan</td>
-            <td>:</td>
-            <td></td>
+          <td>Tujuan</td>
+          <td>:</td>
+          <td></td>
         </tr>
         <tr class="font_size">
-            <td>Pengguna</td>
-            <td>:</td>
-            <td></td>
+          <td>Pengguna</td>
+          <td>:</td>
+          <td></td>
         </tr>
         <tr class="font_size">
-            <td>Tipe Manifest</td>
-            <td>:</td>
-            <td></td>
+          <td>Tipe Manifest</td>
+          <td>:</td>
+          <td></td>
         </tr>
       </table>
       <b-table-simple

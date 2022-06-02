@@ -124,6 +124,7 @@
                 type="submit"
                 variant="primary"
                 class="mr-1"
+                @click="toPreview()"
               >
                 Preview
               </b-button>
@@ -217,6 +218,13 @@ export default {
     this.formData.untilDate = new Date()
   },
   methods: {
+    toPreview() {
+      let routeData = this.$router.resolve(
+      {
+        path: '/outgoing/report/disbag-manifest/preview',
+      });
+      window.open(routeData.href, '_blank');
+    },
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
     },
@@ -232,21 +240,21 @@ export default {
 
       console.log(data)
 
-      this.$store.dispatch('user/ADD_USER', data).then(() => {
-        this.$router.push('/masterdata/users')
-        .then(() => {
-          this.$toast({
-            component: ToastificationContent,
-            position: 'top-right',
-            props: {
-              title: `Berhasil tambah pengguna`,
-              icon: 'ThumbsUpIcon',
-              variant: 'success',
-              text: `Anda telah berhasil menambahkan ${data.full_name} sebagai ${data.user_group}!`,
-            },
-          })
-        })
-      });
+      // this.$store.dispatch('user/ADD_USER', data).then(() => {
+      //   this.$router.push('/masterdata/users')
+      //   .then(() => {
+      //     this.$toast({
+      //       component: ToastificationContent,
+      //       position: 'top-right',
+      //       props: {
+      //         title: `Berhasil tambah pengguna`,
+      //         icon: 'ThumbsUpIcon',
+      //         variant: 'success',
+      //         text: `Anda telah berhasil menambahkan ${data.full_name} sebagai ${data.user_group}!`,
+      //       },
+      //     })
+      //   })
+      // });
     },
     redirectToUsersList() {
       this.$router.push({ path: '/masterdata/users' })
