@@ -17,10 +17,10 @@
                 label-for="h-user-code"
                 label-cols-md="5"
               >
-                  <b-form-input
-                    id="h-user-code"
-                    v-model="searchReceipt"
-                  />
+                <b-form-input
+                  id="h-user-code"
+                  v-model="searchReceipt"
+                />
               </b-form-group>
             </b-col>
             <b-col cols="2">

@@ -53,8 +53,8 @@
             <td>{{ item.status_incoming }}</td>
             <td>{{ item.tipe_manifest }}</td>
             <td>{{ item.jml_kiriman }}</td>
-            <td>{{ item.weight }}</td>
-            <td>{{ item.total_shipping_cost }}</td>
+            <td>{{ item.weight.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
+            <td>{{ item.total_shipping_cost.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
           </tr>
         </b-tbody>
         <b-tfoot>
@@ -173,8 +173,8 @@ export default {
           status_incoming: '',
           tipe_manifest: 'MANIFEST DARAT',
           jml_kiriman: '10',
-          weight: '180.00',
-          total_shipping_cost: '1,130,000',
+          weight: '180',
+          total_shipping_cost: '1130000',
         },
         {
           no_disbag_manifest: 'DMOBDO000000583', 
@@ -188,8 +188,8 @@ export default {
           status_incoming: '',
           tipe_manifest: 'MANIFEST DARAT',
           jml_kiriman: '116',
-          weight: '2,320.00',
-          total_shipping_cost: '22,000,000',
+          weight: '2,320',
+          total_shipping_cost: '22000000',
         },
       ],
     }

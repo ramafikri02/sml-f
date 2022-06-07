@@ -27,26 +27,88 @@
               </b-col>
               <b-col cols="12">
                 <validation-provider
-                #default="validationContext"
-                name="Kode Role"
-                rules="required"
-              >
+                  #default="validationContext"
+                  name="Cabang"
+                  rules="required"
+                >
+                  <b-row>
+                    <b-col cols="7">
+                      <b-form-group
+                        label="Cabang"
+                        label-for="h-role-code"
+                        label-cols-md="7"
+                      >
+                        <b-form-input
+                          id="h-role-code"
+                          v-model="formData.role_code"
+                          :state="getValidationState(validationContext)"
+                          placeholder="Kode"
+                        />
+                          <b-form-invalid-feedback>
+                          {{ validationContext.errors[0] }}
+                        </b-form-invalid-feedback>
+                      </b-form-group>
+                    </b-col>
+                    <b-col cols="5">
+                      <b-form-group
+                      >
+                        <b-form-input
+                          id="h-role-code"
+                          v-model="formData.role_code"
+                          :state="getValidationState(validationContext)"
+                          placeholder="Cabang"
+                        />
+                          <b-form-invalid-feedback>
+                          {{ validationContext.errors[0] }}
+                        </b-form-invalid-feedback>
+                      </b-form-group>
+                    </b-col>
+                  </b-row>
+                </validation-provider>
+              </b-col>
+              <b-col cols="12">
                 <b-form-group
-                  label="Kode Role"
-                  label-for="h-role-code"
+                  label="Koli"
+                  label-for="h-koli"
                   label-cols-md="4"
                 >
-                  <b-form-input
-                    id="h-role-code"
-                    v-model="formData.role_code"
-                    :state="getValidationState(validationContext)"
-                    placeholder="Kode Role"
+                  <cleave
+                    id="h-koli"
+                    v-model="formData.koli"
+                    class="form-control"
+                    :raw="false"
+                    :options="options.numberThousand"
+                    :maxLength="6"
+                    placeholder="Koli"
                   />
-                    <b-form-invalid-feedback>
-                      {{ validationContext.errors[0] }}
-                    </b-form-invalid-feedback>
-                  </b-form-group>
-                </validation-provider>
+                </b-form-group>
+                </b-col>
+
+                <b-col offset-md="4">
+                <b-button
+                  v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                  type="submit"
+                  variant="primary"
+                  class="mr-1"
+                >
+                  Submit
+                </b-button>
+                <b-button
+                  v-ripple.400="'rgba(186, 191, 199, 0.15)'"
+                  type="reset"
+                  variant="danger"
+                  class="mr-1"
+                >
+                  Reset
+                </b-button>
+                <b-button
+                  v-ripple.400="'rgba(186, 191, 199, 0.15)'"
+                  type="reset"
+                  variant="warning"
+                  @click="redirectToUsersList()"
+                >
+                  Kembali
+                </b-button>
               </b-col>
             </b-row>
           </b-col>
@@ -65,13 +127,7 @@ import vSelect from 'vue-select'
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required, alphaNum } from '@validations'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
-import branch from '@/@fake-db/data/other/branch'
-import office from '@/@fake-db/data/other/office'
-import companyId from '@/@fake-db/data/other/companyId'
-import idAccount from '@/@fake-db/data/other/idAccount'
-import idEmployee from '@/@fake-db/data/other/idEmployee'
-import userGroup from '@/@fake-db/data/other/userGroup'
-import yesNo from '@/@fake-db/data/other/yesNo'
+import Cleave from 'vue-cleave-component'
 
 export default {
   components: {
@@ -86,6 +142,7 @@ export default {
     BForm,
     BButton,
     vSelect,
+    Cleave,
 
     // Form Validation
     ValidationProvider,
@@ -98,17 +155,20 @@ export default {
     return {
       required,
       alphaNum,
-      branch,
-      office,
-      companyId,
-      idAccount,
-      idEmployee,
-      userGroup,
-      yesNo,
 
       // Form Validation
       ValidationProvider,
       ValidationObserver,
+
+      options: {
+        numberOnly: {
+          numeral: true,
+          numeralThousandsGroupStyle: 'none'
+        },
+        numberThousand: {
+          numeral: true,
+        },
+      },
 
       formData: {
         date: '',
