@@ -7,6 +7,7 @@ import { isUserLoggedIn, getUserData, getHomeRouteForLoggedInUser } from '@/auth
 import apps from './routes/apps'
 import dashboard from './routes/dashboard'
 import masterData from './routes/master-data'
+import tracking from './routes/tracing'
 import pos from './routes/pos'
 import outgoing from './routes/outgoing'
 import cashRegister from './routes/cash-register'
@@ -29,6 +30,7 @@ const router = new VueRouter({
     ...apps,
     ...dashboard,
     ...masterData,
+    ...tracking,
     ...pos,
     ...outgoing,
     ...cashRegister,

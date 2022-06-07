@@ -47,8 +47,14 @@
         perPage:pageLength
       }"
       :line-numbers="true"
+      :isLoading="loadingTable"
       styleClass="vgt-table condensed">
     >
+      <template slot="loadingContent">
+        <div>
+          <b-spinner label="Loading..." />
+        </div>
+      </template>
       <template
         slot="table-row"
         slot-scope="props"
@@ -166,6 +172,7 @@ import { VueGoodTable } from 'vue-good-table'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import store from '@/store/index'
 import { mapGetters } from 'vuex'
+import { BSpinner } from 'bootstrap-vue'
 
 export default {
   components: {
@@ -182,9 +189,11 @@ export default {
     BFormSelect,
     BDropdown,
     BDropdownItem,
+    BSpinner,
   },
   data() {
     return {
+      loadingTable: true,
       pageLength: 10,
       dir: false,
       columns: [
@@ -240,6 +249,7 @@ export default {
   },
   computed: {
     users() {
+      this.loadingTable = false
       return this.$store.getters['user/getsUser'] === null
         ? []
         : this.$store.getters['user/getsUser'];

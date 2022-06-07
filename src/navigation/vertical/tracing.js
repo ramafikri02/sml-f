@@ -5,7 +5,7 @@ export default [
     children: [
       {
         title: 'Lacak Resi',
-        route: null,
+        route: 'tracking-receipt',
       },
     ],
   },

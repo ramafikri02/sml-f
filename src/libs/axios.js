@@ -6,7 +6,11 @@ import axios from 'axios'
 const axiosIns = axios.create({
   // You can add your headers here
   // ================================
-  baseURL: 'http://localhost:9999/api/',
+  baseURL: 'https://api.systics.saranamulyalogisticscorp.com/api/',
+  auth: {
+    username: 'admin',
+    password: '12345'
+  }
   // timeout: 1000,
   // headers: { 'X-Custom-Header': 'foobar' },
   // headers: { 'x-access-token': `Bearer ${localStorage.getItem('accessToken')}` },

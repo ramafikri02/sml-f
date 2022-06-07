@@ -76,6 +76,13 @@
                   class="text-body align-middle mr-25"
                 />
               </template>
+              <b-dropdown-item @click="toCustomerSpecialContractEdit()">
+                <feather-icon
+                  icon="Edit3Icon"
+                  class="mr-50"
+                />
+                <span>Ubah</span>
+              </b-dropdown-item>
               <b-dropdown-item @click="toCustomerContractEdit(props.row.contract_number)">
                 <feather-icon
                   icon="Edit2Icon"
@@ -266,6 +273,11 @@ export default {
       this.$store.dispatch('customer_contract/GET_CUSTOMER_CONTRACT_BY_ID', id).then(() => {
         this.$router.push({ path: '/masterdata/pic-invoice/edit' });
       });
+    },
+    toCustomerSpecialContractEdit() {
+      // this.$store.dispatch('customer_contract/GET_CUSTOMER_CONTRACT_BY_ID', id).then(() => {
+        this.$router.push({ path: '/masterdata/customer-special-contract/edit' });
+      // });
     },
     toCustomerContractDelete(id) {
       this.$swal({

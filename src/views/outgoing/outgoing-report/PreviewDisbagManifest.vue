@@ -1,126 +1,128 @@
 <template>
   <div class="report">
     <div class="container">
-      <p class="small_font_Report"><b>saranamulyalogisticscorp.com</b></p>
-      <h4 class="text-center"><b>Laporan Disbag Manifest&nbsp;</b></h4>
-      <h5 class="text-center">Periode : 11-05-2022 - 17-05-2022</h5>
-      <table class="medium_font_Report">
-        <tr class="font_size">
-            <td width="100px">Cabang</td>
-            <td>:</td>
-            <td>NASIONAL</td>
-        </tr>
-        <tr class="font_size">
-            <td>Kantor</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-        <tr class="font_size">
-            <td>Tujuan</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-        <tr class="font_size">
-            <td>Pengguna</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-        <tr class="font_size">
-            <td>Tipe Manifest</td>
-            <td>:</td>
-            <td></td>
-        </tr>
-      </table>
-      <b-table-simple
-        responsive
-      >
-        <b-thead>
-          <b-tr>
-            <b-th v-for="field in fields" :key="field.key">{{ field.label }}</b-th>
-          </b-tr>
-        </b-thead>
-        <b-tbody>
-          <tr v-for="(item,i) in items" :key="i">
-            <td>{{ i+1 }}</td>
-            <td>{{ item.no_disbag_manifest }}</td>
-            <td>{{ item.no_shipping_bag }}</td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.origin }}</td>
-            <td>{{ item.destination }}</td>
-            <td>{{ item.nopol }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.transit }}</td>
-            <td>{{ item.status_incoming }}</td>
-            <td>{{ item.tipe_manifest }}</td>
-            <td>{{ item.jml_kiriman }}</td>
-            <td>{{ item.weight.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
-            <td>{{ item.total_shipping_cost.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
+      <div class="orientation">
+        <p class="small_font_Report"><b>saranamulyalogisticscorp.com</b></p>
+        <h4 class="text-center"><b>Laporan Disbag Manifest&nbsp;</b></h4>
+        <h5 class="text-center">Periode : 11-05-2022 - 17-05-2022</h5>
+        <table class="medium_font_Report">
+          <tr class="font_size">
+              <td width="100px">Cabang</td>
+              <td>:</td>
+              <td>NASIONAL</td>
           </tr>
-        </b-tbody>
-        <b-tfoot>
-          <b-tr>
-            <b-td
-              colspan="11"
-              class="text-right"
-            >
-              <b>Total</b>
-            </b-td>
-            <b-td
-              colspan="1"
-              class="text-center"
-            >
-              {{ countShipment }}
-            </b-td>
-            <b-td
-              colspan="1"
-              class="text-center"
-            >
-              {{ contWeight }}
-            </b-td>
-            <b-td
-              colspan="1"
-              class="text-center"
-            >
-              {{ countShipmentCost }}
-            </b-td>
-          </b-tr>
-        </b-tfoot>
-      </b-table-simple>
-      <table class="small_font_Report">
-        <tr>
-          <td align="left" >Dicetak Oleh</td>
-          <td align="left" >:</td>
-          <td align="left" >FIKRISML&nbsp;SML</td>
-        </tr>
-        <tr>
-          <td align="left" >Tanggal Cetak</td>
-          <td align="left" >:</td>
-          <td align="left" >31-05-2022 10:17</td>
-        </tr>
-      </table>
-      <div class="text-center">
-        <b-button
-          size="sm"
-          class="mr-1"
-          id="btnPrint"
-          @click="toPrint()"
+          <tr class="font_size">
+              <td>Kantor</td>
+              <td>:</td>
+              <td></td>
+          </tr>
+          <tr class="font_size">
+              <td>Tujuan</td>
+              <td>:</td>
+              <td></td>
+          </tr>
+          <tr class="font_size">
+              <td>Pengguna</td>
+              <td>:</td>
+              <td></td>
+          </tr>
+          <tr class="font_size">
+              <td>Tipe Manifest</td>
+              <td>:</td>
+              <td></td>
+          </tr>
+        </table>
+        <b-table-simple
+          responsive
         >
-          Cetak
-        </b-button>
-        <b-button
-          size="sm"
-          class="mr-1"
-          id="btnExcel"
-        >
-          Cetak Excel
-        </b-button>
-        <b-button
-          size="sm"
-          id="btnClose"
-          @click="toClose()"
-        >
-          Tutup
-        </b-button>
+          <b-thead>
+            <b-tr>
+              <b-th v-for="field in fields" :key="field.key">{{ field.label }}</b-th>
+            </b-tr>
+          </b-thead>
+          <b-tbody>
+            <tr v-for="(item,i) in items" :key="i">
+              <td>{{ i+1 }}</td>
+              <td>{{ item.no_disbag_manifest }}</td>
+              <td>{{ item.no_shipping_bag }}</td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.origin }}</td>
+              <td>{{ item.destination }}</td>
+              <td>{{ item.nopol }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.transit }}</td>
+              <td>{{ item.status_incoming }}</td>
+              <td>{{ item.tipe_manifest }}</td>
+              <td>{{ item.jml_kiriman }}</td>
+              <td>{{ item.weight.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
+              <td>{{ item.total_shipping_cost.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.00') }}</td>
+            </tr>
+          </b-tbody>
+          <b-tfoot>
+            <b-tr>
+              <b-td
+                colspan="11"
+                class="text-right"
+              >
+                <b>Total&nbsp;</b>
+              </b-td>
+              <b-td
+                colspan="1"
+                class="text-center"
+              >
+                {{ countShipment }}
+              </b-td>
+              <b-td
+                colspan="1"
+                class="text-center"
+              >
+                {{ contWeight }}
+              </b-td>
+              <b-td
+                colspan="1"
+                class="text-center"
+              >
+                {{ countShipmentCost }}
+              </b-td>
+            </b-tr>
+          </b-tfoot>
+        </b-table-simple>
+        <table class="small_font_Report">
+          <tr>
+            <td align="left" >Dicetak Oleh</td>
+            <td align="left" >:</td>
+            <td align="left" >FIKRISML&nbsp;SML</td>
+          </tr>
+          <tr>
+            <td align="left" >Tanggal Cetak</td>
+            <td align="left" >:</td>
+            <td align="left" >31-05-2022 10:17</td>
+          </tr>
+        </table>
+        <div class="text-center btn-cetak">
+          <b-button
+            size="sm"
+            class="mr-1"
+            id="btnPrint"
+            @click="toPrint()"
+          >
+            Cetak
+          </b-button>
+          <b-button
+            size="sm"
+            class="mr-1"
+            id="btnExcel"
+          >
+            Cetak Excel
+          </b-button>
+          <b-button
+            size="sm"
+            id="btnClose"
+            @click="toClose()"
+          >
+            Tutup
+          </b-button>
+        </div>
       </div>
     </div>
   </div>
@@ -213,6 +215,7 @@ export default {
   },
   methods: {
     toPrint() {
+      document.title = 'Manifest Darat';
       window.print()
     },
     toClose() {

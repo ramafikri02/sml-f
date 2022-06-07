@@ -297,6 +297,14 @@ export default [
       navActiveLink: 'masterdata-customer-contract-list',
     },
   },
+  {
+    path: '/masterdata/customer-special-contract/edit',
+    name: 'masterdata-customer-special-contract-edit',
+    component: () => import('@/views/master-data/customer/customer-contract/CustomerSpecialContract.vue'),
+    meta: {
+      navActiveLink: 'masterdata-customer-contract-list',
+    },
+  },
   // *===============================================---*
   // *--------- PERFORMA MARKETING ---------------------------------------*
   // *===============================================---*

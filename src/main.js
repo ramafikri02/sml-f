@@ -3,6 +3,7 @@ import { ToastPlugin, ModalPlugin } from 'bootstrap-vue'
 import VueCompositionAPI from '@vue/composition-api'
 import { localize } from 'vee-validate';
 import id from 'vee-validate/dist/locale/id.json';
+import JsonExcel from "vue-json-excel";
 
 localize('id', id);
 
@@ -33,6 +34,8 @@ Vue.use(ModalPlugin)
 
 // Composition API
 Vue.use(VueCompositionAPI)
+
+Vue.component("downloadExcel", JsonExcel);
 
 // Feather font icon - For form-wizard
 // * Shall remove it if not using font-icons of feather-icons - For form-wizard
