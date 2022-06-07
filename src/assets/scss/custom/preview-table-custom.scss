@@ -137,11 +137,34 @@
 }
 
 @media print {
-  input#btnPrint {
-    display: none;
+  @page { size: landscape; }
+
+  .orientation {
+    width: 100% /* print width */
   }
 
-  input#btnClose {
-    display: none;
+  .report {
+    h4 {
+      font-size: 14px !important;
+    }
+  }
+
+  .table {
+    thead,
+    tfoot {
+      th {
+        font-size: 11px !important;
+        letter-spacing: 0 !important;
+      }
+    }
+
+    th,
+    td {
+      padding: 0rem 0.2rem;
+    }
+  }
+
+  .btn-cetak {
+    display: none !important;
   }
 }
