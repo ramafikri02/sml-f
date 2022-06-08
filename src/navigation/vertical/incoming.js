@@ -8,19 +8,19 @@ export default [
         children: [
           {
             title: 'Entri Incoming',
-            route: null,
+            route: 'incoming-entri',
           },
           {
             title: 'Batal / Tunda Incoming',
-            route: null,
+            route: 'incoming-void',
           },
           {
             title: 'Daftar Incoming',
-            route: null,
+            route: 'incoming-list',
           },
           {
             title: 'Cetak Ulang Incoming',
-            route: null,
+            route: 'incoming-reprint',
           },
         ],
       },
@@ -29,11 +29,11 @@ export default [
         children: [
           {
             title: 'Laporan Harian Incoming',
-            route: null,
+            route: 'incoming-report-daily',
           },
           {
             title: 'Laporan Outstanding Incoming',
-            route: null,
+            route: 'incoming-report-outstanding',
           },
         ],
       },

@@ -10,6 +10,7 @@ import masterData from './routes/master-data'
 import tracking from './routes/tracing'
 import pos from './routes/pos'
 import outgoing from './routes/outgoing'
+import incoming from './routes/incoming'
 import cashRegister from './routes/cash-register'
 import uiElements from './routes/ui-elements/index'
 import pages from './routes/pages'
@@ -33,6 +34,7 @@ const router = new VueRouter({
     ...tracking,
     ...pos,
     ...outgoing,
+    ...incoming,
     ...cashRegister,
     ...pages,
     ...chartsMaps,
