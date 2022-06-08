@@ -8,23 +8,23 @@ export default [
         children: [
           {
             title: 'Entri Pick up Runsheet',
-            route: null,
+            route: 'pick-up-runsheet-entry',
           },
           {
             title: 'Booking Pick up Runsheet',
-            route: null,
+            route: 'pick-up-runsheet-booking',
           },
           {
             title: 'Cetak Ulang Pick up Runsheet',
-            route: null,
+            route: 'pick-up-runsheet-reprint',
           },
           {
             title: 'Batalkan Pick up Runsheet',
-            route: null,
+            route: 'pick-up-runsheet-void',
           },
           {
             title: 'Penugasan Pick up Runsheet',
-            route: null,
+            route: 'pick-up-runsheet-assignment',
           },
         ],
       },
