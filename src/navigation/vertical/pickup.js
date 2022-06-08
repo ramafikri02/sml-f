@@ -8,23 +8,23 @@ export default [
         children: [
           {
             title: 'Entri Pick up Order',
-            route: null,
+            route: 'pickup-request-entry',
           },
           {
             title: 'Booking Pick up Order',
-            route: null,
+            route: 'pickup-request-booking',
           },
           {
             title: 'Penugasan Pick up',
-            route: null,
+            route: 'pickup-request-assignment',
           },
           {
             title: 'Cetak Ulang Pick up Order',
-            route: null,
+            route: 'pickup-request-reprint',
           },
           {
             title: 'Entri Pick up Order Pelanggan',
-            route: null,
+            route: 'pickup-request-customer',
           },
         ],
       },
@@ -33,19 +33,19 @@ export default [
         children: [
           {
             title: 'Entri Missed Pick up',
-            route: null,
+            route: 'pickup-miss-entry',
           },
           {
             title: 'Booking Missed Pick up',
-            route: null,
+            route: 'pickup-miss-booking',
           },
           {
             title: 'Cetak Ulang Missed Pick up',
-            route: null,
+            route: 'pickup-miss-reprint',
           },
           {
             title: 'Pembatalan Missed Pick up',
-            route: null,
+            route: 'pickup-miss-void',
           },
         ],
       },
@@ -54,15 +54,15 @@ export default [
         children: [
           {
             title: 'Entri Pick up Confirmation',
-            route: null,
+            route: 'pickup-confirmation-entry',
           },
           {
             title: 'Booking Pick up Confirmation',
-            route: null,
+            route: 'pickup-confirmation-booking',
           },
           {
             title: 'Cetak Ulang Pick up Confirmation',
-            route: null,
+            route: 'pickup-confirmation-reprint',
           },
         ],
       },
@@ -71,15 +71,15 @@ export default [
         children: [
           {
             title: 'Laporan Pick up Order Harian',
-            route: null,
+            route: 'pickup-request-report',
           },
           {
             title: 'Laporan Pick up Confirmation Harian',
-            route: null,
+            route: 'pickup-confirmation-report',
           },
           {
             title: 'Laporan Missed Pick up',
-            route: null,
+            route: 'pickup-miss-report',
           },
         ],
       },

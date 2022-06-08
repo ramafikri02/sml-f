@@ -18,6 +18,7 @@ import chartsMaps from './routes/charts-maps'
 import formsTable from './routes/forms-tables'
 import others from './routes/others'
 import pickUpRunsheet from './routes/pick-up-runsheet'
+import pickUp from './routes/pick-up'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,7 @@ const router = new VueRouter({
     ...dashboard,
     ...masterData,
     ...tracking,
+    ...pickUp,
     ...pickUpRunsheet,
     ...pos,
     ...outgoing,
