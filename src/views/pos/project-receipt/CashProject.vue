@@ -29,6 +29,7 @@
                   :show-decade-nav="true"
                   :hide-header="true"
                   placeholder="Tanggal"
+                  locale="id"
                 />
                 <b-form-invalid-feedback>
                   {{ validationContext.errors[0] }}
@@ -1206,6 +1207,7 @@
                         :show-decade-nav="true"
                         :hide-header="true"
                         placeholder="Tanggal"
+                        locale="id"
                       />
                     </b-form-group>
                   </b-col>
