@@ -260,6 +260,7 @@
                             <b-form-input
                               id="h-detailkoli-koli_weight"
                               v-model="detailKoli.koli_weight"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -278,6 +279,7 @@
                             <b-form-input
                               id="h-detailkoli-length"
                               v-model="detailKoli.length"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -287,6 +289,7 @@
                             <b-form-input
                               id="h-detailkoli-width"
                               v-model="detailKoli.width"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -296,6 +299,7 @@
                             <b-form-input
                               id="h-detailkoli-height"
                               v-model="detailKoli.height"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -437,7 +441,7 @@
                 >
                   <v-select
                     id="h-branch"
-                    v-model="formData.sales"
+                    v-model="formData.branch"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                     :options="branchOp"
                     label="title"
@@ -1647,6 +1651,44 @@ export default {
     }
   },
   methods: {
+    countKoli: function(evt) {
+      this.d_koli = parseInt(this.detailKoli.koli),
+      this.d_leng = parseInt(this.detailKoli.length),
+      this.d_widt = parseInt(this.detailKoli.width),
+      this.d_heig = parseInt(this.detailKoli.height),
+      this.detailKoli.volume = (this.d_leng*this.d_widt*this.d_heig)/this.cn_divider * this.d_koli;
+    },
+    detailKoliCount(value) {
+      this.formData.koli = null;
+      this.formData.actual_weight = null;
+      this.formData.weight_rounded_up = null;
+      this.formData.vendor = null;
+      this.formData.sales = null;
+      this.formData.ddk_destination = '';
+      this.formData.leadtime = null;
+      this.formData.pengirim = null;
+
+      this.formData.pickUp_time = null;
+
+      this.formData.aditional_cost = null;
+
+
+      this.detailKoli.no = null;
+      this.detailKoli.koli = null;
+      this.detailKoli.length = null;
+      this.detailKoli.width = null;
+      this.detailKoli.height = null;
+      this.detailKoli.volume = null;
+
+      if (value == 'EXPRESS STANDARD PROJECT') {
+        this.cn_divider = 6000
+        console.log('ekspres')
+      }
+      else {
+        this.cn_divider = 4000
+        console.log('Reguler')
+      }
+    },
     addKoli() {
       if(this.detailKoli.no == null || this.detailKoli.no == '') {
         this.$toast({

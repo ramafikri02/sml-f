@@ -3,11 +3,19 @@ export default [
     path: '/dashboard/statistics',
     name: 'dashboard-statistics',
     component: () => import('@/views/dashboard/statistics/Analytics.vue'),
+    meta: {
+      action: 'read',
+      resource: 'Marketing' || 'Test',
+    },
   },
   {
     path: '/dashboard/show_pdf',
     name: 'dashboard-show-pdf',
     component: () => import('@/views/dashboard/show-pdf/Ecommerce.vue'),
+    meta: {
+      action: 'read',
+      resource: 'Marketing',
+    },
   },
   {
     path: '/dashboard/management_sales',

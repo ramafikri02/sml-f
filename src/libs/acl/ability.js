@@ -9,3 +9,4 @@ const userData = JSON.parse(localStorage.getItem('userData'))
 const existingAbility = userData ? userData.ability : null
 
 export default new Ability(existingAbility || initialAbility)
+console.log(existingAbility || initialAbility)
