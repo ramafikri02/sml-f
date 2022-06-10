@@ -178,11 +178,12 @@
                   >
                     <v-select
                       id="h-branch"
-                      v-model="formData.branch"
+                      v-model="formData.product_type"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                       :options="productTypeOp"
                       label="title"
                       placeholder="Pilih..."
+                      @input="detailKoliCount"
                     />
                     <b-form-invalid-feedback :state="getValidationState(validationContext)">
                       {{ validationContext.errors[0] }}
@@ -286,6 +287,7 @@
                             <b-form-input
                               id="h-detailkoli-koli_weight"
                               v-model="detailKoli.koli_weight"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -304,6 +306,7 @@
                             <b-form-input
                               id="h-detailkoli-length"
                               v-model="detailKoli.length"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -313,6 +316,7 @@
                             <b-form-input
                               id="h-detailkoli-width"
                               v-model="detailKoli.width"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -322,6 +326,7 @@
                             <b-form-input
                               id="h-detailkoli-height"
                               v-model="detailKoli.height"
+                              v-on:change="countKoli"
                             />
                           </span>
 
@@ -1661,10 +1666,54 @@ export default {
 
         aditional_cost: null,
         value: '',
-      }
+      },
+
+      cn_divider: null,
+      d_koli: null,
+      d_leng: null,
+      d_widt: null,
+      d_heig: null,
     }
   },
   methods: {
+    countKoli: function(evt) {
+      this.d_koli = parseInt(this.detailKoli.koli),
+      this.d_leng = parseInt(this.detailKoli.length),
+      this.d_widt = parseInt(this.detailKoli.width),
+      this.d_heig = parseInt(this.detailKoli.height),
+      this.detailKoli.volume = (this.d_leng*this.d_widt*this.d_heig)/this.cn_divider * this.d_koli;
+    },
+    detailKoliCount(value) {
+      this.formData.koli = null;
+      this.formData.actual_weight = null;
+      this.formData.weight_rounded_up = null;
+      this.formData.vendor = null;
+      this.formData.sales = null;
+      this.formData.ddk_destination = '';
+      this.formData.leadtime = null;
+      this.formData.pengirim = null;
+
+      this.formData.pickUp_time = null;
+
+      this.formData.aditional_cost = null;
+
+
+      this.detailKoli.no = null;
+      this.detailKoli.koli = null;
+      this.detailKoli.length = null;
+      this.detailKoli.width = null;
+      this.detailKoli.height = null;
+      this.detailKoli.volume = null;
+
+      if (value == 'EXPRESS STANDARD PROJECT') {
+        this.cn_divider = 6000
+        console.log('ekspres')
+      }
+      else {
+        this.cn_divider = 4000
+        console.log('Reguler')
+      }
+    },
     addKoli() {
       if( this.rows2.some(code => code.no === this.detailKoli.no)){
         this.$toast({
@@ -1710,16 +1759,34 @@ export default {
       this.formData = {
         date: '',
         receipt_number: null,
+        jenis_kiriman: null,
+        service_type: null,
+        destination: '',
+        product_type: null,
         shipping_cost: null,
-        courier_code: '',
-        name: '',
-        branch: '',
-        office: '',
-        area: '',
-        duty: null,
-        vehicle: null,
-        status: null,
+        koli: null,
+        actual_weight: null,
+        weight_rounded_up: null,
+        vendor: null,
+        sales: null,
+        ddk_destination: '',
+        leadtime: null,
+        
+        pengirim: null,
+
+        pickUp_time: null,
+
+        reference_choice: null,
+        reference: '',
+
+        aditional_cost: null,
+        value: '',
       };
+
+      this.d_koli = null;
+      this.d_leng = null;
+      this.d_widt = null;
+      this.d_heig = null;
     },
     onSubmit() {
       const data = {
