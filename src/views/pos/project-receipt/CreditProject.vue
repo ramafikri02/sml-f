@@ -278,6 +278,7 @@
                             <b-form-input
                               id="h-detailkoli-koli"
                               v-model="detailKoli.koli"
+                              v-on:change="countKoli"
                             />
                           </span>
 
