@@ -458,7 +458,7 @@
 
 <script>
 import {
-  BRow, BCol, BButton, BCard, BFormGroup, BForm, BFormInput, BDropdown, BDropdownItem,
+  BRow, BCol, BButton, BCard, BBadge, BFormGroup, BPagination, BFormSelect, BForm, BFormInput, BDropdown, BDropdownItem,
 } from 'bootstrap-vue'
 import AppCollapse from '@core/components/app-collapse/AppCollapse.vue'
 import AppCollapseItem from '@core/components/app-collapse/AppCollapseItem.vue'
@@ -473,9 +473,12 @@ export default {
     BRow,
     BCol,
     BCard,
+    BBadge,
     VueGoodTable,
     BButton,
     BFormGroup,
+    BPagination,
+    BFormSelect,
     BForm,
     BFormInput,
     BDropdown,
@@ -503,6 +506,8 @@ export default {
         'User Entry'
       ],
 
+      searchOption: '',
+      searchReceipt: '',
       loadingTable: true,
       pageLength: 10,
       dir: false,
