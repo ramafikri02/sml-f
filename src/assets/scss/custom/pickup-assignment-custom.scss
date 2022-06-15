@@ -1,0 +1,107 @@
+@import 'variables';
+
+.report {
+
+  h4,
+  h5,
+  tr,
+  td {
+    font-family: Verdana, Arial, Helvetica, sans-serif !important;
+  }
+}
+
+// table-white-space
+.table-white-space {
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+}
+
+// table th, td padding
+.table {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+
+  thead,
+  tfoot {
+    th {
+      vertical-align: middle;
+      text-transform: capitalize;
+      font-size: $table-th-font-size;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  th,
+  td {
+    font-size: 12px;
+    text-align: center;
+    padding: 0rem 0.2rem;
+    vertical-align: middle;
+  }
+
+  &.table-sm {
+
+    th,
+    td {
+      padding: $table-cell-padding 0.5rem;
+
+      &:first-child {
+        padding-left: 0.75rem;
+      }
+    }
+  }
+}
+
+// table inside card, don't need margin bottom
+.table-hover {
+  tbody {
+    tr {
+      cursor: pointer;
+    }
+  }
+}
+
+// Table - hover animation
+.table-hover-animation {
+  thead {
+    th {
+      border-bottom: 0;
+    }
+  }
+
+  th,
+  td {
+    border: 0;
+  }
+
+  tbody {
+    tr {
+      transition: all 0.25s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+    }
+  }
+}
+
+// table border radius
+.card .table {
+  margin-bottom: 0;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+
+  tbody {
+    tr:last-child {
+      td:first-child {
+        border-bottom-left-radius: $border-radius;
+      }
+
+      td:last-child {
+        border-bottom-right-radius: $border-radius;
+      }
+    }
+  }
+}

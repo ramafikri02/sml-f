@@ -24,6 +24,9 @@ import vendor from './module/master-data/vendor/vendor'
 import customer from './module/master-data/customer/customer-data'
 import customer_contract from './module/master-data/customer/customer-contract'
 
+// *--------- Pick Up ---------------------------------------*
+import pickup_request from './module/pickup/pickup-order/pickup-request'
+
 
 Vue.use(Vuex)
 
@@ -44,6 +47,7 @@ export default new Vuex.Store({
     vendor,
     customer,
     customer_contract,
+    pickup_request,
     'app-ecommerce': ecommerceStoreModule,
   },
   strict: process.env.DEV,
