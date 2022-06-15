@@ -25,6 +25,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-department-code"
                     v-model="department_code"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -51,6 +52,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-manager"
                     v-model="manager"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -76,6 +78,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-first-name"
                     v-model="first_name"
                     :state="getValidationState(validationContext)"
@@ -99,6 +102,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-middle-name"
                     v-model="middle_name"
                     :state="getValidationState(validationContext)"
@@ -122,6 +126,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-last-name"
                     v-model="last_name"
                     :state="getValidationState(validationContext)"
@@ -145,6 +150,7 @@
                   label-cols-md="4"
                 >
                   <b-form-textarea
+                    v-uppercase
                     id="h-address"
                     v-model="address"
                     :state="getValidationState(validationContext)"
@@ -169,6 +175,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-branch"
                     v-model="branch"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -195,6 +202,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-office"
                     v-model="office"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -220,6 +228,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-area"
                     v-model="area_code"
                     :state="getValidationState(validationContext)"
@@ -243,6 +252,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-tlc-code"
                     v-model="tlc_code"
                     :state="getValidationState(validationContext)"
@@ -266,6 +276,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-place-of-birth"
                     v-model="place_of_birth"
                     :state="getValidationState(validationContext)"
@@ -316,6 +327,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-gender"
                     v-model="gender"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -341,6 +353,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-postal-code"
                     v-model="postal_code"
                     :state="getValidationState(validationContext)"
@@ -365,6 +378,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-marital-status"
                     v-model="marital_status"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -390,6 +404,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-dependents"
                     v-model="dependents"
                     :state="getValidationState(validationContext)"
@@ -413,6 +428,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-last-education"
                     v-model="last_education"
                     :state="getValidationState(validationContext)"
@@ -437,6 +453,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-employee-status"
                     v-model="employee_status"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -462,6 +479,7 @@
                   label-cols-md="4"
                 >
                   <b-form-textarea
+                    v-uppercase
                     id="h-description"
                     v-model="description"
                     :state="getValidationState(validationContext)"
@@ -485,6 +503,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-wife-name"
                     v-model="wife_name"
                     :state="getValidationState(validationContext)"
@@ -508,6 +527,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-child-name"
                     v-model="child_name"
                     :state="getValidationState(validationContext)"
@@ -561,6 +581,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-email"
                     type="email"
                     v-model="email"
@@ -586,6 +607,7 @@
                   :state="getValidationState(validationContext)"
                 >
                   <v-select
+                    v-uppercase
                     id="h-status"
                     v-model="status"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"

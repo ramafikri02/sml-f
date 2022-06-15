@@ -18,6 +18,7 @@
                 label-cols-md="4"
               >
                 <b-form-input
+                  v-uppercase
                   id="h-no-outgoing"
                   v-model="formData.no_outgoing"
                   placeholder="No. DP3 Outgoing"
@@ -31,6 +32,7 @@
                 label-cols-md="4"
               >
                 <v-select
+                  v-uppercase
                   id="h-location"
                   v-model="formData.location"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"

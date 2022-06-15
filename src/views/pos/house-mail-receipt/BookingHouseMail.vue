@@ -18,6 +18,7 @@
                 label-cols-md="6"
               >
                 <v-select
+                  v-uppercase
                   id="h-province-code"
                   v-model="searchOption"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -30,6 +31,7 @@
             <b-col cols="3">
               <b-form-group>
                 <b-form-input
+                  v-uppercase
                   id="h-user-code"
                   v-model="searchReceipt"
                 />

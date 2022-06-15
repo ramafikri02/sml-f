@@ -28,6 +28,7 @@
                     v-model="courier_code"
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Kurir"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -52,6 +53,7 @@
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -76,6 +78,7 @@
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -99,6 +102,7 @@
                     v-model="name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama Kurir"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}

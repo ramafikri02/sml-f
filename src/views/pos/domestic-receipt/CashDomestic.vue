@@ -240,6 +240,7 @@
                             v-if="props.column.field === 'no'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-no"
                               v-model="detailKoli.no"
                             />
@@ -249,6 +250,7 @@
                             v-if="props.column.field === 'koli'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-koli"
                               v-model="detailKoli.koli"
                               v-on:change="countKoli"
@@ -259,6 +261,7 @@
                             v-if="props.column.field === 'koli_weight'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-koli_weight"
                               v-model="detailKoli.koli_weight"
                               v-on:change="countKoli"
@@ -269,6 +272,7 @@
                             v-if="props.column.field === 'actual_weight'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-actual_weight"
                               v-model="detailKoli.actual_weight"
                             />
@@ -278,6 +282,7 @@
                             v-if="props.column.field === 'length'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-length"
                               v-model="detailKoli.length"
                               v-on:change="countKoli"
@@ -288,6 +293,7 @@
                             v-if="props.column.field === 'width'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-width"
                               v-model="detailKoli.width"
                               v-on:change="countKoli"
@@ -298,6 +304,7 @@
                             v-if="props.column.field === 'height'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-height"
                               v-model="detailKoli.height"
                               v-on:change="countKoli"
@@ -308,6 +315,7 @@
                             v-if="props.column.field === 'volume'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-volume"
                               v-model="detailKoli.volume"
                             />
@@ -317,6 +325,7 @@
                             v-if="props.column.field === 'description'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-description"
                               v-model="detailKoli.description"
                             />
@@ -456,6 +465,7 @@
                   label-for="h-name"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-name"
                     v-model="formData.ddk_destination"
                     placeholder="DDK Tujuan"
@@ -517,6 +527,7 @@
                         label-for="h-receiver-name"
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-receiver-name"
                           v-model="formData.sender_name"
                           :state="getValidationState(validationContext)"
@@ -608,6 +619,7 @@
                         label-for="h-email"
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-email"
                           type="email"
                           v-model="formData.email"
@@ -641,6 +653,7 @@
                       label-for="h-kontak-name"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-kontak-name"
                         v-model="formData.kontak"
                         placeholder="Kontak"
@@ -695,6 +708,7 @@
                         label-for="h-receiver-name"
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-receiver-name"
                           v-model="formData.consignee_name"
                           :state="getValidationState(validationContext)"
@@ -786,6 +800,7 @@
                         label-for="h-email"
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-email"
                           type="email"
                           v-model="formData.email"
@@ -819,6 +834,7 @@
                       label-for="h-kontak-name"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-kontak-name"
                         v-model="formData.kontak"
                         placeholder="Kontak"
@@ -873,6 +889,7 @@
                       v-if="props.column.field === 'reference'"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-formReference-reference"
                         v-model="formData.reference"
                       />
@@ -892,6 +909,7 @@
                       label-for="h-item-description"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-item-description"
                         v-model="formData.item_description"
                         placeholder="Keterangan Barang"
@@ -904,6 +922,7 @@
                       label-for="h-special-instructions"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-special-instructions"
                         v-model="formData.special_instructions"
                         placeholder="Intruksi Khusus"
@@ -923,6 +942,7 @@
                       label-for="h-special-instructions"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-special-instructions"
                         v-model="formData.special_instructions"
                         placeholder="Nilai Barang"
@@ -980,6 +1000,7 @@
                       label-for="h-kontak-name"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-kontak-name"
                         v-model="formData.no_asuransi"
                         placeholder="No. Asuransi"
@@ -1044,6 +1065,7 @@
                       label-for="h-item-description"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-item-description"
                         v-model="formData.item_description"
                         placeholder="Keterangan Barang"
@@ -1083,6 +1105,7 @@
                       v-if="props.column.field === 'value'"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-formAditonCost-value"
                         v-model="formData.value"
                       />
@@ -1154,6 +1177,7 @@
                       label-for="h-nopickup-spbb"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-nopickup-spbb"
                         v-model="formData.item_description"
                         placeholder="Cari No. Pickup/SPBB"

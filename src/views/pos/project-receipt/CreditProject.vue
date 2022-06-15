@@ -77,6 +77,7 @@
                     :state="getValidationState(validationContext)"
                   >
                     <v-select
+                      v-uppercase
                       id="h-branch"
                       v-model="formData.branch"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -102,6 +103,7 @@
                     :state="getValidationState(validationContext)"
                   >
                     <v-select
+                      v-uppercase
                       id="h-branch"
                       v-model="formData.branch"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -127,6 +129,7 @@
                     :state="getValidationState(validationContext)"
                   >
                     <v-select
+                      v-uppercase
                       id="h-branch"
                       v-model="formData.branch"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -152,6 +155,7 @@
                     :state="getValidationState(validationContext)"
                   >
                     <v-select
+                      v-uppercase
                       id="h-branch"
                       v-model="formData.branch"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -177,6 +181,7 @@
                     :state="getValidationState(validationContext)"
                   >
                     <v-select
+                      v-uppercase
                       id="h-branch"
                       v-model="formData.product_type"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -267,6 +272,7 @@
                             v-if="props.column.field === 'no'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-no"
                               v-model="detailKoli.no"
                             />
@@ -276,6 +282,7 @@
                             v-if="props.column.field === 'koli'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-koli"
                               v-model="detailKoli.koli"
                               v-on:change="countKoli"
@@ -286,6 +293,7 @@
                             v-if="props.column.field === 'koli_weight'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-koli_weight"
                               v-model="detailKoli.koli_weight"
                               v-on:change="countKoli"
@@ -296,6 +304,7 @@
                             v-if="props.column.field === 'actual_weight'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-actual_weight"
                               v-model="detailKoli.actual_weight"
                             />
@@ -305,6 +314,7 @@
                             v-if="props.column.field === 'length'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-length"
                               v-model="detailKoli.length"
                               v-on:change="countKoli"
@@ -315,6 +325,7 @@
                             v-if="props.column.field === 'width'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-width"
                               v-model="detailKoli.width"
                               v-on:change="countKoli"
@@ -325,6 +336,7 @@
                             v-if="props.column.field === 'height'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-height"
                               v-model="detailKoli.height"
                               v-on:change="countKoli"
@@ -335,6 +347,7 @@
                             v-if="props.column.field === 'volume'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-volume"
                               v-model="detailKoli.volume"
                             />
@@ -344,6 +357,7 @@
                             v-if="props.column.field === 'description'"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-detailkoli-description"
                               v-model="detailKoli.description"
                             />
@@ -453,6 +467,7 @@
                   label-for="h-vendor"
                 >
                   <v-select
+                    v-uppercase
                     id="h-vendor"
                     v-model="formData.vendor"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -468,6 +483,7 @@
                   label-for="h-branch"
                 >
                   <v-select
+                    v-uppercase
                     id="h-branch"
                     v-model="formData.branch"
                     :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -483,6 +499,7 @@
                   label-for="h-name"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-name"
                     v-model="formData.ddk_destination"
                     placeholder="DDK Tujuan"
@@ -524,6 +541,7 @@
                           label-for="h-pengirim"
                         >
                           <v-select
+                            v-uppercase
                             id="h-pengirim"
                             v-model="formData.pengirim"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -544,6 +562,7 @@
                             label-for="h-receiver-name"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-receiver-name"
                               v-model="formData.nama_pengirim"
                               :state="getValidationState(validationContext)"
@@ -566,6 +585,7 @@
                             label-for="h-address"
                           >
                             <b-form-textarea
+                              v-uppercase
                               id="h-address"
                               v-model="formData.address"
                               :state="getValidationState(validationContext)"
@@ -635,6 +655,7 @@
                             label-for="h-email"
                           >
                             <b-form-input
+                              v-lowercase
                               id="h-email"
                               type="email"
                               v-model="formData.email"
@@ -668,6 +689,7 @@
                           label-for="h-kontak-name"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-kontak-name"
                             v-model="formData.kontak"
                             placeholder="Kontak"
@@ -702,6 +724,7 @@
                           label-for="h-penerima"
                         >
                           <v-select
+                            v-uppercase
                             id="h-penerima"
                             v-model="formData.penerima"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -722,6 +745,7 @@
                             label-for="h-receiver-name"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-receiver-name"
                               v-model="formData.nama_pengirim"
                               :state="getValidationState(validationContext)"
@@ -744,6 +768,7 @@
                             label-for="h-address"
                           >
                             <b-form-textarea
+                              v-uppercase
                               id="h-address"
                               v-model="formData.address"
                               :state="getValidationState(validationContext)"
@@ -813,6 +838,7 @@
                             label-for="h-email"
                           >
                             <b-form-input
+                              v-uppercase
                               id="h-email"
                               type="email"
                               v-model="formData.email"
@@ -846,6 +872,7 @@
                           label-for="h-kontak-name"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-kontak-name"
                             v-model="formData.kontak"
                             placeholder="Kontak"
@@ -886,6 +913,7 @@
                           v-if="props.column.field === 'reference_choice'"
                         >
                           <v-select
+                            v-uppercase
                             id="h-formReference-reference-choice"
                             v-model="formData.reference_choice"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -900,6 +928,7 @@
                           v-if="props.column.field === 'reference'"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-formReference-reference"
                             v-model="formData.reference"
                           />
@@ -919,6 +948,7 @@
                           label-for="h-item-description"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-item-description"
                             v-model="formData.item_description"
                             placeholder="Keterangan Barang"
@@ -931,6 +961,7 @@
                           label-for="h-special-instructions"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-special-instructions"
                             v-model="formData.special_instructions"
                             placeholder="Intruksi Khusus"
@@ -950,6 +981,7 @@
                           label-for="h-special-instructions"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-special-instructions"
                             v-model="formData.special_instructions"
                             placeholder="Nilai Barang"
@@ -962,6 +994,7 @@
                           label-for="h-vendor"
                         >
                           <v-select
+                            v-uppercase
                             id="h-vendor"
                             v-model="formData.vendor"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -992,6 +1025,7 @@
                           label-for="h-vendor"
                         >
                           <v-select
+                            v-uppercase
                             id="h-vendor"
                             v-model="formData.vendor"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1007,6 +1041,7 @@
                           label-for="h-kontak-name"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-kontak-name"
                             v-model="formData.no_asuransi"
                             placeholder="No. Asuransi"
@@ -1026,6 +1061,7 @@
                           label-for="h-item-type"
                         >
                           <v-select
+                            v-uppercase
                             id="h-item-type"
                             v-model="formData.item_type"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1041,6 +1077,7 @@
                           label-for="h-surcharge"
                         >
                           <v-select
+                            v-uppercase
                             id="h-surcharge"
                             v-model="formData.surcharge"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1071,6 +1108,7 @@
                           label-for="h-item-description"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-item-description"
                             v-model="formData.item_description"
                             placeholder="Keterangan Barang"
@@ -1096,6 +1134,7 @@
                           v-if="props.column.field === 'aditional_cost'"
                         >
                           <v-select
+                            v-uppercase
                             id="h-formAditonCost-aditional-cost"
                             v-model="formData.aditional_cost"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1110,6 +1149,7 @@
                           v-if="props.column.field === 'value'"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-formAditonCost-value"
                             v-model="formData.value"
                           />
@@ -1130,6 +1170,7 @@
                             label-for="h-pengirim"
                           >
                             <v-select
+                              v-uppercase
                               id="h-pengirim"
                               v-model="formData.pengirim"
                               :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1144,6 +1185,7 @@
                             class="mt-2"
                           >
                             <v-select
+                              v-uppercase
                               id="h-pengirim"
                               v-model="formData.pengirim"
                               :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1181,6 +1223,7 @@
                           label-for="h-nopickup-spbb"
                         >
                           <b-form-input
+                            v-uppercase
                             id="h-nopickup-spbb"
                             v-model="formData.item_description"
                             placeholder="Cari No. Pickup/SPBB"
@@ -1203,6 +1246,7 @@
                           label-for="h-courier"
                         >
                           <v-select
+                            v-uppercase
                             id="h-courier"
                             v-model="formData.courier"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1218,6 +1262,7 @@
                           label-for="h-surcharge"
                         >
                           <v-select
+                            v-uppercase
                             id="h-surcharge"
                             v-model="formData.surcharge"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -1289,6 +1334,7 @@
                         label-for="h-payment-method"
                       >
                         <v-select
+                          v-uppercase
                           id="h-payment-method"
                           v-model="formData.payment_method"
                           :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"

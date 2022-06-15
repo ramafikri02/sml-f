@@ -37,6 +37,7 @@
                       label-cols-md="4"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-no-shipping-bag"
                         v-model="formData.no_shipping_bag"
                         :state="getValidationState(validationContext)"
@@ -60,6 +61,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.manifest_type"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -85,6 +87,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.vendor_name"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -110,6 +113,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.branch_destination"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -135,6 +139,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.office_destination"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -160,6 +165,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.transit_branch"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -185,6 +191,7 @@
                       label-cols-md="4"
                     >
                       <v-select
+                        v-uppercase
                         id="h-manifest-type"
                         v-model="formData.product_type"
                         :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -205,6 +212,7 @@
                     label-cols-md="4"
                   >
                     <v-select
+                      v-uppercase
                       id="h-manifest-type"
                       v-model="formData.nopol"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -221,6 +229,7 @@
                     label-cols-md="4"
                   >
                     <v-select
+                      v-uppercase
                       id="h-manifest-type"
                       v-model="formData.box_section"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -237,6 +246,7 @@
                     label-cols-md="4"
                   >
                     <v-select
+                      v-uppercase
                       id="h-manifest-type"
                       v-model="formData.driver"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -253,6 +263,7 @@
                     label-cols-md="4"
                   >
                     <v-select
+                      v-uppercase
                       id="h-manifest-type"
                       v-model="formData.courier1"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -269,6 +280,7 @@
                     label-cols-md="4"
                   >
                     <v-select
+                      v-uppercase
                       id="h-manifest-type"
                       v-model="formData.courier2"
                       :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -365,6 +377,7 @@
                       label-cols-md="6"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-nopickup-spbb"
                         v-model="formDataProses.no_resi"
                         @keyup.enter="addProses()"
@@ -394,6 +407,7 @@
                       label-cols-md="6"
                     >
                       <b-form-input
+                        v-uppercase
                         id="h-nopickup-spbb"
                         v-model="formData.item_description"
                       />

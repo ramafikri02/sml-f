@@ -24,6 +24,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-user-code"
                     v-model="formData.user_code"
                     :state="getValidationState(validationContext)"
@@ -47,6 +48,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-full-name"
                     v-model="formData.full_name"
                     :state="getValidationState(validationContext)"
@@ -70,6 +72,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-password"
                     v-model="formData.password"
                     :state="getValidationState(validationContext)"
@@ -94,6 +97,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-password2"
                     v-model="password_confirm"
                     :state="getValidationState(validationContext)"

@@ -18,6 +18,7 @@
                 label-cols-md="4"
               >
                 <b-form-input
+                  v-uppercase
                   id="h-no-outgoing"
                   v-model="formData.no_outgoing"
                   placeholder="No. DP3 Outgoing"

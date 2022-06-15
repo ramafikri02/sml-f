@@ -30,6 +30,7 @@
             <b-col cols="3">
               <b-form-group>
                 <b-form-input
+                  v-uppercase
                   id="h-user-code"
                   v-model="searchReceipt"
                 />

@@ -43,6 +43,7 @@
                 label-cols-md="4"
               >
                 <v-select
+                  v-uppercase
                   id="h-branch"
                   v-model="formData.branch"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -59,6 +60,7 @@
                 label-cols-md="4"
               >
                 <v-select
+                  v-uppercase
                   id="h-branch-destination"
                   v-model="formData.branch_destination"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
@@ -75,6 +77,7 @@
                 label-cols-md="4"
               >
                 <v-select
+                  v-uppercase
                   id="h-user"
                   v-model="formData.user"
                   :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"

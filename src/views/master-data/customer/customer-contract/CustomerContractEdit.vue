@@ -24,6 +24,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-role-code"
                     v-model="formData.role_code"
                     :state="getValidationState(validationContext)"
@@ -47,6 +48,7 @@
                   label-cols-md="4"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-role-name"
                     v-model="formData.full_name"
                     :state="getValidationState(validationContext)"
@@ -70,6 +72,7 @@
                   label-cols-md="4"
                 >
                   <b-form-textarea
+                    v-uppercase
                     id="h-description"
                     v-model="formData.description"
                     :state="getValidationState(validationContext)"

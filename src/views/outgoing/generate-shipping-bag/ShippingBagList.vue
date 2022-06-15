@@ -19,6 +19,7 @@
                 <b-form-input
                   id="h-record-no"
                   v-model="searchRecord"
+                  v-uppercase
                 />
               </b-form-group>
             </b-col>

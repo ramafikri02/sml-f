@@ -39,6 +39,7 @@
                         label-cols-md="7"
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-role-code"
                           v-model="formData.role_code"
                           :state="getValidationState(validationContext)"
@@ -53,6 +54,7 @@
                       <b-form-group
                       >
                         <b-form-input
+                          v-uppercase
                           id="h-role-code"
                           v-model="formData.role_code"
                           :state="getValidationState(validationContext)"

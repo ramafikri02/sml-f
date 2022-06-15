@@ -37,6 +37,18 @@ Vue.use(VueCompositionAPI)
 
 Vue.component("downloadExcel", JsonExcel);
 
+Vue.directive('uppercase', {
+	update (el) {
+		el.value = el.value.toUpperCase()
+	},
+})
+
+Vue.directive('lowercase', {
+	update (el) {
+		el.value = el.value.toLowerCase()
+	},
+})
+
 // Feather font icon - For form-wizard
 // * Shall remove it if not using font-icons of feather-icons - For form-wizard
 require('@core/assets/fonts/feather/iconfont.css') // For form-wizard

@@ -31,6 +31,7 @@
                   <b-form-input
                   id="h-user-code"
                   v-model="formData.pickup_branch_name"
+                  v-uppercase
                   readonly
                 />
                 </b-form-group>
@@ -48,6 +49,7 @@
                   <b-form-input
                     id="h-user-code"
                     v-model="formData.pickup_office_code"
+                    v-uppercase
                     readonly
                   />
                 </b-form-group>
@@ -68,16 +70,17 @@
               <b-col cols="5">
                 <b-form-group
                   label="Tangal"
-                  label-for="h-contract-no"
+                  label-for="h-date"
                   label-cols-md="5"
                 >
                   <b-form-datepicker
                     locale="id"
-                    id="h-date-of-birth"
+                    id="h-date"
                     v-model="formData.pickup_sysdate"
                     :show-decade-nav="true"
                     :hide-header="true"
                     placeholder="Tanggal"
+                    v-uppercase
                     readonly
                   />
                 </b-form-group>
@@ -100,6 +103,7 @@
                     :clearable="false"
                     label="title"
                     placeholder="Pilih..."
+                    v-uppercase
                   />
                 </b-form-group>
               </b-col>
@@ -120,6 +124,7 @@
                     :options="paymentMethod"
                     label="title"
                     placeholder="Pilih..."
+                    v-uppercase
                   />
                 </b-form-group>
               </b-col>
@@ -143,6 +148,7 @@
                       v-model="formData.pickup_address"
                       :state="getValidationState(validationContext)"
                       placeholder="Alamat Pick up"
+                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -170,6 +176,7 @@
                       v-model="formData.pickup_contact1"
                       :state="getValidationState(validationContext)"
                       placeholder="Kontak"
+                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -200,6 +207,7 @@
                       :options="options.numberOnly"
                       placeholder="Telepon"
                       :state="getValidationState(validationContext)"
+                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -225,6 +233,7 @@
                     :clearable="false"
                     label="title"
                     placeholder="Pilih..."
+                    v-uppercase
                   />
                 </b-form-group>
               </b-col>
@@ -251,6 +260,7 @@
                       :options="options.numberThousand"
                       placeholder="Total Koli"
                       :state="getValidationState(validationContext)"
+                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -281,6 +291,7 @@
                       :options="options.numberThousand"
                       placeholder="Total Berat"
                       :state="getValidationState(validationContext)"
+                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -295,12 +306,12 @@
               <b-col cols="5">
                 <b-form-group
                   label="Tanggal Pick up"
-                  label-for="h-date-of-birth"
+                  label-for="h-pickup-date"
                   label-cols-md="5"
                 >
                   <b-form-datepicker
                     locale="id"
-                    id="h-date-of-birth"
+                    id="h-pickup-date"
                     v-model="formData.pickup_date"
                     :show-decade-nav="true"
                     :hide-header="true"
@@ -349,6 +360,7 @@
                     id="h-pickup-address"
                     v-model="formData.pickup_description"
                     placeholder="Keterangan"
+                    v-uppercase
                   />
                 </b-form-group>
               </b-col>
@@ -492,7 +504,7 @@ export default {
         pickup_qty: '',
         pickup_weight: '',
         pickup_transport: null,
-        pickup_date: '',
+        pickup_date: null,
         pickup_time: null,
         pickup_description: ''
       },

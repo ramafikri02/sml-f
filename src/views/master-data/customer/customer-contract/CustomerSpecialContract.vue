@@ -25,6 +25,7 @@
                     label-cols-md="4"
                   >
                     <b-form-input
+                      v-uppercase
                       id="h-contract-no"
                       v-model="formData.role_code"
                       :state="getValidationState(validationContext)"
@@ -43,6 +44,7 @@
                   label-cols-md="7"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-branch"
                     v-model="formData.full_name"
                   />
@@ -52,6 +54,7 @@
                 <b-form-group
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-branch"
                     v-model="formData.full_name"
                   />
@@ -64,6 +67,7 @@
                   label-cols-md="7"
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-branch"
                     v-model="formData.full_name"
                   />
@@ -73,6 +77,7 @@
                 <b-form-group
                 >
                   <b-form-input
+                    v-uppercase
                     id="h-branch"
                     v-model="formData.full_name"
                   />
@@ -118,6 +123,7 @@
                     label-cols-md="4"
                   >
                     <b-form-textarea
+                      v-uppercase
                       id="h-description"
                       v-model="formData.description"
                       :state="getValidationState(validationContext)"

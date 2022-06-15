@@ -28,6 +28,7 @@
                     v-model="role_code"
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Role"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -51,6 +52,7 @@
                     v-model="name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -74,6 +76,7 @@
                     v-model="description"
                     :state="getValidationState(validationContext)"
                     placeholder="Deskripsi"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}

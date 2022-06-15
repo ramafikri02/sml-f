@@ -28,6 +28,7 @@
                     v-model="formData.user_code"
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Pengguna"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -51,6 +52,7 @@
                     v-model="formData.full_name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama Pengguna"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -75,6 +77,7 @@
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -99,6 +102,7 @@
                     :state="getValidationState(validationContext)"
                     type="password"
                     placeholder="Kata Sandi"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}

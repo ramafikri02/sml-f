@@ -18,6 +18,7 @@
                 label-cols-md="4"
               >
                   <b-form-input
+                    v-uppercase
                     id="h-user-code"
                     v-model="searchShippBag"
                   />

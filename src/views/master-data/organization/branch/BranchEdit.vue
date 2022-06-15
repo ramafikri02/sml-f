@@ -28,6 +28,7 @@
                     v-model="branch_code"
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Cabang"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -51,6 +52,7 @@
                     v-model="name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama Cabang"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}

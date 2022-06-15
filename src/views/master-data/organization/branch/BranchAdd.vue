@@ -28,6 +28,7 @@
                     v-model="formData.branch_code"
                     :state="getValidationState(validationContext)"
                     placeholder="Kode Cabang"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -51,6 +52,7 @@
                     v-model="formData.name"
                     :state="getValidationState(validationContext)"
                     placeholder="Nama Cabang"
+                    v-uppercase
                   />
                   <b-form-invalid-feedback>
                     {{ validationContext.errors[0] }}
@@ -121,6 +123,7 @@
                   label-for="h-iata-code"
                   label-cols-md="4"
                   :state="getValidationState(validationContext)"
+                  v-uppercase
                 >
                   <v-select
                     id="h-iata-code"
