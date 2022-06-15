@@ -652,9 +652,16 @@ export default {
       this.customer
     },
     setCustomer(value) {
-      this.formData.pickup_address = 'TEST',
-      this.formData.pickup_contact1 = 'TEST',
-      this.formData.pickup_contact2 = '089123212321'
+      if(this.formData.pickup_account == null || this.formData.pickup_account == '') {
+        this.formData.pickup_address = '',
+        this.formData.pickup_contact1 = '',
+        this.formData.pickup_contact2 = ''
+      }
+      else {
+        this.formData.pickup_address = 'TEST',
+        this.formData.pickup_contact1 = 'TEST',
+        this.formData.pickup_contact2 = '089123212321'
+      }
     },
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
