@@ -4,6 +4,7 @@ import VueCompositionAPI from '@vue/composition-api'
 import { localize } from 'vee-validate';
 import id from 'vee-validate/dist/locale/id.json';
 import JsonExcel from "vue-json-excel";
+import { extend  } from "vee-validate";
 
 localize('id', id);
 
@@ -54,6 +55,38 @@ Vue.directive('lowercase', {
     })
   },
 })
+
+extend ('required', value => {
+  if (!value || !value.length) {
+    return 'This field is required';
+  }
+  return true;
+});
+extend ('email', value => {
+  // Field is empty, should pass
+  if (!value || !value.length) {
+    return true;
+  }
+  // Check if email
+  if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/.test(value)) {
+    return 'This field must be a valid email';
+  }
+  return true;
+});
+extend('minMax', (value, [min, max]) => {
+  // The field is empty so it should pass
+  if (!value || !value.length) {
+    return true;
+  }
+  const numericValue = Number(value);
+  if (numericValue < min) {
+    return `This field must be greater than ${min}`;
+  }
+  if (numericValue > max) {
+    return `This field must be less than ${max}`;
+  }
+  return true;
+});
 
 // Feather font icon - For form-wizard
 // * Shall remove it if not using font-icons of feather-icons - For form-wizard
