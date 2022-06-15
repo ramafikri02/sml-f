@@ -2,6 +2,8 @@ import axios from '@axios'
 
 export const GET_CUSTOMER = params => axios.get(`/datamaster/get/customer?${params}`)
 
+export const SEARCH_CUSTOMER = params => axios.get(`/datamaster/search/customer?${params}`)
+
 export const GET_CUSTOMER_BY_ID = id => axios.get(`/datamaster/get/customer/${id}`)
 
 export const ADD_CUSTOMER = data => axios.post('/datamaster/create/customer/', data)

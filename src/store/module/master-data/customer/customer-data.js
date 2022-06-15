@@ -2,6 +2,7 @@ import queryString from 'query-string'
 
 import {
   GET_CUSTOMER,
+  SEARCH_CUSTOMER,
   GET_CUSTOMER_BY_ID,
   ADD_CUSTOMER,
   UPDATE_CUSTOMER,
@@ -34,6 +35,15 @@ export default {
     GET_CUSTOMER: async ({ commit }, args) => {
       let params = queryString.stringify(args)
       return await GET_CUSTOMER(params)
+      .then((resp) => {
+          if (resp.status === 200) {
+              commit('SET_CUSTOMER', resp.data.data)
+          }
+      })
+    },
+    SEARCH_CUSTOMER: async ({ commit }, args) => {
+      let params = queryString.stringify(args)
+      return await SEARCH_CUSTOMER(params)
       .then((resp) => {
           if (resp.status === 200) {
               commit('SET_CUSTOMER', resp.data.data)
