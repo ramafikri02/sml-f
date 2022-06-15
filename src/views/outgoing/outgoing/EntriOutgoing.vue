@@ -654,6 +654,7 @@ export default {
         enableTime: true,
         dateFormat: 'Y-m-d H:i',
         locale: Indonesian,
+        disableMobile: true
       }, 
 
       formData: {
