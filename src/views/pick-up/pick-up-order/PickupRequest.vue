@@ -13,12 +13,14 @@
         <b-row>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <b-form-group
-                  label="Cabang Asal"
                   label-for="h-contract-no"
                   label-cols-md="5"
                 >
+                  <template v-slot:label>
+                    Cabang Asal <span class="text-danger">*</span>
+                  </template>
                   <b-form-input
                     id="h-user-code"
                     v-model="formData.pickup_branch_code"
@@ -26,26 +28,28 @@
                   />
                 </b-form-group>
               </b-col>
-              <b-col cols="4">
+              <b-col lg="4">
                 <b-form-group>
                   <b-form-input
-                  id="h-user-code"
-                  v-model="formData.pickup_branch_name"
-                  v-uppercase
-                  readonly
-                />
+                    id="h-user-code"
+                    v-model="formData.pickup_branch_name"
+                    v-uppercase
+                    readonly
+                  />
                 </b-form-group>
               </b-col>
             </b-row>
           </b-col>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <b-form-group
-                  label="Kantor Asal"
                   label-for="h-contract-no"
                   label-cols-md="5"
                 >
+                  <template v-slot:label>
+                    Kantor Asal <span class="text-danger">*</span>
+                  </template>
                   <b-form-input
                     id="h-user-code"
                     v-model="formData.pickup_office_code"
@@ -54,25 +58,27 @@
                   />
                 </b-form-group>
               </b-col>
-              <b-col cols="4">
+              <b-col lg="4">
                 <b-form-group>
                   <b-form-input
-                  id="h-user-code"
-                  v-model="formData.pickup_office_name"
-                  readonly
-                />
+                    id="h-user-code"
+                    v-model="formData.pickup_office_name"
+                    readonly
+                  />
                 </b-form-group>
               </b-col>
             </b-row>
           </b-col>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <b-form-group
-                  label="Tangal"
                   label-for="h-date"
                   label-cols-md="5"
                 >
+                  <template v-slot:label>
+                    Tanggal <span class="text-danger">*</span>
+                  </template>
                   <b-form-datepicker
                     locale="id"
                     id="h-date"
@@ -89,7 +95,7 @@
           </b-col>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <b-form-group
                   label="Jenis Pembayaran"
                   label-for="h-contract-no"
@@ -103,6 +109,7 @@
                     :clearable="false"
                     label="title"
                     placeholder="Pilih..."
+                    @input="searchCustomer"
                     v-uppercase
                   />
                 </b-form-group>
@@ -111,28 +118,39 @@
           </b-col>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
-                <b-form-group
-                  :label="'Cari Pelanggan ' + formData.pickup_payment "
-                  label-for="h-contract-no"
-                  label-cols-md="5"
+              <b-col lg="5">
+                <validation-provider
+                  #default="validationContext"
+                  name="Pick up Ready Time"
+                  rules="required"
                 >
-                  <v-select
-                    id="h-province-code"
-                    v-model="formData.pickup_account"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                    :options="paymentMethod"
-                    label="title"
-                    placeholder="Pilih..."
-                    v-uppercase
-                  />
-                </b-form-group>
+                  <b-form-group
+                    :label="'Cari Pelanggan ' + formData.pickup_payment "
+                    label-for="h-contract-no"
+                    label-cols-md="5"
+                  >
+                    <v-select
+                      id="h-province-code"
+                      v-model="formData.pickup_account"
+                      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                      :options="customer"
+                      label="customer_name"
+                      placeholder="Pilih..."
+                      :state="getValidationState(validationContext)"
+                      @input="setCustomer"
+                      v-uppercase
+                    />
+                    <b-form-invalid-feedback>
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="11">
+          <b-col lg="11">
             <b-row>
-              <b-col cols="9">
+              <b-col lg="9">
                 <validation-provider
                   #default="validationContext"
                   name="Alamat Pick up"
@@ -158,9 +176,9 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="11">
+          <b-col lg="11">
             <b-row>
-              <b-col cols="9">
+              <b-col lg="9">
                 <validation-provider
                   #default="validationContext"
                   name="Kontak"
@@ -186,26 +204,56 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="11">
+          <b-col lg="12">
             <b-row>
-              <b-col cols="9">
+              <b-col lg="5">
                 <validation-provider
                   #default="validationContext"
-                  name="Telepon"
+                  name="telephone"
                   rules="required"
                 >
                   <b-form-group
                     label="Telepon"
                     label-for="h-telephone"
-                    label-cols-md="3"
+                    label-cols-md="5"
                   >
                     <cleave
                       id="h-telephone"
                       v-model="formData.pickup_contact2"
                       class="form-control"
                       :raw="false"
-                      :options="options.numberOnly"
+                      :options="options.phone_number"
                       placeholder="Telepon"
+                      :state="getValidationState(validationContext)"
+                    />
+                    <b-form-invalid-feedback>
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
+              </b-col>
+            </b-row>
+          </b-col>
+          <b-col lg="12">
+            <b-row>
+              <b-col lg="5">
+                <validation-provider
+                  #default="validationContext"
+                  name="pickup-goodstype"
+                  rules="required"
+                >
+                  <b-form-group
+                    label="Tipe Kiriman"
+                    label-for="h-pickup-goodstype"
+                    label-cols-md="5"
+                  >
+                    <v-select
+                      id="h-pickup-goodstype"
+                      v-model="formData.pickup_goodstype"
+                      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                      :options="goodsTypeOp"
+                      label="title"
+                      placeholder="Pilih..."
                       :state="getValidationState(validationContext)"
                       v-uppercase
                     />
@@ -219,32 +267,10 @@
           </b-col>
           <b-col lg="12">
             <b-row>
-              <b-col cols="5">
-                <b-form-group
-                  label="Tipe Kiriman"
-                  label-for="h-contract-no"
-                  label-cols-md="5"
-                >
-                  <v-select
-                    id="h-province-code"
-                    v-model="formData.pickup_payment"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                    :options="paymentMethod"
-                    :clearable="false"
-                    label="title"
-                    placeholder="Pilih..."
-                    v-uppercase
-                  />
-                </b-form-group>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col cols="12">
-            <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <validation-provider
                   #default="validationContext"
-                  name="Total Koli"
+                  name="koli"
                   rules="required"
                 >
                   <b-form-group
@@ -260,7 +286,6 @@
                       :options="options.numberThousand"
                       placeholder="Total Koli"
                       :state="getValidationState(validationContext)"
-                      v-uppercase
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -270,12 +295,12 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="12">
+          <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <validation-provider
                   #default="validationContext"
-                  name="Total Berat"
+                  name="weight"
                   rules="required"
                 >
                   <b-form-group
@@ -291,6 +316,35 @@
                       :options="options.numberThousand"
                       placeholder="Total Berat"
                       :state="getValidationState(validationContext)"
+                    />
+                    <b-form-invalid-feedback>
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
+              </b-col>
+            </b-row>
+          </b-col>
+          <b-col lg="12">
+            <b-row>
+              <b-col lg="5">
+                <validation-provider
+                  #default="validationContext"
+                  name="pickup-transport"
+                  rules="required"
+                >
+                  <b-form-group
+                    label="Armada"
+                    label-for="h-pickup-transport"
+                    label-cols-md="5"
+                  >
+                    <v-select
+                      id="h-pickup-transport"
+                      v-model="formData.pickup_transport"
+                      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                      :options="transportOp"
+                      placeholder="Pilih..."
+                      :state="getValidationState(validationContext)"
                       v-uppercase
                     />
                     <b-form-invalid-feedback>
@@ -301,29 +355,39 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="12">
+          <b-col lg="12">
             <b-row>
-              <b-col cols="5">
-                <b-form-group
-                  label="Tanggal Pick up"
-                  label-for="h-pickup-date"
-                  label-cols-md="5"
+              <b-col lg="5">
+                <validation-provider
+                  #default="validationContext"
+                  name="pickup-date"
+                  rules="required"
                 >
-                  <b-form-datepicker
-                    locale="id"
-                    id="h-pickup-date"
-                    v-model="formData.pickup_date"
-                    :show-decade-nav="true"
-                    :hide-header="true"
-                    placeholder="Tanggal Pick up"
-                  />
-                </b-form-group>
+                  <b-form-group
+                    label="Tanggal Pick up"
+                    label-for="h-pickup-date"
+                    label-cols-md="5"
+                  >
+                    <b-form-datepicker
+                      locale="id"
+                      id="h-pickup-date"
+                      v-model="formData.pickup_date"
+                      :show-decade-nav="true"
+                      :hide-header="true"
+                      placeholder="Tanggal Pick up"
+                      :state="getValidationState(validationContext)"
+                    />
+                    <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="12">
+          <b-col lg="12">
             <b-row>
-              <b-col cols="5">
+              <b-col lg="5">
                 <validation-provider
                   #default="validationContext"
                   name="Pick up Ready Time"
@@ -338,7 +402,8 @@
                       v-model="formData.pickup_time"
                       class="form-control"
                       placeholder="Jam"
-                      :config="{ enableTime: true, noCalendar: true, dateFormat: 'H:i', time_24hr: true }"
+                      :config="{ enableTime: true, noCalendar: true, dateFormat: 'H:i', time_24hr: true,  disableMobile: true }"
+                      :state="getValidationState(validationContext)"
                     />
                     <b-form-invalid-feedback>
                       {{ validationContext.errors[0] }}
@@ -348,21 +413,33 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col cols="11">
+          <b-col lg="11">
             <b-row>
               <b-col cols="9">
-                <b-form-group
-                  label="Keterangan"
-                  label-for="h-pickup-address"
-                  label-cols-md="3"
+                <validation-provider
+                  #default="validationContext"
+                  name="pickup-decription"
+                  rules="required"
                 >
-                  <b-form-textarea
-                    id="h-pickup-address"
-                    v-model="formData.pickup_description"
-                    placeholder="Keterangan"
-                    v-uppercase
-                  />
-                </b-form-group>
+                  <b-form-group
+                    label-for="h-pickup-decription"
+                    label-cols-md="3"
+                  >
+                  <template v-slot:label>
+                    Keterangan <span class="text-danger">*</span>
+                  </template>
+                    <b-form-textarea
+                      id="h-pickup-decription"
+                      v-model="formData.pickup_description"
+                      placeholder="Keterangan"
+                      :state="getValidationState(validationContext)"
+                      v-uppercase
+                    />
+                    <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
               </b-col>
             </b-row>
           </b-col>
@@ -417,13 +494,7 @@ import ToastificationContent from '@core/components/toastification/Toastificatio
 import flatPickr from 'vue-flatpickr-component'
 import Cleave from 'vue-cleave-component'
 import 'cleave.js/dist/addons/cleave-phone.id'
-import branch from '@/@fake-db/data/other/branch'
-import office from '@/@fake-db/data/other/office'
-import companyId from '@/@fake-db/data/other/companyId'
-import idAccount from '@/@fake-db/data/other/idAccount'
-import idEmployee from '@/@fake-db/data/other/idEmployee'
-import userGroup from '@/@fake-db/data/other/userGroup'
-import yesNo from '@/@fake-db/data/other/yesNo'
+import goodsTypeOp from '@/@fake-db/data/other/goodsTypeOp'
 import store from '@/store/index'
 
 export default {
@@ -459,13 +530,7 @@ export default {
     return {
       required,
       alphaNum,
-      branch,
-      office,
-      companyId,
-      idAccount,
-      idEmployee,
-      userGroup,
-      yesNo,
+      goodsTypeOp,
 
       // Form Validation
       ValidationProvider,
@@ -490,6 +555,12 @@ export default {
         'CREDIT'
       ],
 
+      transportOp: [
+        'MOTORCYCLE',
+        'SEMUA JENIS KENDARAAN',
+        'MOBIL PENUMPANG'
+      ],
+
       formData: {
         pickup_branch_code: 'JKT',
         pickup_branch_name: 'JAKARTA',
@@ -497,6 +568,7 @@ export default {
         pickup_office_name: 'SML CIBUBUR',
         pickup_sysdate: null,
         pickup_payment: 'CASH',
+        pickup_account: '',
         pickup_address: null,
         pickup_contact1: null,
         pickup_contact2: null,
@@ -506,90 +578,34 @@ export default {
         pickup_transport: null,
         pickup_date: null,
         pickup_time: null,
-        pickup_description: ''
+        pickup_description: null,
       },
 
-      pageLength: 10,
       dir: false,
-      columns: [
-        {
-          label: 'No.',
-          field: 'no',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'No. Resi',
-          field: 'no_resi',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Referensi',
-          field: 'referemce',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Tanggal',
-          field: 'date',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Penerima',
-          field: 'consignee',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Kota Tujuan',
-          field: 'city_destination',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Jenis Produk',
-          field: 'product_type',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Jenis Kiriman',
-          field: 'delivery_type',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Kuantitas',
-          field: 'quantity',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Berat (kg)',
-          field: 'weight',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-        {
-          label: 'Volume',
-          field: 'volume',
-          thClass: 'text-center',
-          tdClass: 'text-center',
-        },
-      ],
-      rows_procces: [],
-      rows_void: [],
-      searchOption: '',
     }
   },
 
   mounted() {
     this.formData.pickup_sysdate = new Date()
+    // this.$store.dispatch('pickup_request/GET_PICKUP_ORDER', this.params);
+    this.$store.dispatch('customer/SEARCH_CUSTOMER', { 
+      transaction_options: this.formData.pickup_payment 
+    });
   },
 
   computed: {
+    // pickup() {
+    //   this.loadingTable = false
+    //   return this.$store.getters['pickup_request/getsPickupOrder'] === null
+    //     ? []
+    //     : this.$store.getters['pickup_request/getsPickupOrder'];
+    // },
+    customer() {
+      return this.$store.getters['customer/getsCustomer'] === null
+        ? []
+        : this.$store.getters['customer/getsCustomer'];
+    },
+
     direction() {
       if (store.state.appConfig.isRTL) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -603,6 +619,18 @@ export default {
   },
 
   methods: {
+    searchCustomer(value) {
+      this.$store.dispatch('customer/SEARCH_CUSTOMER', { 
+        transaction_options: value 
+      });
+      this.formData.pickup_account = '',
+      this.customer
+    },
+    setCustomer(value) {
+      this.formData.pickup_address = 'TEST',
+      this.formData.pickup_contact1 = 'TEST',
+      this.formData.pickup_contact2 = '089123212321'
+    },
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
     },
@@ -615,6 +643,7 @@ export default {
         pickup_office_name: 'SML CIBUBUR',
         pickup_sysdate: null,
         pickup_payment: 'CASH',
+        pickup_account: '',
         pickup_address: null,
         pickup_contact1: null,
         pickup_contact2: null,
@@ -637,6 +666,7 @@ export default {
         pickup_office_name: this.formData.pickup_office_name,
         pickup_sysdate: this.formData.pickup_sysdate,
         pickup_payment: this.formData.pickup_payment,
+        pickup_account: this.formData.pickup_account,
         pickup_address: this.formData.pickup_address,
         pickup_contact1: this.formData.pickup_contact1,
         pickup_contact2: this.formData.pickup_contact2,
@@ -652,8 +682,8 @@ export default {
       console.log(data)
 
       this.$store.dispatch('pickup_request/ADD_PICKUP_ORDER', data).then(() => {
-        this.$router.push('/masterdata/users')
-        .then(() => {
+        // this.$router.push('/masterdata/users')
+        // .then(() => {
           this.$toast({
             component: ToastificationContent,
             position: 'top-right',
@@ -664,7 +694,7 @@ export default {
               text: `Anda telah berhasil request pickup pada tanggal ${data.pickup_date}!`,
             },
           })
-        })
+        // })
       });
     },
     redirectToUsersList() {
