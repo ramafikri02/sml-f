@@ -101,6 +101,9 @@
                   label-for="h-contract-no"
                   label-cols-md="5"
                 >
+                  <template v-slot:label>
+                    Jenis Pembayaran <span class="text-danger">*</span>
+                  </template>
                   <v-select
                     id="h-province-code"
                     v-model="formData.pickup_payment"
@@ -125,10 +128,12 @@
                   rules="required"
                 >
                   <b-form-group
-                    :label="'Cari Pelanggan ' + formData.pickup_payment "
                     label-for="h-contract-no"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Cari Pelanggan {{ formData.pickup_payment }}<span class="text-danger">*</span>
+                    </template>
                     <v-select
                       id="h-province-code"
                       v-model="formData.pickup_account"
@@ -153,14 +158,16 @@
               <b-col lg="9">
                 <validation-provider
                   #default="validationContext"
-                  name="Alamat Pick up"
+                  name="pickup-address"
                   rules="required"
                 >
                   <b-form-group
-                    label="Alamat Pick up"
                     label-for="h-pickup-address"
                     label-cols-md="3"
                   >
+                    <template v-slot:label>
+                      Alamat Pick up <span class="text-danger">*</span>
+                    </template>
                     <b-form-textarea
                       id="h-pickup-address"
                       v-model="formData.pickup_address"
@@ -181,14 +188,16 @@
               <b-col lg="9">
                 <validation-provider
                   #default="validationContext"
-                  name="Kontak"
+                  name="contact"
                   rules="required"
                 >
                   <b-form-group
-                    label="Kontak"
                     label-for="h-contact"
                     label-cols-md="3"
                   >
+                    <template v-slot:label>
+                      Kontak <span class="text-danger">*</span>
+                    </template>
                     <b-form-input
                       id="h-contact"
                       v-model="formData.pickup_contact1"
@@ -213,10 +222,12 @@
                   rules="required"
                 >
                   <b-form-group
-                    label="Telepon"
                     label-for="h-telephone"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Telepon <span class="text-danger">*</span>
+                    </template>
                     <cleave
                       id="h-telephone"
                       v-model="formData.pickup_contact2"
@@ -243,10 +254,12 @@
                   rules="required"
                 >
                   <b-form-group
-                    label="Tipe Kiriman"
                     label-for="h-pickup-goodstype"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Tipe Kiriman <span class="text-danger">*</span>
+                    </template>
                     <v-select
                       id="h-pickup-goodstype"
                       v-model="formData.pickup_goodstype"
@@ -274,10 +287,12 @@
                   rules="required"
                 >
                   <b-form-group
-                    label="Total Koli"
                     label-for="h-koli"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Total Koli <span class="text-danger">*</span>
+                    </template>
                     <cleave
                       id="h-koli"
                       v-model="formData.pickup_qty"
@@ -304,12 +319,14 @@
                   rules="required"
                 >
                   <b-form-group
-                    label="Total Berat"
                     label-for="h-weight"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Total Berat <span class="text-danger">*</span>
+                    </template>
                     <cleave
-                      id="h-telephone"
+                      id="h-weight"
                       v-model="formData.pickup_weight"
                       class="form-control"
                       :raw="false"
@@ -338,6 +355,9 @@
                     label-for="h-pickup-transport"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Armada <span class="text-danger">*</span>
+                    </template>
                     <v-select
                       id="h-pickup-transport"
                       v-model="formData.pickup_transport"
@@ -364,10 +384,12 @@
                   rules="required"
                 >
                   <b-form-group
-                    label="Tanggal Pick up"
                     label-for="h-pickup-date"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Tanggal Pick up <span class="text-danger">*</span>
+                    </template>
                     <b-form-datepicker
                       locale="id"
                       id="h-pickup-date"
@@ -398,6 +420,9 @@
                     label-for="h-telephone"
                     label-cols-md="5"
                   >
+                    <template v-slot:label>
+                      Pick up Ready Time <span class="text-danger">*</span>
+                    </template>
                     <flat-pickr
                       v-model="formData.pickup_time"
                       class="form-control"
