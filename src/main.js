@@ -38,15 +38,21 @@ Vue.use(VueCompositionAPI)
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.directive('uppercase', {
-	update (el) {
-		el.value = el.value.toUpperCase()
-	},
+  bind(el, _, vnode) {
+    el.addEventListener('input', (e) => {
+      e.target.value = e.target.value.toUpperCase()
+      vnode.componentInstance.$emit('input', e.target.value.toUpperCase())
+    })
+  },
 })
 
 Vue.directive('lowercase', {
-	update (el) {
-		el.value = el.value.toLowerCase()
-	},
+  bind(el, _, vnode) {
+    el.addEventListener('input', (e) => {
+      e.target.value = e.target.value.toLowerCase()
+      vnode.componentInstance.$emit('input', e.target.value.toLowerCase())
+    })
+  },
 })
 
 // Feather font icon - For form-wizard
