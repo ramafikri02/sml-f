@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Entri Pick up Order"
+    title="Ubah Pick up Order"
   >
     <validation-observer
       #default="{ handleSubmit }"
@@ -613,9 +613,7 @@ export default {
   mounted() {
     this.formData.pickup_sysdate = new Date()
     // this.$store.dispatch('pickup_request/GET_PICKUP_ORDER', this.params);
-    this.$store.dispatch('customer/SEARCH_CUSTOMER', { 
-      transaction_options: this.formData.pickup_payment 
-    });
+    this.$store.dispatch('pickup_request/GET_PICKUP_ORDER_BY_ID', this.$route.params.id);
   },
 
   computed: {
@@ -714,8 +712,7 @@ export default {
       console.log(data)
 
       // this.$store.dispatch('pickup_request/ADD_PICKUP_ORDER', data).then(() => {
-        // this.$router.push('/pickup/pickup-request/saved', data.no_pickup_order)
-        this.$router.push({ name: 'pickup-request-saved', params: {id} })
+        this.$router.push('/pickup/pickup-request/saved/', data.no_pickup_order)
         .then(() => {
           this.$toast({
             component: ToastificationContent,

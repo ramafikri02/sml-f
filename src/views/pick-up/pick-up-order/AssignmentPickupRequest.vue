@@ -90,17 +90,32 @@
             </b-tr>
           </b-thead>
           <b-tbody>
-            <b-tr>
-              
-            </b-tr>
+            <tr v-for="(item,i) in items" :key="i">
+              <td>{{ i+1 }}</td>
+              <td>{{ item.no_pickup_order }}</td>
+              <td>{{ item.no_sppb }}</td>
+              <td>{{ item.pickup_sysdate }}</td>
+              <td>{{ item.pickup_time }}</td>
+              <td>{{ item.pickup_account }}</td>
+              <td>{{ item.pickup_qty }}</td>
+              <td>{{ item.pickup_weight }}</td>
+              <td>{{ item.pickup_description }}</td>
+              <td>{{ item.pickup_weight }}</td>
+              <td>{{ item.pickup_weight }}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
           </b-tbody>
           <b-tfoot>
             <b-tr>
               <b-td
-                colspan="7"
+                colspan="16"
                 class="text-right"
               >
-                Total Rows: <b>5</b>
+                Total Rows: <b>{{ items.length }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
@@ -168,13 +183,18 @@ export default {
         { key: 'pickup_description', label: 'Keterangan' },
         { key: 'pickup_courier', label: 'Nama Kurir' },
       ],
-      items: [],
     }
   },
   mounted() {
-    
+    this.$store.dispatch('pickup_request/GET_PICKUP_ORDER', this.params);
   },
   computed: {
+    items() {
+      return this.$store.getters['pickup_request/getsPickupOrder'] === null
+        ? []
+        : this.$store.getters['pickup_request/getsPickupOrder'];
+    },
+
     direction() {
       if (store.state.appConfig.isRTL) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties

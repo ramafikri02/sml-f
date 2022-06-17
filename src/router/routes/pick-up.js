@@ -27,6 +27,16 @@ export default [
     name: 'pickup-request-customer',
     component: () => import('@/views/pick-up/pick-up-order/CustomerPickupRequest.vue'),
   },
+  {
+    path: '/pickup/pickup-request/saved/:id',
+    name: 'pickup-request-saved',
+    component: () => import('@/views/pick-up/pick-up-order/SuccessRequestPickup.vue'),
+  },
+  {
+    path: '/pickup/pickup-request/edit/:id',
+    name: 'pickup-request-edit',
+    component: () => import('@/views/pick-up/pick-up-order/PickupRequestEdit.vue'),
+  },
   // *===============================================---*
   // *--------- Pick Up Missed ---------------------------------------*
   // *===============================================---*
