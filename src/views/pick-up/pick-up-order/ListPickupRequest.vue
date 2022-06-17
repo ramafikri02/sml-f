@@ -212,10 +212,10 @@ export default {
   },
   methods: {
     toPickupEdit(id) {
-      this.$router.push({ name: 'pickup-request-saved', params: {id} });
+      this.$router.push({ name: 'pickup-request-edit', params: {id} });
     },
     toPickupVoid(id) {
-
+      this.$router.push({ name: 'pickup-request-saved', params: {id} });
     }
   },
 }

@@ -36,6 +36,9 @@ export default [
     path: '/pickup/pickup-request/edit/:id',
     name: 'pickup-request-edit',
     component: () => import('@/views/pick-up/pick-up-order/PickupRequestEdit.vue'),
+    meta: {
+      navActiveLink: 'pickup-request-entry',
+    },
   },
   // *===============================================---*
   // *--------- Pick Up Missed ---------------------------------------*

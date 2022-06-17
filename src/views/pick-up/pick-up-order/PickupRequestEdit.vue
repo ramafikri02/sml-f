@@ -586,6 +586,9 @@ export default {
         'MOBIL PENUMPANG'
       ],
 
+      no_pickup_order: '',
+      no_sppb: '',
+
       formData: {
         pickup_branch_code: 'JKT',
         pickup_branch_name: 'JAKARTA',
@@ -614,15 +617,35 @@ export default {
     this.formData.pickup_sysdate = new Date()
     // this.$store.dispatch('pickup_request/GET_PICKUP_ORDER', this.params);
     this.$store.dispatch('pickup_request/GET_PICKUP_ORDER_BY_ID', this.$route.params.id);
+
+    this.no_pickup_order = this.pickups[0].no_pickup_order,
+    this.no_sppb = this.pickups[0].no_sppb,
+    this.formData.pickup_branch_code = this.pickups[0].pickup_branch_code,
+    this.formData.pickup_branch_name = this.pickups[0].pickup_branch_name,
+    this.formData.pickup_office_code = this.pickups[0].pickup_office_code,
+    this.formData.pickup_office_name = this.pickups[0].pickup_office_name,
+    this.formData.pickup_sysdate = this.pickups[0].pickup_sysdate,
+    this.formData.pickup_payment = this.pickups[0].pickup_payment,
+    this.formData.pickup_account = this.pickups[0].pickup_account,
+    this.formData.pickup_address = this.pickups[0].pickup_address,
+    this.formData.pickup_contact1 = this.pickups[0].pickup_contact1,
+    this.formData.pickup_contact2 = this.pickups[0].pickup_contact2,
+    this.formData.pickup_goodstype = this.pickups[0].pickup_goodstype,
+    this.formData.pickup_qty = this.pickups[0].pickup_qty,
+    this.formData.pickup_weight = this.pickups[0].pickup_weight,
+    this.formData.pickup_transport = this.pickups[0].pickup_transport,
+    this.formData.pickup_date = this.pickups[0].pickup_date,
+    this.formData.pickup_time = this.pickups[0].pickup_time,
+    this.formData.pickup_description = this.pickups[0].pickup_description
   },
 
   computed: {
-    // pickup() {
-    //   this.loadingTable = false
-    //   return this.$store.getters['pickup_request/getsPickupOrder'] === null
-    //     ? []
-    //     : this.$store.getters['pickup_request/getsPickupOrder'];
-    // },
+    pickups() {
+      this.loadingTable = false
+      return this.$store.getters['pickup_request/getsPickupOrderById'] === null
+        ? []
+        : this.$store.getters['pickup_request/getsPickupOrderById'];
+    },
     customer() {
       return this.$store.getters['customer/getsCustomer'] === null
         ? []

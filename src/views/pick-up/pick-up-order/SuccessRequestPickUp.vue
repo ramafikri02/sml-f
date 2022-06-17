@@ -29,12 +29,9 @@
                   label-for="h-pickup-order"
                   label-cols-md="5"
                 >
-                  <cleave
-                    id="h-pickup-order"
+                  <b-form-input
+                    id="h-pickup-no"
                     v-model="formData.pickup_no"
-                    class="form-control"
-                    :raw="false"
-                    :options="options.numberOnly"
                     readonly
                   />
                 </b-form-group>
@@ -50,6 +47,7 @@
                   v-ripple.400="'rgba(113, 102, 240, 0.15)'"
                   variant="outline-primary"
                   class="ml-1"
+                  @click="toPickupRequest()"
                 >
                   Kembali
                 </b-button>
@@ -96,7 +94,7 @@ export default {
       },
 
       formData: {
-        pickup_no: '',
+        pickup_no: this.$route.params.id,
       }
     }
   },
@@ -116,7 +114,9 @@ export default {
     },
   },
   methods: {
-    
+    toPickupRequest() {
+      this.$router.push({ name: 'pickup-request-entry' });
+    }
   },
 }
 </script>

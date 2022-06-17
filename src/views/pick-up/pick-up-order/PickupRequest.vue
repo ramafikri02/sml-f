@@ -731,7 +731,7 @@ export default {
       // });
     },
     redirectToUsersList() {
-      this.$router.push({ path: '/masterdata/roles-mapping' })
+      this.$router.push({ name: 'pickup-request-booking' })
     },
   },
 }
