@@ -282,7 +282,7 @@ export default {
     },
     toUserEdit(id) {
       this.$store.dispatch('user/GET_USER_BY_ID', id).then(() => {
-        this.$router.push({ name: 'pickup-request-saved', params: {id} });
+        this.$router.push({ name: 'masterdata-users-edit', params: {id} });
       });
     },
     toUserDelete(id) {

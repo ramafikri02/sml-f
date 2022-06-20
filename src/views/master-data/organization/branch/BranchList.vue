@@ -271,7 +271,7 @@ export default {
     },
     toBranchEdit(id) {
       this.$store.dispatch('branch/GET_BRANCH_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/branch/edit' });
+        this.$router.push({ name: 'masterdata-branch-edit', params: {id} });
       });
     },
     toBranchDelete(id) {

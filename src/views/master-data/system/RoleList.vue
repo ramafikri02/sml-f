@@ -266,7 +266,7 @@ export default {
     },
     toRoleEdit(id) {
       this.$store.dispatch('role/GET_ROLE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/roles-mapping/edit' });
+        this.$router.push({ name: 'masterdata-roles-mapping-edit', params: {id} });
       });
     },
     toRoleEditDetail(id) {

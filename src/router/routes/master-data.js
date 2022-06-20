@@ -16,7 +16,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/users/edit',
+    path: '/masterdata/users/edit/:id',
     name: 'masterdata-users-edit',
     component: () => import('@/views/master-data/user/UserEdit.vue'),
     meta: {
@@ -40,7 +40,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/roles-mapping/edit',
+    path: '/masterdata/roles-mapping/edit/:id',
     name: 'masterdata-roles-mapping-edit',
     component: () => import('@/views/master-data/system/RoleEdit.vue'),
     meta: {
@@ -74,7 +74,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/branch/edit',
+    path: '/masterdata/branch/edit/:id',
     name: 'masterdata-branch-edit',
     component: () => import('@/views/master-data/organization/branch/BranchEdit.vue'),
     meta: {
@@ -97,7 +97,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/branch-office/edit',
+    path: '/masterdata/branch-office/edit/:id',
     name: 'masterdata-branch-office-edit',
     component: () => import('@/views/master-data/organization/branch-office/BranchOfficeEdit.vue'),
     meta: {
@@ -120,7 +120,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/employees/edit',
+    path: '/masterdata/employees/edit/:id',
     name: 'masterdata-employee-edit',
     component: () => import('@/views/master-data/organization/employee/EmployeeEdit.vue'),
     meta: {
@@ -150,7 +150,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/courier/edit',
+    path: '/masterdata/courier/edit/:id',
     name: 'masterdata-courier-edit',
     component: () => import('@/views/master-data/organization/courier/CourierEdit.vue'),
     meta: {
@@ -173,7 +173,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/helper/edit',
+    path: '/masterdata/helper/edit/:id',
     name: 'masterdata-helper-edit',
     component: () => import('@/views/master-data/organization/helper/HelperEdit.vue'),
     meta: {
@@ -196,7 +196,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/vehicle/edit',
+    path: '/masterdata/vehicle/edit/:id',
     name: 'masterdata-vehicle-edit',
     component: () => import('@/views/master-data/organization/vehicle/VehicleEdit.vue'),
     meta: {
@@ -219,7 +219,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/pic-invoice/edit',
+    path: '/masterdata/pic-invoice/edit/:id',
     name: 'masterdata-pic-invoice-edit',
     component: () => import('@/views/master-data/organization/pic-faktur/FakturEdit.vue'),
     meta: {
@@ -243,7 +243,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/vendor/edit',
+    path: '/masterdata/vendor/edit/:id',
     name: 'masterdata-vendor-edit',
     component: () => import('@/views/master-data/vendor/VendorEdit.vue'),
     meta: {
@@ -267,7 +267,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/customer/edit',
+    path: '/masterdata/customer/edit/:id',
     name: 'masterdata-customer-edit',
     component: () => import('@/views/master-data/customer/customer-data/CustomerEdit.vue'),
     meta: {
@@ -290,7 +290,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/customer-contract/edit',
+    path: '/masterdata/customer-contract/edit/:id',
     name: 'masterdata-customer-contract-edit',
     component: () => import('@/views/master-data/customer/customer-contract/CustomerContractEdit.vue'),
     meta: {
@@ -298,7 +298,7 @@ export default [
     },
   },
   {
-    path: '/masterdata/customer-special-contract/edit',
+    path: '/masterdata/customer-special-contract/edit/:id',
     name: 'masterdata-customer-special-contract-edit',
     component: () => import('@/views/master-data/customer/customer-contract/CustomerSpecialContract.vue'),
     meta: {

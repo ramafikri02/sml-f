@@ -408,20 +408,22 @@ export default {
     }
   },
   mounted() {
-    this.courier_code = this.courier[0].courier_code,
-    this.name = this.courier[0].name,
-    // this.password = this.courier[0].password,
-    this.phone_number = this.courier[0].phone_number,
-    this.branch = this.courier[0].branch,
-    this.office = this.courier[0].office,
-    this.area = this.courier[0].area,
-    this.duty = this.courier[0].duty,
-    this.vehicle = this.courier[0].vehicle
-    this.status = this.courier[0].status
+    this.courier_code = this.couriers[0].courier_code,
+    this.name = this.couriers[0].name,
+    // this.password = this.couriers[0].password,
+    this.phone_number = this.couriers[0].phone_number,
+    this.branch = this.couriers[0].branch,
+    this.office = this.couriers[0].office,
+    this.area = this.couriers[0].area,
+    this.duty = this.couriers[0].duty,
+    this.vehicle = this.couriers[0].vehicle
+    this.status = this.couriers[0].status
   },
   computed: {
-    courier() {
-      return this.$store.getters['courier/getsCourierById'];
+    couriers() {
+      return this.$store.getters['courier/getsCourierById'] === null
+        ? []
+        : this.$store.getters['courier/getsCourierById'];
     },
   },
   methods: {

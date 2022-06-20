@@ -215,7 +215,9 @@ export default {
       this.$router.push({ name: 'pickup-request-edit', params: {id} });
     },
     toPickupVoid(id) {
-      this.$router.push({ name: 'pickup-request-saved', params: {id} });
+      this.$store.dispatch('pickup_request/GET_PICKUP_ORDER_BY_ID', id).then(() => {
+        this.$router.push({ name: 'pickup-request-saved', params: {id} });
+      })
     }
   },
 }

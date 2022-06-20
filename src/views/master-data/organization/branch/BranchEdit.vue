@@ -272,16 +272,18 @@ export default {
     }
   },
   mounted() {
-    this.branch_code = this.branch[0].branch_code,
-    this.name = this.branch[0].name,
-    this.region_code = this.branch[0].region_code,
-    this.province_code = this.branch[0].province_code,
-    this.iata_code = this.branch[0].iata_code,
-    this.branch_type = this.branch[0].branch_type
+    this.branch_code = this.branchs[0].branch_code,
+    this.name = this.branchs[0].name,
+    this.region_code = this.branchs[0].region_code,
+    this.province_code = this.branchs[0].province_code,
+    this.iata_code = this.branchs[0].iata_code,
+    this.branch_type = this.branchs[0].branch_type
   },
   computed: {
-    branch() {
-      return this.$store.getters['branch/getsBranchById'];
+    branchs() {
+      return this.$store.getters['branch/getsBranchById'] === null
+        ? []
+        : this.$store.getters['branch/getsBranchById'];
     },
   },
   methods: {

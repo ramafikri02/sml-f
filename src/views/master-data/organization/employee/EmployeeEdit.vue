@@ -794,7 +794,9 @@ export default {
   },
   computed: {
     employee() {
-      return this.$store.getters['employee/getsEmployeeById'];
+      return this.$store.getters['employee/getsEmployeeById'] === null
+        ? []
+        : this.$store.getters['employee/getsEmployeeById'];
     },
   },
   methods: {

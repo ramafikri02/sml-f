@@ -276,7 +276,7 @@ export default {
     },
     toCourierEdit(id) {
       this.$store.dispatch('courier/GET_COURIER_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/courier/edit' });
+        this.$router.push({ name: 'masterdata-courier-edit', params: {id} });
       });
     },
     toCourierDelete(id) {

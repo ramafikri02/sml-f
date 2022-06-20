@@ -228,7 +228,9 @@ export default {
   },
   computed: {
     role() {
-      return this.$store.getters['role/getsRoleById'];
+      return this.$store.getters['role/getsRoleById'] === null
+        ? []
+        : this.$store.getters['role/getsRoleById'];
     },
   },
   methods: {

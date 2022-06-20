@@ -270,7 +270,7 @@ export default {
     },
     toEmployeeEdit(id) {
       this.$store.dispatch('employee/GET_EMPLOYEE_BY_ID', id).then(() => {
-        this.$router.push({ path: '/masterdata/employees/edit' });
+        this.$router.push({ name: 'masterdata-employee-edit', params: {id} });
       });
     },
     toEmployeeDelete(id) {

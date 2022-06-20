@@ -392,20 +392,22 @@ export default {
     }
   },
   mounted() {
-    this.user_code = this.user[0].user_code,
-    this.full_name = this.user[0].full_name,
-    this.branch_code = this.user[0].branch_code,
-    this.office_code = this.user[0].office_code,
-    this.user_group = this.user[0].user_group,
-    this.id_account = this.user[0].id_account,
-    this.id_employee = this.user[0].id_employee,
-    this.multiple_login = this.user[0].multiple_login,
-    this.company_id = this.user[0].company_id,
-    this.status = this.user[0].status
+    this.user_code = this.users[0].user_code,
+    this.full_name = this.users[0].full_name,
+    this.branch_code = this.users[0].branch_code,
+    this.office_code = this.users[0].office_code,
+    this.user_group = this.users[0].user_group,
+    this.id_account = this.users[0].id_account,
+    this.id_employee = this.users[0].id_employee,
+    this.multiple_login = this.users[0].multiple_login,
+    this.company_id = this.users[0].company_id,
+    this.status = this.users[0].status
   },
   computed: {
-    user() {
-      return this.$store.getters['user/getsUserById'];
+    users() {
+      return this.$store.getters['user/getsUserById'] === null
+        ? []
+        : this.$store.getters['user/getsUserById'];
     },
   },
   methods: {

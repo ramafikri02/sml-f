@@ -26,7 +26,7 @@
         <div class="d-flex justify-content-end">
           <b-button
             variant="primary"
-            @click="toBranchAdd()"
+            @click="toBranchOfficeAdd()"
           >
             <span class="text-nowrap text-white">Tambah Kantor Cabang</span>
           </b-button>
@@ -83,14 +83,14 @@
                   class="text-body align-middle mr-25"
                 />
               </template>
-              <b-dropdown-item @click="toBranchEdit(props.row.branch_code)">
+              <b-dropdown-item @click="toBranchOfficeEdit(props.row.branch_code)">
                 <feather-icon
                   icon="Edit2Icon"
                   class="mr-50"
                 />
                 <span>Ubah</span>
               </b-dropdown-item>
-              <b-dropdown-item @click="toBranchDelete(props.row.branch_code)">
+              <b-dropdown-item @click="toBranchOfficeDelete(props.row.branch_code)">
                 <feather-icon
                   icon="TrashIcon"
                   class="mr-50"
@@ -266,15 +266,15 @@ export default {
     },
   },
   methods: {
-    toBranchAdd() {
+    toBranchOfficeAdd() {
       this.$router.push({ path: '/masterdata/branch/add' })
     },
-    toBranchEdit(id) {
+    toBranchOfficeEdit(id) {
       this.$store.dispatch('branch/GET_BRANCH_BY_ID', id).then(() => {
         this.$router.push({ path: '/masterdata/branch/edit' });
       });
     },
-    toBranchDelete(id) {
+    toBranchOfficeDelete(id) {
       this.$swal({
         title: 'Apakah kamu yakin?',
         text: "Anda tidak akan dapat mengembalikan ini!",
